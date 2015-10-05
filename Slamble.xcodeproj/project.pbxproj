@@ -40,6 +40,7 @@
 		25F1A6911BC1891800143C18 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F1A6901BC1891800143C18 /* FBSDKCoreKit.framework */; settings = {ASSET_TAGS = (); }; };
 		25F1A6931BC1892D00143C18 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F1A6921BC1892C00143C18 /* FBSDKLoginKit.framework */; settings = {ASSET_TAGS = (); }; };
 		25F1A6951BC1894D00143C18 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F1A6941BC1894D00143C18 /* FBSDKShareKit.framework */; settings = {ASSET_TAGS = (); }; };
+		EC65B2F51BC1F79700C47D08 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC65B2F41BC1F79700C47D08 /* HomePageViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,8 @@
 		25F1A6901BC1891800143C18 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "FacebookSDKs-iOS-20150910/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
 		25F1A6921BC1892C00143C18 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "FacebookSDKs-iOS-20150910/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
 		25F1A6941BC1894D00143C18 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "FacebookSDKs-iOS-20150910/FBSDKShareKit.framework"; sourceTree = "<group>"; };
+		EC65B2F31BC1F79700C47D08 /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
+		EC65B2F41BC1F79700C47D08 /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +185,8 @@
 				25F1A6311BC178D700143C18 /* AppDelegate.m */,
 				25F1A6331BC178D700143C18 /* ViewController.h */,
 				25F1A6341BC178D700143C18 /* ViewController.m */,
+				EC65B2F31BC1F79700C47D08 /* HomePageViewController.h */,
+				EC65B2F41BC1F79700C47D08 /* HomePageViewController.m */,
 				25F1A6361BC178D700143C18 /* Main.storyboard */,
 				25F1A68D1BC1819E00143C18 /* SignUpViewController.h */,
 				25F1A68E1BC1819E00143C18 /* SignUpViewController.m */,
@@ -383,6 +388,7 @@
 			files = (
 				25F1A6351BC178D700143C18 /* ViewController.m in Sources */,
 				25F1A6321BC178D700143C18 /* AppDelegate.m in Sources */,
+				EC65B2F51BC1F79700C47D08 /* HomePageViewController.m in Sources */,
 				25F1A68F1BC1819E00143C18 /* SignUpViewController.m in Sources */,
 				25F1A62F1BC178D700143C18 /* main.m in Sources */,
 			);
@@ -618,6 +624,7 @@
 				25F1A6591BC178D700143C18 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		25F1A65A1BC178D700143C18 /* Build configuration list for PBXNativeTarget "SlambleTests" */ = {
 			isa = XCConfigurationList;
@@ -626,6 +633,7 @@
 				25F1A65C1BC178D700143C18 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		25F1A65D1BC178D700143C18 /* Build configuration list for PBXNativeTarget "SlambleUITests" */ = {
 			isa = XCConfigurationList;
@@ -634,6 +642,7 @@
 				25F1A65F1BC178D700143C18 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
