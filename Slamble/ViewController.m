@@ -16,7 +16,6 @@
 //#import <ParseFacebookUtils/PFFacebookUtils.h>
 
 @interface ViewController ()
-@property HomePageViewController *homePage;
 
 @end
 
@@ -25,14 +24,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.homePage = [[HomePageViewController alloc] init];
-    PFUser *currentUser = [PFUser currentUser];
-    if (currentUser) {
-        // do stuff with the user
-//        [self presentViewController:self.homePage animated:YES completion:NULL];
-    } else {
-        // show the signup or login screen
-    }
+//    PFUser *currentUser = [PFUser currentUser];
+//    if (currentUser) {
+//        [self performSegueWithIdentifier:@"homePage" sender: self];
+//        // do stuff with the user
+////        [self presentViewController:self.homePage animated:YES completion:NULL];
+//    } else {
+//        // show the signup or login screen
+//    }
     
 
     
@@ -67,6 +66,47 @@
     
     
 }
+
+
+- (IBAction)LoginButtonPressed:(id)sender{
+    self.username = self.usernameSignIn.text;
+    self.password = self.passwordSignIn.text;
+    
+    
+    [PFUser logInWithUsernameInBackground:self.username
+                                 password:self.password
+                                    block:^(PFUser *user, NSError *error) {
+                                        if (!error) {
+                                            NSLog(@"Login is Success");
+                                            //                                          ;
+                                            // Do stuff after successful login.
+                                            [self performSegueWithIdentifier:@"homePage" sender: self];
+                                            self.usernameSignIn.text = nil;
+                                            self.passwordSignIn.text = nil;
+                                        }
+                                        else{
+                                            NSLog(@"Login Failed");
+                                            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Login Failed"
+                                                                                                           message:@"Please Check Credentials and Try Again"
+                                                                                                    preferredStyle:UIAlertControllerStyleAlert];
+                                            
+                                            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                                                  handler:^(UIAlertAction * action) {}];
+                                            
+                                            [alert addAction:defaultAction];
+                                            [self presentViewController:alert animated:YES completion:nil];
+
+                                            // The login failed. Check error to see why.
+                                        }
+                                    }];
+
+
+    
+                                            // The login failed. Check error to see why.
+    
+    
+}
+
 
 //- (void)viewDidAppear:(BOOL)animated {
 //    [super viewDidAppear:animated];
@@ -112,38 +152,6 @@
 //    NSLog(@"User dismissed the logInViewController");
 //}
 
-
-- (IBAction)loginButtonPressed:(id)sender{
-    self.username = self.usernameSignIn.text;
-    self.password = self.passwordSignIn.text;
-    
-    [PFUser logInWithUsernameInBackground:self.username password:self.password
-                                    block:^(PFUser *user, NSError *error) {
-                                        if (user) {
-                                            NSLog(@"Login is Success");
-//                                            [self presentViewController:self.homePage animated:YES completion:NULL];
-                                            // Do stuff after successful login.
-                                        } else {
-                                            NSLog(@"Login Failed");
-                                            // The login failed. Check error to see why.
-                                        }
-                                    }];
-    
-
-}
-
-- (IBAction)ForgotPasswordButton:(id)sender {
-    PFUser *currentUser = [PFUser currentUser];
-    if (currentUser) {
-        [PFUser requestPasswordResetForEmailInBackground:currentUser.email];
-        // do stuff with the user
-        //        [self presentViewController:self.homePage animated:YES completion:NULL];
-    } else {
-        // show the signup or login screen
-    }
-
-    [PFUser requestPasswordResetForEmailInBackground:@"email@example.com"];
-}
 
  - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

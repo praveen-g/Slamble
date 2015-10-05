@@ -40,6 +40,8 @@
     
     // other fields can be set if you want to save more information
     
+    [self  checkFieldsComplete];
+    
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             // Hooray! Let them use the app now.
@@ -48,20 +50,63 @@
                                         block:^(PFUser *user, NSError *error) {
                                                 if (user) {
                                                     NSLog(@"Login is Success");
-                                                    //                                            [self presentViewController:self.homePage animated:YES completion:NULL];
+                                                    [self performSegueWithIdentifier:@"goToHomePage" sender: self];
+                                                    //                                            
                                                     // Do stuff after successful login.
                                                 } else {
                                                     NSLog(@"Login Failed");
+                                                    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Login Failed"
+                                                                                                                   message:@"There was an issue with the app"
+                                                                                                            preferredStyle:UIAlertControllerStyleAlert];
+                                                    
+                                                    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                                                          handler:^(UIAlertAction * action) {}];
+                                                    
+                                                    [alert addAction:defaultAction];
+                                                    [self presentViewController:alert animated:YES completion:nil];
                                                     // The login failed. Check error to see why.
                                                 }
                                             }];
             
 
         } else {
-            //  NSString *errorString = [error userInfo][@"error"];
+            
+            
+              NSString *errorString = [error userInfo][@"error"];
             // Show the errorString somewhere and let the user try again.
+            
+            NSLog(@"Signup Failed");
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Attention!"
+                                                                           message:errorString
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                  handler:^(UIAlertAction * action) {}];
+            
+            [alert addAction:defaultAction];
+            [self presentViewController:alert animated:YES completion:nil];
+
         }
     }];
+}
+
+-(void) checkFieldsComplete{
+    if ([self.userNameTextField.text isEqualToString:@""] || [self.passwordTextField.text isEqualToString:@""] || [self.emailTextField.text isEqualToString:@""] ||[self.firstNameTextField.text isEqualToString:@""] || [self.lastNameTextField.text isEqualToString:@""])
+        {
+            
+            
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Missing Information"
+                                                                           message:@"Make sure you fill out all of the information!"
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                  handler:^(UIAlertAction * action) {}];
+            
+            [alert addAction:defaultAction];
+            [self presentViewController:alert animated:YES completion:nil];
+            
+        }
+}
     
     
     //- (BOOL)signUpViewController:(PFSignUpViewController *)signUpController shouldBeginSignUp:(NSDictionary *)info {
@@ -109,8 +154,6 @@
     
     
 
-    
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

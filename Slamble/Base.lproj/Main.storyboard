@@ -38,29 +38,20 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jJ6-LO-STn">
+                                <rect key="frame" x="125" y="198" width="38" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="LoginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QSV-eK-vQ3"/>
+                                </connections>
+                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" id="WiY-0n-XEk">
                                 <rect key="frame" x="73" y="62" width="174" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jJ6-LO-STn">
-                                <rect key="frame" x="125" y="198" width="38" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Login"/>
-                                <connections>
-                                    <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M81-Kx-BUp"/>
-                                    <segue destination="fwX-Zg-8Gc" kind="modal" id="A59-44-uDv"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7dt-As-aCV">
-                                <rect key="frame" x="69" y="277" width="123" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Forgot Password?"/>
-                                <connections>
-                                    <action selector="ForgotPasswordButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fnY-KW-FdL"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -68,8 +59,9 @@
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="passwordSignIn" destination="SQT-Hp-BLf" id="wuB-Ac-4PZ"/>
-                        <outlet property="usernameSignIn" destination="WiY-0n-XEk" id="9lY-VP-zPY"/>
+                        <outlet property="passwordSignIn" destination="SQT-Hp-BLf" id="59D-CA-dOb"/>
+                        <outlet property="usernameSignIn" destination="WiY-0n-XEk" id="hEQ-cb-65v"/>
+                        <segue destination="fwX-Zg-8Gc" kind="modal" identifier="homePage" id="jA7-Lx-v59"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -114,7 +106,6 @@
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
                                     <action selector="signUpButtonPressed:" destination="m1G-Rf-i4d" eventType="touchUpInside" id="T0V-UF-HyP"/>
-                                    <segue destination="fwX-Zg-8Gc" kind="modal" id="NXU-69-c2H"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" id="tbF-EU-r0m">
@@ -133,6 +124,7 @@
                         <outlet property="lastNameTextField" destination="Ht2-za-xz0" id="CRN-7S-5I8"/>
                         <outlet property="passwordTextField" destination="IhE-eI-mlt" id="IVC-pk-PT8"/>
                         <outlet property="userNameTextField" destination="tbF-EU-r0m" id="szf-Mr-Qer"/>
+                        <segue destination="fwX-Zg-8Gc" kind="modal" identifier="goToHomePage" id="6WI-ok-iEZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SPY-b7-yZG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -153,7 +145,6 @@
                                 <state key="normal" title="LOGOUT"/>
                                 <connections>
                                     <action selector="logOutButtonPressed:" destination="fwX-Zg-8Gc" eventType="touchUpInside" id="3kd-lO-3Ui"/>
-                                    <segue destination="rEQ-UJ-4DT" kind="modal" id="tOh-Y4-mRK"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home Page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tH8-Uu-AUD">
@@ -174,6 +165,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="NXU-69-c2H"/>
+        <segue reference="jA7-Lx-v59"/>
     </inferredMetricsTieBreakers>
 </document>

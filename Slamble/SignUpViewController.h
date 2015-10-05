@@ -17,5 +17,6 @@
 @property (strong, nonatomic) IBOutlet UITextField *passwordTextField;
 
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
+-(void) checkFieldsComplete;
 
 @end

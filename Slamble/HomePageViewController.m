@@ -28,8 +28,9 @@
 }
 - (IBAction)logOutButtonPressed:(id)sender {
     [PFUser logOut];
-    PFUser *currentUser = [PFUser currentUser];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+//    PFUser *currentUser = [PFUser currentUser];
+    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 
