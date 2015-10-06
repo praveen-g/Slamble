@@ -13,4 +13,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *usernameForBet;
 @property (strong, nonatomic) IBOutlet UITextField *sleepHoursForBet;
 @property (strong, nonatomic) NSString *currentUserName;
+@property (strong, nonatomic) IBOutlet UILabel *myPoints;
+@property long pointsVal;
+//-(void) queryUserPoints;
 @end

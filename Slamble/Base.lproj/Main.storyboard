@@ -61,7 +61,7 @@
                     <connections>
                         <outlet property="passwordSignIn" destination="SQT-Hp-BLf" id="59D-CA-dOb"/>
                         <outlet property="usernameSignIn" destination="WiY-0n-XEk" id="hEQ-cb-65v"/>
-                        <segue destination="fwX-Zg-8Gc" kind="modal" identifier="homePage" id="foV-V2-pIj"/>
+                        <segue destination="6lx-LS-Ep5" kind="modal" identifier="homePage" id="ISl-ap-zNu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -124,14 +124,14 @@
                         <outlet property="lastNameTextField" destination="Ht2-za-xz0" id="CRN-7S-5I8"/>
                         <outlet property="passwordTextField" destination="IhE-eI-mlt" id="IVC-pk-PT8"/>
                         <outlet property="userNameTextField" destination="tbF-EU-r0m" id="szf-Mr-Qer"/>
-                        <segue destination="fwX-Zg-8Gc" kind="modal" identifier="goToHomePage" id="6WI-ok-iEZ"/>
+                        <segue destination="6lx-LS-Ep5" kind="modal" identifier="goToHomePage" id="6Rt-DN-VTL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SPY-b7-yZG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="206" y="676"/>
         </scene>
-        <!--Home Page View Controller-->
+        <!--My Page-->
         <scene sceneID="hLI-Cg-gbQ">
             <objects>
                 <viewController id="fwX-Zg-8Gc" customClass="HomePageViewController" sceneMemberID="viewController">
@@ -154,26 +154,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username to bet" textAlignment="natural" minimumFontSize="17" id="oLI-Up-dC4">
-                                <rect key="frame" x="70" y="288" width="166" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="hours to bet" textAlignment="natural" minimumFontSize="17" id="t7a-Ik-xhH">
-                                <rect key="frame" x="70" y="340" width="166" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="RR7-CD-cGY">
-                                <rect key="frame" x="121" y="414" width="64" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Make Bet"/>
-                                <connections>
-                                    <action selector="makeBetButtonPressed:" destination="fwX-Zg-8Gc" eventType="touchUpInside" id="Pgf-wc-UhR"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Noa-PV-DDf">
                                 <rect key="frame" x="121" y="201" width="79" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -188,21 +168,131 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Points" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aXh-fq-I5r">
+                                <rect key="frame" x="35" y="293" width="110" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ElX-49-x0d">
+                                <rect key="frame" x="229" y="293" width="11" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="My Page" id="eF7-Qo-T9b"/>
                     <connections>
                         <outlet property="amountSleptInput" destination="epF-uz-keG" id="fnj-73-BMr"/>
-                        <outlet property="sleepHoursForBet" destination="t7a-Ik-xhH" id="5at-28-2iQ"/>
-                        <outlet property="usernameForBet" destination="oLI-Up-dC4" id="Cgn-M1-0v7"/>
+                        <outlet property="myPoints" destination="ElX-49-x0d" id="51a-ce-XLX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WJE-0q-ejN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="691" y="124"/>
+            <point key="canvasLocation" x="1599" y="72"/>
+        </scene>
+        <!--Existing Bets-->
+        <scene sceneID="0FV-vB-i0N">
+            <objects>
+                <tableViewController id="54I-zv-lhj" customClass="BetsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="1bd-zt-vWc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="qMO-wS-ZBk">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qMO-wS-ZBk" id="Vf1-7N-H7p">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="54I-zv-lhj" id="5pW-j9-J0m"/>
+                            <outlet property="delegate" destination="54I-zv-lhj" id="SXF-aF-hSP"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Existing Bets" id="ln9-hj-H0a"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MOV-Bo-bFX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1930" y="747"/>
+        </scene>
+        <!--Make Bets-->
+        <scene sceneID="KiZ-FW-tsS">
+            <objects>
+                <viewController id="682-L2-BvF" customClass="MakeBetsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bId-gp-D9k">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bet Your Friends!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VLu-Dm-TxF">
+                                <rect key="frame" x="89" y="54" width="132" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QcW-EU-rk4">
+                                <rect key="frame" x="128" y="326" width="64" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Make Bet"/>
+                                <connections>
+                                    <action selector="makeBetButtonPressed:" destination="682-L2-BvF" eventType="touchUpInside" id="vdk-fp-V4u"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Hours To Bet" textAlignment="natural" minimumFontSize="17" id="Ndb-js-WYD">
+                                <rect key="frame" x="74" y="225" width="164" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username to Bet" textAlignment="natural" minimumFontSize="17" id="zew-Rl-zbe">
+                                <rect key="frame" x="74" y="172" width="164" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Make Bets" id="uAU-Yx-fxM"/>
+                    <connections>
+                        <outlet property="sleepHoursForBet" destination="Ndb-js-WYD" id="RmD-vo-tD5"/>
+                        <outlet property="usernameForBet" destination="zew-Rl-zbe" id="nLv-66-6jT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F9d-ra-RpO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1358" y="1187"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="8ow-TE-CLJ">
+            <objects>
+                <tabBarController id="6lx-LS-Ep5" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="Hhf-cx-xKM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="682-L2-BvF" kind="relationship" relationship="viewControllers" id="6MY-Tp-NOp"/>
+                        <segue destination="fwX-Zg-8Gc" kind="relationship" relationship="viewControllers" id="SgP-WJ-GMa"/>
+                        <segue destination="54I-zv-lhj" kind="relationship" relationship="viewControllers" id="1HP-O5-r1T"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Fi-NA-bCD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1074" y="467"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="foV-V2-pIj"/>
+        <segue reference="ISl-ap-zNu"/>
     </inferredMetricsTieBreakers>
 </document>

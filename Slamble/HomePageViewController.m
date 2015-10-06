@@ -24,9 +24,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    // get the username of the current user and log it in the consol
     NSString *currentUserName = [[NSString alloc] init];
     self.currentUserName = [[PFUser currentUser] objectForKey:@"username"];
     NSLog(self.currentUserName);
+    
+    //declare variable for points value which we will keep in an object
+    long pointsVal;
+    NSString *myPoints = self.myPoints.text;
+    
+    
     
    
 }
@@ -37,31 +44,62 @@
 
     
 //    [[PFUser currentUser] objectForKey:@"username"];
+    // retreive betMade for current user
     PFQuery *query = [PFQuery queryWithClassName:@"betMade"];
     [query whereKey:@"username" equalTo:self.currentUserName];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
             NSLog(@"Successfully retrieved bets. %lu", (unsigned long)objects.count);
-            // Do something with the found objects
-//        for (PFObject *object in objects) {
+            
+            // parse the bet hours to compare to sleep input
                 NSArray *betValue= [objects valueForKey:@"betTime"];
                 NSLog(@"BetValue: %@", betValue);
                 NSString* betValueNew = [betValue objectAtIndex:0];
                 long betValueNum = [betValueNew integerValue];
-                NSLog(@"BetValueNUm: %ld", betValueNum);
-//                NSArray *fromUser = [objects valueForKey:@"createdBy"];
-////                NSString *fromUserName = [fromUser valueForKey:@"username"];
+
             
-//                NSLog(@"Bet from User: %@", fromUser);
+                // compare the amount the user slept to the amount of hours in the bet
                 if (betValueNum > timeSlept){
+                    // if you slept less than the bet hours you lose
                     NSLog(@"You Lose");
+                    UIAlertController* alertLoss = [UIAlertController alertControllerWithTitle:@"You Lose"
+                                                                                   message:@"Sleep More to beat your opponent next time!"
+                                                                            preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                          handler:^(UIAlertAction * action) {}];
+                    
+                    [alertLoss addAction:defaultAction];
+                    [self presentViewController:alertLoss animated:YES completion:nil];
+                    
                 }
                 else if (betValueNum == timeSlept){
+                    //if you slept the same amount as the bet hours it's a draw
                     NSLog(@"it's a draw");
+                    UIAlertController* alertTie = [UIAlertController alertControllerWithTitle:@"Tie!"
+                                                                                   message:@"You AND your opponent benefit"
+                                                                            preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                          handler:^(UIAlertAction * action) {}];
+                    
+                    [alertTie addAction:defaultAction];
+                    [self presentViewController:alertTie animated:YES completion:nil];
                 }
                 else if (betValueNum < timeSlept){
+                    
+                    //if you slept more than the bet hours you win
                     NSLog(@"You Win");
+                    UIAlertController* alertWin = [UIAlertController alertControllerWithTitle:@"You Won!"
+                                                                                   message:@"Congratulations! You slept more than your opponent thought you would!"
+                                                                            preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                          handler:^(UIAlertAction * action) {}];
+                    
+                    [alertWin addAction:defaultAction];
+                    [self presentViewController:alertWin animated:YES completion:nil];
                 }
             
 //            }
@@ -76,36 +114,16 @@
  
 }
 
-- (IBAction)makeBetButtonPressed:(id)sender {
-    //taking input from the user to create bet
-    NSString * userNameForBet = self.usernameForBet.text;
-    NSInteger hoursToSleepForBet = [self.sleepHoursForBet.text integerValue];
-    NSString *hoursToSleepString = self.sleepHoursForBet.text;
-    NSLog(@"username for bet: %@", userNameForBet);
-    NSLog(@"hours to sleep for bet: %ld", hoursToSleepForBet);
-    PFObject *betObject = [PFObject objectWithClassName:@"betMade"];
-    [betObject setObject: userNameForBet forKey:@"username"];
-    [betObject setObject:hoursToSleepString forKey:@"betTime"];
-    [betObject setObject:[[PFUser currentUser] objectForKey:@"username"] forKey:@"userName"];
-    [betObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
-     {
-         if (!error) {
-             NSLog(@"saved bet object");
-         } else{
-             NSLog(@"Failed to save");
-         }
-     }];
-    
-
-}
 
 
 
 - (IBAction)logOutButtonPressed:(id)sender {
+    //lout out user
     [PFUser logOut];
-//    PFUser *currentUser = [PFUser currentUser];
+    
+    //go to initial page
     [self dismissViewControllerAnimated:YES completion:nil];
-//    [self.navigationController popToRootViewControllerAnimated:YES];
+
 }
 
 
@@ -124,5 +142,55 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+//create object for the current user for points, initially set to 0
+//we don't want to create a points object every time a user logins
+//    PFObject *pointsObject = [PFObject objectWithClassName:@"userPoints"];
+//    [pointsObject setObject: self.currentUserName forKey:@"username"];
+//    [pointsObject setObject:@0 forKey:@"Points"];;
+//    [pointsObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+//     {
+//         if (!error) {
+//             NSLog(@"saved bet object");
+//         } else{
+//             NSLog(@"Failed to save");
+//         }
+//     }];
+
+//-(void)queryUserPoints{
+//    // a method to query user points and set the label equal to points
+//    NSString *currentUserName = [PFUser currentUser] objectForKey:@"username"];
+//    PFQuery *query = [PFQuery queryWithClassName:@"userPoints"];
+//    [query whereKey:@"username" equalTo:currentUserName];
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if (!error) {
+//            // The find succeeded.
+//            NSLog(@"Successfully retrieved bets. %lu", (unsigned long)objects.count);
+//            // Do something with the found objects
+//            //        for (PFObject *object in objects) {
+//            NSArray *pointsArray= [objects valueForKey:@"Points"];
+//            NSLog(@"Current Points are: %@", pointsArray);
+//            NSString* pointsString = [pointsArray objectAtIndex:0];
+//            long pointsVal = [pointsString integerValue];
+//            NSLog(@"BetValueNUm: %ld", pointsVal);
+//            self.myPoints.text = pointsString;
+//            return pointsVal;
+//            //                NSArray *fromUser = [objects valueForKey:@"createdBy"];
+//            ////                NSString *fromUserName = [fromUser valueForKey:@"username"];
+//
+//            //              NSLog(@"Bet from User: %@", fromUser);
+//
+//        }
+//
+//        // Retrieve the object by id
+//        else {
+//            // Log details of the failure
+//            NSLog(@"Error calling points: %@ %@", error, [error userInfo]);
+//        }
+//
+//
+//    }];
+//
+//}
 
 @end

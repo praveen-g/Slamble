@@ -31,29 +31,35 @@
 
 - (IBAction)signUpButtonPressed:(id)sender {
     
+    //create new user with userinputs
     PFUser *user = [PFUser user];
     user[@"firstName"]= self.firstNameTextField.text;
     user[@"lastName"]= self.lastNameTextField.text;
     user.username = self.userNameTextField.text;
     user.password = self.passwordTextField.text;
     user.email = self.emailTextField.text;
+    user[@"points"] = @"0";
     
     // other fields can be set if you want to save more information
     
+    //check all fields are complete, and if not show aler
     [self  checkFieldsComplete];
     
+    //if user sign up was a success, log the user in
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             // Hooray! Let them use the app now.
             [PFUser logInWithUsernameInBackground:user.username
                                         password:user.password
                                         block:^(PFUser *user, NSError *error) {
+                                            //if login was a success go to homePage
                                                 if (user) {
                                                     NSLog(@"Login is Success");
                                                     [self performSegueWithIdentifier:@"goToHomePage" sender: self];
                                                     //                                            
                                                     // Do stuff after successful login.
                                                 } else {
+                                                    //show an alert that login failed
                                                     NSLog(@"Login Failed");
                                                     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Login Failed"
                                                                                                                    message:@"There was an issue with the app"
@@ -70,6 +76,7 @@
             
 
         } else {
+            //if sign up failed, show an alert that it failed
             
             
               NSString *errorString = [error userInfo][@"error"];
@@ -91,6 +98,8 @@
 }
 
 -(void) checkFieldsComplete{
+    //method to check if fields are complete, and not blank
+    //if fields are not complete, it presents an alert
     if ([self.userNameTextField.text isEqualToString:@""] || [self.passwordTextField.text isEqualToString:@""] || [self.emailTextField.text isEqualToString:@""] ||[self.firstNameTextField.text isEqualToString:@""] || [self.lastNameTextField.text isEqualToString:@""])
         {
             

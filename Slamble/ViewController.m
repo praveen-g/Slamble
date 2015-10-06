@@ -24,30 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    PFUser *currentUser = [PFUser currentUser];
-//    if (currentUser) {
-//        [self performSegueWithIdentifier:@"homePage" sender: self];
-//        // do stuff with the user
-////        [self presentViewController:self.homePage animated:YES completion:NULL];
-//    } else {
-//        // show the signup or login screen
-//    }
-    
-
-    
-//    PFLogInViewController *login = [[PFLogInViewController alloc]init];
-////        [self presentViewController:login animated:YES completion:nil];
-//    login.fields = PFLogInFieldsUsernameAndPassword | PFLogInFieldsLogInButton | PFLogInFieldsFacebook | PFLogInFieldsPasswordForgotten  | PFLogInFieldsDismissButton;
-//    login.delegate = self;
-//    login.facebookPermissions = @[@"public_profile", @"email", @"user_friends"];
-//
-//[self presentViewController:login animated:YES completion:NULL];
-
-    
-//    [login release];
-        // Do any additional setup after loading the view, typically from a nib.
-    
-    
+//present facebook sign in button
     
     FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
     loginButton.center = self.view.center;
@@ -69,13 +46,15 @@
 
 
 - (IBAction)LoginButtonPressed:(id)sender{
+    //set the username and password inputs
     self.username = self.usernameSignIn.text;
     self.password = self.passwordSignIn.text;
     
-    
+    //initiate login with username and password
     [PFUser logInWithUsernameInBackground:self.username
                                  password:self.password
                                     block:^(PFUser *user, NSError *error) {
+                                        //if no error , take them to the home page
                                         if (!error) {
                                             NSLog(@"Login is Success");
                                             //                                          ;
@@ -85,6 +64,7 @@
                                             self.passwordSignIn.text = nil;
                                         }
                                         else{
+                                            //if error, show them an alert and ask them to check credentials
                                             NSLog(@"Login Failed");
                                             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Login Failed"
                                                                                                            message:@"Please Check Credentials and Try Again"
@@ -107,50 +87,6 @@
     
 }
 
-
-//- (void)viewDidAppear:(BOOL)animated {
-//    [super viewDidAppear:animated];
-//    
-//    PFLogInViewController *login = [[PFLogInViewController alloc]init];
-//    [self presentViewController:login animated:YES completion:nil];
-//    login.fields = PFLogInFieldsUsernameAndPassword | PFLogInFieldsLogInButton | PFLogInFieldsFacebook | PFLogInFieldsPasswordForgotten  | PFLogInFieldsDismissButton;
-//    login.delegate = self;
-//    login.facebookPermissions = @[@"public_profile", @"email", @"user_friends"];
-//}
-
-//- (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password {
-//    if (username && password && username.length && password.length) {
-//        return YES;
-//    }
-//    
-//    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Missing Information"
-//                                                                   message:@"Make sure you fill out all of the information!"
-//                                                            preferredStyle:UIAlertControllerStyleAlert];
-//    
-//    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-//                                                          handler:^(UIAlertAction * action) {}];
-//    
-//    [alert addAction:defaultAction];
-//    [self presentViewController:alert animated:YES completion:nil];
-//    return NO;
-//}
-
-
-//- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
-////    [self dismissViewControllerAnimated:YES completion:NULL];
-//    [self presentViewController: self.homePage animated:(YES) completion:nil];
-//}
-//
-//// Sent to the delegate when the log in attempt fails.
-//- (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
-//    
-//       NSLog(@"Failed to log in...");
-//}
-//
-//// Sent to the delegate when the log in screen is dismissed.
-//- (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
-//    NSLog(@"User dismissed the logInViewController");
-//}
 
 
  - (void)didReceiveMemoryWarning {

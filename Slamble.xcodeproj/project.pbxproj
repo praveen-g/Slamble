@@ -40,6 +40,8 @@
 		25F1A6911BC1891800143C18 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F1A6901BC1891800143C18 /* FBSDKCoreKit.framework */; settings = {ASSET_TAGS = (); }; };
 		25F1A6931BC1892D00143C18 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F1A6921BC1892C00143C18 /* FBSDKLoginKit.framework */; settings = {ASSET_TAGS = (); }; };
 		25F1A6951BC1894D00143C18 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F1A6941BC1894D00143C18 /* FBSDKShareKit.framework */; settings = {ASSET_TAGS = (); }; };
+		EC4228261BC37D0A0043C3BD /* MakeBetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4228251BC37D0A0043C3BD /* MakeBetsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EC4228291BC37D380043C3BD /* BetsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4228281BC37D380043C3BD /* BetsTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 		EC65B2F51BC1F79700C47D08 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC65B2F41BC1F79700C47D08 /* HomePageViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -104,6 +106,10 @@
 		25F1A6901BC1891800143C18 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "FacebookSDKs-iOS-20150910/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
 		25F1A6921BC1892C00143C18 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "FacebookSDKs-iOS-20150910/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
 		25F1A6941BC1894D00143C18 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "FacebookSDKs-iOS-20150910/FBSDKShareKit.framework"; sourceTree = "<group>"; };
+		EC4228241BC37D0A0043C3BD /* MakeBetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeBetsViewController.h; sourceTree = "<group>"; };
+		EC4228251BC37D0A0043C3BD /* MakeBetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeBetsViewController.m; sourceTree = "<group>"; };
+		EC4228271BC37D380043C3BD /* BetsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BetsTableViewController.h; sourceTree = "<group>"; };
+		EC4228281BC37D380043C3BD /* BetsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BetsTableViewController.m; sourceTree = "<group>"; };
 		EC65B2F31BC1F79700C47D08 /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
 		EC65B2F41BC1F79700C47D08 /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -188,6 +194,10 @@
 				EC65B2F31BC1F79700C47D08 /* HomePageViewController.h */,
 				EC65B2F41BC1F79700C47D08 /* HomePageViewController.m */,
 				25F1A6361BC178D700143C18 /* Main.storyboard */,
+				EC4228241BC37D0A0043C3BD /* MakeBetsViewController.h */,
+				EC4228251BC37D0A0043C3BD /* MakeBetsViewController.m */,
+				EC4228271BC37D380043C3BD /* BetsTableViewController.h */,
+				EC4228281BC37D380043C3BD /* BetsTableViewController.m */,
 				25F1A68D1BC1819E00143C18 /* SignUpViewController.h */,
 				25F1A68E1BC1819E00143C18 /* SignUpViewController.m */,
 				25F1A6391BC178D700143C18 /* Assets.xcassets */,
@@ -388,8 +398,10 @@
 			files = (
 				25F1A6351BC178D700143C18 /* ViewController.m in Sources */,
 				25F1A6321BC178D700143C18 /* AppDelegate.m in Sources */,
+				EC4228291BC37D380043C3BD /* BetsTableViewController.m in Sources */,
 				EC65B2F51BC1F79700C47D08 /* HomePageViewController.m in Sources */,
 				25F1A68F1BC1819E00143C18 /* SignUpViewController.m in Sources */,
+				EC4228261BC37D0A0043C3BD /* MakeBetsViewController.m in Sources */,
 				25F1A62F1BC178D700143C18 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
