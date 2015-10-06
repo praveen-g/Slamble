@@ -61,7 +61,7 @@
                     <connections>
                         <outlet property="passwordSignIn" destination="SQT-Hp-BLf" id="59D-CA-dOb"/>
                         <outlet property="usernameSignIn" destination="WiY-0n-XEk" id="hEQ-cb-65v"/>
-                        <segue destination="fwX-Zg-8Gc" kind="modal" identifier="homePage" id="jA7-Lx-v59"/>
+                        <segue destination="fwX-Zg-8Gc" kind="modal" identifier="homePage" id="foV-V2-pIj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -140,7 +140,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ecM-j4-5Dp">
-                                <rect key="frame" x="134" y="140" width="62" height="30"/>
+                                <rect key="frame" x="129" y="484" width="62" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="LOGOUT"/>
                                 <connections>
@@ -154,10 +154,48 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username to bet" textAlignment="natural" minimumFontSize="17" id="oLI-Up-dC4">
+                                <rect key="frame" x="70" y="288" width="166" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="hours to bet" textAlignment="natural" minimumFontSize="17" id="t7a-Ik-xhH">
+                                <rect key="frame" x="70" y="340" width="166" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="RR7-CD-cGY">
+                                <rect key="frame" x="121" y="414" width="64" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Make Bet"/>
+                                <connections>
+                                    <action selector="makeBetButtonPressed:" destination="fwX-Zg-8Gc" eventType="touchUpInside" id="Pgf-wc-UhR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Noa-PV-DDf">
+                                <rect key="frame" x="121" y="201" width="79" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Enter Sleep"/>
+                                <connections>
+                                    <action selector="enterSleepButtonPressed:" destination="fwX-Zg-8Gc" eventType="touchUpInside" id="Omn-FP-MPs"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Hours Slept" textAlignment="natural" minimumFontSize="17" id="epF-uz-keG">
+                                <rect key="frame" x="112" y="146" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="6Sq-a6-9LZ"/>
+                    <connections>
+                        <outlet property="amountSleptInput" destination="epF-uz-keG" id="fnj-73-BMr"/>
+                        <outlet property="sleepHoursForBet" destination="t7a-Ik-xhH" id="5at-28-2iQ"/>
+                        <outlet property="usernameForBet" destination="oLI-Up-dC4" id="Cgn-M1-0v7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WJE-0q-ejN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -165,6 +203,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jA7-Lx-v59"/>
+        <segue reference="foV-V2-pIj"/>
     </inferredMetricsTieBreakers>
 </document>

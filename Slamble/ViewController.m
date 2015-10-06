@@ -80,7 +80,7 @@
                                             NSLog(@"Login is Success");
                                             //                                          ;
                                             // Do stuff after successful login.
-                                            [self performSegueWithIdentifier:@"homePage" sender: self];
+                                            [self performSegueWithIdentifier:@"homePage" sender: sender];
                                             self.usernameSignIn.text = nil;
                                             self.passwordSignIn.text = nil;
                                         }
