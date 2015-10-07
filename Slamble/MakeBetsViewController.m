@@ -34,8 +34,8 @@
     // Do any additional setup after loading the view.
     //set username of current usr
     NSString *currentUserName = [[NSString alloc] init];
-    self.currentUserName = [[PFUser currentUser] objectForKey:@"username"];
-    NSLog(self.currentUserName);
+    currentUserName = [[PFUser currentUser] objectForKey:@"username"];
+    NSLog(@"%@",currentUserName);
 }
 
 - (IBAction)makeBetButtonPressed:(id)sender {

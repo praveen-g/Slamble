@@ -34,15 +34,10 @@
     // Do any additional setup after loading the view.
     // get the username of the current user and log it in the consol
     NSString *currentUserName = [[NSString alloc] init];
-    self.currentUserName = [[PFUser currentUser] objectForKey:@"username"];
-    NSLog(self.currentUserName);
+    currentUserName = [[PFUser currentUser] objectForKey:@"username"];
+    NSLog(@"%@",currentUserName);
     
     //declare variable for points value which we will keep in an object
-    long pointsVal;
-    NSString *myPoints = self.myPoints.text;
-    
-    
-    
    
 }
 - (IBAction)enterSleepButtonPressed:(id)sender {

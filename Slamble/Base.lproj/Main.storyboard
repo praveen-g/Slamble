@@ -195,35 +195,6 @@
             </objects>
             <point key="canvasLocation" x="1599" y="72"/>
         </scene>
-        <!--Existing Bets-->
-        <scene sceneID="0FV-vB-i0N">
-            <objects>
-                <tableViewController id="54I-zv-lhj" customClass="BetsTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="1bd-zt-vWc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="qMO-wS-ZBk">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qMO-wS-ZBk" id="Vf1-7N-H7p">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="54I-zv-lhj" id="5pW-j9-J0m"/>
-                            <outlet property="delegate" destination="54I-zv-lhj" id="SXF-aF-hSP"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="Existing Bets" id="ln9-hj-H0a"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MOV-Bo-bFX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1930" y="747"/>
-        </scene>
         <!--Make Bets-->
         <scene sceneID="KiZ-FW-tsS">
             <objects>
@@ -284,7 +255,6 @@
                     <connections>
                         <segue destination="682-L2-BvF" kind="relationship" relationship="viewControllers" id="6MY-Tp-NOp"/>
                         <segue destination="fwX-Zg-8Gc" kind="relationship" relationship="viewControllers" id="SgP-WJ-GMa"/>
-                        <segue destination="54I-zv-lhj" kind="relationship" relationship="viewControllers" id="1HP-O5-r1T"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Fi-NA-bCD" userLabel="First Responder" sceneMemberID="firstResponder"/>
