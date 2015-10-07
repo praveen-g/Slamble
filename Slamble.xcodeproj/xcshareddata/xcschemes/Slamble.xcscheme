@@ -20,6 +20,20 @@
                ReferencedContainer = "container:Slamble.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "NO"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "25F1A64D1BC178D700143C18"
+               BuildableName = "SlambleUITests.xctest"
+               BlueprintName = "SlambleUITests"
+               ReferencedContainer = "container:Slamble.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -35,16 +49,6 @@
                BlueprintIdentifier = "25F1A6421BC178D700143C18"
                BuildableName = "SlambleTests.xctest"
                BlueprintName = "SlambleTests"
-               ReferencedContainer = "container:Slamble.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "25F1A64D1BC178D700143C18"
-               BuildableName = "SlambleUITests.xctest"
-               BlueprintName = "SlambleUITests"
                ReferencedContainer = "container:Slamble.xcodeproj">
             </BuildableReference>
          </TestableReference>
