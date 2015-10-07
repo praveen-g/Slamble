@@ -1,0 +1,3 @@
+language: Objective C
+xcode_project: Slamble.xcodeproj # path to your xcodeproj folder
+xcode_scheme: SlambleTests
