@@ -1,3 +1,2 @@
  #Slamble
-# Slamble_
-# Slamble_
+https://travis-ci.org/praveen-g/Slamble.svg?branch=master
