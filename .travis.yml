@@ -1,3 +1,5 @@
-language: Objective C
+language: objective-c
 xcode_project: Slamble.xcodeproj # path to your xcodeproj folder
-xcode_scheme: SlambleTests
+xcode_scheme: Slamble
+osx_image: xcode7
+xcode_sdk: iphonesimulator9.0
