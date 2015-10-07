@@ -17,6 +17,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // this code adds the background image across the entire screen
+    UIGraphicsBeginImageContext(self.view.frame.size);
+    [[UIImage imageNamed:@"night.jpg"] drawInRect:self.view.bounds];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
+    
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     

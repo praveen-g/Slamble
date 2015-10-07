@@ -18,5 +18,6 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 -(void) checkFieldsComplete;
++(BOOL)isValidEmailAddress:(NSString *)emailAddress;
 
 @end

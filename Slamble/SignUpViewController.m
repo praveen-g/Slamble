@@ -14,9 +14,32 @@
 
 @implementation SignUpViewController
 
++ (BOOL)isValidEmailAddress:(NSString *)emailAddress {
+    
+    //Create a regex string
+    NSString *stricterFilterString = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}" ;
+    
+    //Create predicate with format matching your regex string
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", stricterFilterString];
+    
+    //return true if email address is valid, value of 0= False, 1=True
+    return [emailTest evaluateWithObject:emailAddress];
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // this code adds the background image across the entire screen
+    UIGraphicsBeginImageContext(self.view.frame.size);
+    [[UIImage imageNamed:@"night.jpg"] drawInRect:self.view.bounds];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
+    
+    //UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"night.jpg"]];
+    //[self.view addSubview:backgroundView];
     
 //    PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
 //    signUpViewController.delegate = self;
@@ -30,6 +53,11 @@
 
 
 - (IBAction)signUpButtonPressed:(id)sender {
+    
+    //Testing if email is valid
+    
+    [SignUpViewController isValidEmailAddress:self.emailTextField.text];
+    NSLog(@"%d",[SignUpViewController isValidEmailAddress:self.emailTextField.text]);
     
     //create new user with userinputs
     PFUser *user = [PFUser user];

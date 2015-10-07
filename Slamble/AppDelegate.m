@@ -19,6 +19,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+        
     [Parse setApplicationId:@"s3CBKwuw8w4lunRPqne8iasu5EAx23snFgu6lJGz"                  clientKey:@"5gelpzGJ8Pq3SWuU7AUiR1ud0rSpi5UZyRchCVGn"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     return [[FBSDKApplicationDelegate sharedInstance] application:application

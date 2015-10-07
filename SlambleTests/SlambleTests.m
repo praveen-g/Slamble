@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "SignUpViewController.h"
 
 @interface SlambleTests : XCTestCase
 
@@ -22,6 +23,13 @@
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
+}
+
+
+- (void)testEmailFeature {
+    XCTAssert([SignUpViewController isValidEmailAddress:@"francescoperera@yahoo.com"]); // this should be true
+    XCTAssertFalse([SignUpViewController isValidEmailAddress:@"asdcsdCEWG"]); // this should be false
+    
 }
 
 - (void)testExample {

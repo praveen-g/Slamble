@@ -23,6 +23,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // this code adds the background image across the entire screen
+    UIGraphicsBeginImageContext(self.view.frame.size);
+    [[UIImage imageNamed:@"night.jpg"] drawInRect:self.view.bounds];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
+    
     // Do any additional setup after loading the view.
     //set username of current usr
     NSString *currentUserName = [[NSString alloc] init];
