@@ -1,3 +1,6 @@
+install: true
+deploy:
+	disk_cleanup: true
 language: objective-c
 xcode_project: Slamble.xcodeproj # path to your xcodeproj folder
 xcode_scheme: Slamble
