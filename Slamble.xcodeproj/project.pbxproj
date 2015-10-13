@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		085C955A1BC4B33F00728414 /* night.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 085C95591BC4B33F00728414 /* night.jpg */; settings = {ASSET_TAGS = (); }; };
+		25B9BD1A1BCC988400982D78 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B9BD191BCC988400982D78 /* Crashlytics.framework */; settings = {ASSET_TAGS = (); }; };
+		25B9BD1C1BCC992D00982D78 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B9BD1B1BCC992D00982D78 /* Fabric.framework */; settings = {ASSET_TAGS = (); }; };
 		25F1A62F1BC178D700143C18 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F1A62E1BC178D700143C18 /* main.m */; };
 		25F1A6321BC178D700143C18 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F1A6311BC178D700143C18 /* AppDelegate.m */; };
 		25F1A6351BC178D700143C18 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F1A6341BC178D700143C18 /* ViewController.m */; };
@@ -64,6 +66,8 @@
 
 /* Begin PBXFileReference section */
 		085C95591BC4B33F00728414 /* night.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = night.jpg; sourceTree = "<group>"; };
+		25B9BD191BCC988400982D78 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		25B9BD1B1BCC992D00982D78 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		25F1A62A1BC178D700143C18 /* Slamble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Slamble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25F1A62E1BC178D700143C18 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		25F1A6301BC178D700143C18 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -139,6 +143,8 @@
 				25F1A6661BC1794A00143C18 /* Bolts.framework in Frameworks */,
 				25F1A6671BC1794A00143C18 /* Parse.framework in Frameworks */,
 				25F1A6681BC1794A00143C18 /* ParseCrashReporting.framework in Frameworks */,
+				25B9BD1C1BCC992D00982D78 /* Fabric.framework in Frameworks */,
+				25B9BD1A1BCC988400982D78 /* Crashlytics.framework in Frameworks */,
 				25F1A6691BC1794A00143C18 /* ParseFacebookUtils.framework in Frameworks */,
 				25F1A66A1BC1794A00143C18 /* ParseFacebookUtilsV4.framework in Frameworks */,
 				25F1A66B1BC1794A00143C18 /* ParseUI.framework in Frameworks */,
@@ -235,6 +241,8 @@
 		25F1A68C1BC17BB500143C18 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				25B9BD1B1BCC992D00982D78 /* Fabric.framework */,
+				25B9BD191BCC988400982D78 /* Crashlytics.framework */,
 				25F1A6941BC1894D00143C18 /* FBSDKShareKit.framework */,
 				25F1A6921BC1892C00143C18 /* FBSDKLoginKit.framework */,
 				25F1A6901BC1891800143C18 /* FBSDKCoreKit.framework */,
@@ -274,6 +282,7 @@
 				25F1A6261BC178D700143C18 /* Sources */,
 				25F1A6271BC178D700143C18 /* Frameworks */,
 				25F1A6281BC178D700143C18 /* Resources */,
+				25B9BD151BCC923300982D78 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -389,6 +398,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		25B9BD151BCC923300982D78 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run bf1e13ede259a8252da05b8360719cb755ddfadb 6cc2c99d6fbdd92a25d4ac65a007931c1f7078b61547d7fcf532a8092ea25937";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		25F1A6261BC178D700143C18 /* Sources */ = {
@@ -539,10 +564,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/parse-library-1.8.5",
 					"$(PROJECT_DIR)/FacebookSDKs-iOS-20150910",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Slamble/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -555,10 +582,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/parse-library-1.8.5",
 					"$(PROJECT_DIR)/FacebookSDKs-iOS-20150910",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Slamble/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

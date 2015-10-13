@@ -11,6 +11,9 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "ViewController.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
 @interface AppDelegate ()
 
 @end
@@ -22,8 +25,11 @@
         
     [Parse setApplicationId:@"s3CBKwuw8w4lunRPqne8iasu5EAx23snFgu6lJGz"                  clientKey:@"5gelpzGJ8Pq3SWuU7AUiR1ud0rSpi5UZyRchCVGn"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+     [Fabric with:@[[Crashlytics class]]];
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                     didFinishLaunchingWithOptions:launchOptions];
+   
+
     // Override point for customization after application launch.
     return YES;
 }
