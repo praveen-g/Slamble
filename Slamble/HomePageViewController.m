@@ -33,9 +33,9 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:image];
     // Do any additional setup after loading the view.
     // get the username of the current user and log it in the consol
-    NSString *currentUserName = [[NSString alloc] init];
-    currentUserName = [[PFUser currentUser] objectForKey:@"username"];
-    NSLog(@"%@",currentUserName);
+//    NSString *currentUserName = [[NSString alloc] init];
+    self.currentUserName= [[PFUser currentUser] objectForKey:@"username"];
+    NSLog(@"current userName is: %@",self.currentUserName);
     
     //declare variable for points value which we will keep in an object
    
@@ -58,7 +58,7 @@
             // parse the bet hours to compare to sleep input
                 NSArray *betValue= [objects valueForKey:@"betTime"];
                 NSLog(@"BetValue: %@", betValue);
-                NSString* betValueNew = [betValue objectAtIndex:0];
+                NSString* betValueNew = [betValue lastObject];
                 long betValueNum = [betValueNew integerValue];
 
             
