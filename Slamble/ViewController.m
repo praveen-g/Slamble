@@ -58,10 +58,13 @@
     //set the username and password inputs
     self.username = self.usernameSignIn.text;
     self.password = self.passwordSignIn.text;
+    NSLog(@"self.username entered: %@", self.usernameSignIn.text);
+    NSLog(@"self.password entered: %@", self.passwordSignIn.text);
+    
     
     //initiate login with username and password
-    [PFUser logInWithUsernameInBackground:self.username
-                                 password:self.password
+    [PFUser logInWithUsernameInBackground:self.usernameSignIn.text
+                                 password:self.passwordSignIn.text
                                     block:^(PFUser *user, NSError *error) {
                                         //if no error , take them to the home page
                                         if (!error) {
@@ -72,7 +75,7 @@
                                             self.usernameSignIn.text = nil;
                                             self.passwordSignIn.text = nil;
                                         }
-                                        else{
+                                        else if (error){
                                             //if error, show them an alert and ask them to check credentials
                                             NSLog(@"Login Failed");
                                             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Login Failed"
