@@ -36,6 +36,10 @@
 //    NSString *currentUserName = [[NSString alloc] init];
     self.currentUserName= [[PFUser currentUser] objectForKey:@"username"];
     NSLog(@"current userName is: %@",self.currentUserName);
+    self.stringUserPoints = [[PFUser currentUser] objectForKey:@"points"];
+    self.myPoints.text = self.stringUserPoints;
+    self.pointsVal = [self.stringUserPoints integerValue];
+    NSLog(@"user points value %ld", self.pointsVal);
     
     //declare variable for points value which we will keep in an object
    
@@ -65,6 +69,8 @@
                 // compare the amount the user slept to the amount of hours in the bet
                 if (betValueNum > timeSlept){
                     // if you slept less than the bet hours you lose
+                    self.pointsVal -=1;
+                    
                     NSLog(@"You Lose");
                     UIAlertController* alertLoss = [UIAlertController alertControllerWithTitle:@"You Lose"
                                                                                    message:@"Sleep More to beat your opponent next time!"
@@ -78,6 +84,7 @@
                     
                 }
                 else if (betValueNum == timeSlept){
+                    self.pointsVal +=1;
                     //if you slept the same amount as the bet hours it's a draw
                     NSLog(@"it's a draw");
                     UIAlertController* alertTie = [UIAlertController alertControllerWithTitle:@"Tie!"
@@ -91,6 +98,7 @@
                     [self presentViewController:alertTie animated:YES completion:nil];
                 }
                 else if (betValueNum < timeSlept){
+                    self.pointsVal +=2;
                     
                     //if you slept more than the bet hours you win
                     NSLog(@"You Win");
@@ -104,6 +112,22 @@
                     [alertWin addAction:defaultAction];
                     [self presentViewController:alertWin animated:YES completion:nil];
                 }
+            self.stringUserPoints = [NSString stringWithFormat:@"%ld", self.pointsVal];
+            [[PFUser currentUser] setObject:self.stringUserPoints forKey:@"points"];
+            NSLog(@"User points: %@", self.stringUserPoints);
+            self.myPoints.text = self.stringUserPoints;
+            
+            
+            [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    // The object has been saved.
+                    NSLog(@"userpoints has been saved and updated with: %@", self.stringUserPoints);
+                } else {
+                    // There was a problem, check error.description
+                    NSLog(@"error is: %@", error);
+                }
+                
+            }];
             
 //            }
         } else {

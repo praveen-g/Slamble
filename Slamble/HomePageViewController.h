@@ -15,5 +15,6 @@
 @property (strong, nonatomic) NSString *currentUserName;
 @property (strong, nonatomic) IBOutlet UILabel *myPoints;
 @property long pointsVal;
+@property (strong, nonatomic) NSString *stringUserPoints;
 //-(void) queryUserPoints;
 @end
