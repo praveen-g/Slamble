@@ -195,6 +195,36 @@
             </objects>
             <point key="canvasLocation" x="1599" y="72"/>
         </scene>
+        <!--Outstanding Bets-->
+        <scene sceneID="v7r-IP-fW5">
+            <objects>
+                <tableViewController id="czq-Rf-uwi" customClass="BetsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="xw4-Vn-i50">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="omS-Du-nCx">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="omS-Du-nCx" id="gfK-Fg-ilT">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="czq-Rf-uwi" id="AHp-ye-oVT"/>
+                            <outlet property="delegate" destination="czq-Rf-uwi" id="KKf-pT-rBm"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Outstanding Bets" id="cqw-sL-IkF"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="myK-Hw-Ea7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2070" y="599"/>
+        </scene>
         <!--Make Bets-->
         <scene sceneID="KiZ-FW-tsS">
             <objects>
@@ -255,6 +285,7 @@
                     <connections>
                         <segue destination="682-L2-BvF" kind="relationship" relationship="viewControllers" id="6MY-Tp-NOp"/>
                         <segue destination="fwX-Zg-8Gc" kind="relationship" relationship="viewControllers" id="SgP-WJ-GMa"/>
+                        <segue destination="czq-Rf-uwi" kind="relationship" relationship="viewControllers" id="1Xs-4l-CIF"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Fi-NA-bCD" userLabel="First Responder" sceneMemberID="firstResponder"/>

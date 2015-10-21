@@ -45,6 +45,7 @@
 		25F1A6951BC1894D00143C18 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F1A6941BC1894D00143C18 /* FBSDKShareKit.framework */; settings = {ASSET_TAGS = (); }; };
 		EC4228261BC37D0A0043C3BD /* MakeBetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4228251BC37D0A0043C3BD /* MakeBetsViewController.m */; settings = {ASSET_TAGS = (); }; };
 		EC65B2F51BC1F79700C47D08 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC65B2F41BC1F79700C47D08 /* HomePageViewController.m */; settings = {ASSET_TAGS = (); }; };
+		ECC7811C1BD6A8DD00AA18AA /* BetsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC7811B1BD6A8DD00AA18AA /* BetsTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,8 @@
 		EC4228251BC37D0A0043C3BD /* MakeBetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeBetsViewController.m; sourceTree = "<group>"; };
 		EC65B2F31BC1F79700C47D08 /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
 		EC65B2F41BC1F79700C47D08 /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
+		ECC7811A1BD6A8DD00AA18AA /* BetsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BetsTableViewController.h; sourceTree = "<group>"; };
+		ECC7811B1BD6A8DD00AA18AA /* BetsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BetsTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +202,8 @@
 				EC65B2F31BC1F79700C47D08 /* HomePageViewController.h */,
 				EC65B2F41BC1F79700C47D08 /* HomePageViewController.m */,
 				25F1A6361BC178D700143C18 /* Main.storyboard */,
+				ECC7811A1BD6A8DD00AA18AA /* BetsTableViewController.h */,
+				ECC7811B1BD6A8DD00AA18AA /* BetsTableViewController.m */,
 				EC4228241BC37D0A0043C3BD /* MakeBetsViewController.h */,
 				EC4228251BC37D0A0043C3BD /* MakeBetsViewController.m */,
 				25F1A68D1BC1819E00143C18 /* SignUpViewController.h */,
@@ -422,6 +427,7 @@
 			files = (
 				25F1A6351BC178D700143C18 /* ViewController.m in Sources */,
 				25F1A6321BC178D700143C18 /* AppDelegate.m in Sources */,
+				ECC7811C1BD6A8DD00AA18AA /* BetsTableViewController.m in Sources */,
 				EC65B2F51BC1F79700C47D08 /* HomePageViewController.m in Sources */,
 				25F1A68F1BC1819E00143C18 /* SignUpViewController.m in Sources */,
 				EC4228261BC37D0A0043C3BD /* MakeBetsViewController.m in Sources */,

@@ -49,10 +49,10 @@
     NSLog(@"hours to sleep for bet: %ld", hoursToSleepForBet);
     
     //create bet with user inputs
-    PFObject *betObject = [PFObject objectWithClassName:@"betMade"];
-    [betObject setObject: userNameForBet forKey:@"username"];
+    PFObject *betObject = [PFObject objectWithClassName:@"betClass"];
+    [betObject setObject: userNameForBet forKey:@"sleeper"];
     [betObject setObject:hoursToSleepString forKey:@"betTime"];
-    [betObject setObject:[[PFUser currentUser] objectForKey:@"username"] forKey:@"userName"];
+    [betObject setObject:[[PFUser currentUser] objectForKey:@"username"] forKey:@"better"];
     [betObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
      {
          if (!error) {
