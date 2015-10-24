@@ -64,7 +64,7 @@
     long timeSlept = [self.amountSleptInput.text integerValue];
     NSLog(@"Timeslept: %ld", timeSlept);
 
-    
+/*
 //    [[PFUser currentUser] objectForKey:@"username"];
     // retreive betMade for current user
     PFQuery *query = [PFQuery queryWithClassName:@"betClass"];
@@ -183,11 +183,75 @@
         }
     }];
     
-
+*/
+    PFQuery *query = [PFQuery queryWithClassName:@"betClass"];
+    [query whereKey:@"sleeper" equalTo:self.currentUserName];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"Successfully retrieved bets. %lu", (unsigned long)objects.count);
+            
+            // parse the bet hours to compare to sleep input
+            
+            
+            NSArray *betValue= [objects valueForKey:@"betTime"];
+            NSLog(@"BetValue: %@", betValue);
+            //NSString* betValueNew = [betValue lastObject];
+            //long betValueNum = [betValueNew integerValue];
+            NSArray * objectIdArray=[objects valueForKey:@"objectId"];
+            NSLog(@"objectIdArray includes :%@",objectIdArray);
+            self.objectId=[objectIdArray firstObject];// objectIDarray displays objectID from most recent first to oldest last
+            NSLog(@"objectId is : %@",self.objectId);
+            
+            /*
+            NSArray *createdAtArray=[objects valueForKey:@"createdAt"];
+            //NSLog(@"createdAtArray includes :%@",createdAtArray);
+            self.createdAt=[createdAtArray lastObject];
+            //NSLog(@"createdAt is : %@",self.createdAt);
+            */
+            
+            
+        }
+        else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //NSLog(@"LALALALALALA DONT FUNK WITH MY HEART");
+            //NSLog(@"self.objectd is:%@",self.objectId);
+            PFQuery *query2 = [PFQuery queryWithClassName:@"betClass"];
+            [query2 whereKey:@"objectId" equalTo:self.objectId];
+            //[query2 orderByDescending:@"createdAt"]; // this reverses the query2 order so that the latest bet with self.currentUserName as sleeper, UPDATE THIS AND CHECK
+            [query2 getFirstObjectInBackgroundWithBlock:^(PFObject * betClassObject, NSError * error) {
+                
+                if(!error){
+                    //Found betClass
+                    [betClassObject setObject:self.amountSleptInput.text forKey:@"hoursSlept"];
+                    [betClassObject saveInBackground];
+                }
+                else{
+                    // Did not find any betClass for self.currentuserName
+                    NSLog(@"Error: %@",error);
+                }
+                
+                
+            }];
+            //[PFCloud callFunctionInBackground:@"betWinner" withParameters:@{@"objectId":self.objectId}];
+            [PFCloud callFunctionInBackground:@"betWinner2" withParameters:@{@"objectId":self.objectId}];
+            
+            
+            
+            
+        });
+        
+    }];
     
-
- 
+    
+    
+    
 }
+
+
 
 
 

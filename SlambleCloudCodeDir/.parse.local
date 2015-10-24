@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "Slamble": {
+      "applicationId": "s3CBKwuw8w4lunRPqne8iasu5EAx23snFgu6lJGz"
+    },
+    "_default": {
+      "link": "Slamble"
+    }
+  }
+}
