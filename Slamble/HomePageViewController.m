@@ -31,6 +31,11 @@
     UIGraphicsEndImageContext();
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:image];
+    
+
+    //set the text field delegate as self so you hit return to dismiss keyboard 
+    [self.amountSleptInput  setDelegate:self];
+    
     // Do any additional setup after loading the view.
     // get the username of the current user and log it in the consol
 //    NSString *currentUserName = [[NSString alloc] init];
@@ -42,8 +47,18 @@
     NSLog(@"user points value %ld", self.pointsVal);
     
     //declare variable for points value which we will keep in an object
+    
+    
    
 }
+
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    return YES;
+}
+
+
 - (IBAction)enterSleepButtonPressed:(id)sender {
     //taking input from user regarding sleep to validate bet
     long timeSlept = [self.amountSleptInput.text integerValue];
@@ -75,6 +90,8 @@
             NSLog(@"createdAtArray includes :%@",createdAtArray);
             self.createdAt=[createdAtArray lastObject];
             NSLog(@"createdAt is : %@",self.createdAt);
+            [self.view endEditing:YES];
+            self.amountSleptInput.text =nil;
 
             
 

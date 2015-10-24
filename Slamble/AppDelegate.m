@@ -36,9 +36,9 @@
     [application registerForRemoteNotifications];
    
 
-    // Override point for customization after application launch.
-    return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                    didFinishLaunchingWithOptions:launchOptions];
+//    // Override point for customization after application launch.
+//    return [[FBSDKApplicationDelegate sharedInstance] application:application
+//                                    didFinishLaunchingWithOptions:launchOptions];
     return YES;
 }
 
@@ -71,8 +71,12 @@
     // Store the deviceToken in the current installation and save it to Parse.
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
-    currentInstallation.channels = @[ @"global" ];
+    NSLog(@"device token is: %@", deviceToken);
+//    currentInstallation.channels = @[ @"global" ];
     [currentInstallation saveInBackground];
+     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"Registered"];
+    NSLog(@"standard user default: %d", [[NSUserDefaults standardUserDefaults] boolForKey:@"Registered"]);
+
 }
 
 

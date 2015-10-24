@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HomePageViewController : UIViewController
+@interface HomePageViewController : UIViewController <UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *amountSleptInput;
 @property (strong, nonatomic) IBOutlet UITextField *usernameForBet;
 @property (strong, nonatomic) IBOutlet UITextField *sleepHoursForBet;

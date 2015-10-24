@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MakeBetsViewController : UIViewController
+@interface MakeBetsViewController : UIViewController <UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *sleepHoursForBet;
 @property (strong, nonatomic) IBOutlet UITextField *usernameForBet;
 @property (strong, nonatomic) NSString *currentUserName;

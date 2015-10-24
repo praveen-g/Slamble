@@ -38,6 +38,13 @@
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:image];
     
+    //set the text field delegate as self so you hit return to dismiss keyboard 
+    [self.firstNameTextField setDelegate:self];
+    [self.lastNameTextField setDelegate:self];
+    [self.userNameTextField setDelegate:self];
+    [self.passwordTextField setDelegate:self];
+    [self.emailTextField setDelegate:self];
+    
     //UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"night.jpg"]];
     //[self.view addSubview:backgroundView];
     
@@ -50,6 +57,11 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    return YES;
+}
 
 
 - (IBAction)signUpButtonPressed:(id)sender {
@@ -83,6 +95,7 @@
                                             //if login was a success go to homePage
                                                 if (user) {
                                                     NSLog(@"Login is Success");
+                                                    [self.view endEditing:YES];
                                                     [self performSegueWithIdentifier:@"goToHomePage" sender: self];
                                                     //                                            
                                                     // Do stuff after successful login.

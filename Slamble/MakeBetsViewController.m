@@ -31,11 +31,21 @@
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:image];
     
+    //set the text field delegate as self so you hit return to dismiss keyboard 
+    [self.usernameForBet setDelegate:self];
+    [self.sleepHoursForBet  setDelegate:self];
+    
     // Do any additional setup after loading the view.
     //set username of current usr
     NSString *currentUserName = [[NSString alloc] init];
     currentUserName = [[PFUser currentUser] objectForKey:@"username"];
     NSLog(@"%@",currentUserName);
+}
+
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (IBAction)makeBetButtonPressed:(id)sender {
@@ -48,6 +58,14 @@
     NSLog(@"username for bet: %@", userNameForBet);
     NSLog(@"hours to sleep for bet: %ld", hoursToSleepForBet);
     
+//    ****To send a notification to all users as a test// Create our Installation query
+//    PFQuery *pushQuery = [PFInstallation query];
+//    [pushQuery whereKey:@"deviceType" equalTo:@"ios"];
+//    
+//    // Send push notification to query
+//    [PFPush sendPushMessageToQueryInBackground:pushQuery
+//                                   withMessage:@"Hello World!"];
+    
     //create bet with user inputs
     PFObject *betObject = [PFObject objectWithClassName:@"betClass"];
     [betObject setObject: userNameForBet forKey:@"sleeper"];
@@ -57,6 +75,7 @@
      {
          if (!error) {
              //show if saving object was success with feedback to user
+             [self.view endEditing:YES];
              NSLog(@"saved bet object");
              UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Success"
                                                                             message:@"Bet Sucess!"
@@ -67,6 +86,9 @@
              
              [alert addAction:defaultAction];
              [self presentViewController:alert animated:YES completion:nil];
+             self.usernameForBet.text = nil;
+             self.sleepHoursForBet.text = nil;
+             
          } else{
              //show bet creation failed  with feedback to user
              NSLog(@"Failed to save");

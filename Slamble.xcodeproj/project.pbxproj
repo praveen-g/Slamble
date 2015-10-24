@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		085C955A1BC4B33F00728414 /* night.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 085C95591BC4B33F00728414 /* night.jpg */; settings = {ASSET_TAGS = (); }; };
-		25B9BD1A1BCC988400982D78 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B9BD191BCC988400982D78 /* Crashlytics.framework */; settings = {ASSET_TAGS = (); }; };
-		25B9BD1C1BCC992D00982D78 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B9BD1B1BCC992D00982D78 /* Fabric.framework */; settings = {ASSET_TAGS = (); }; };
+		085C955A1BC4B33F00728414 /* night.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 085C95591BC4B33F00728414 /* night.jpg */; };
+		25B9BD1A1BCC988400982D78 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B9BD191BCC988400982D78 /* Crashlytics.framework */; };
+		25B9BD1C1BCC992D00982D78 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B9BD1B1BCC992D00982D78 /* Fabric.framework */; };
 		25F1A62F1BC178D700143C18 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F1A62E1BC178D700143C18 /* main.m */; };
 		25F1A6321BC178D700143C18 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F1A6311BC178D700143C18 /* AppDelegate.m */; };
 		25F1A6351BC178D700143C18 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F1A6341BC178D700143C18 /* ViewController.m */; };
@@ -39,13 +39,13 @@
 		25F1A6871BC17B1600143C18 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F1A6861BC17B1600143C18 /* Social.framework */; };
 		25F1A68A1BC17B2700143C18 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F1A6881BC17B2700143C18 /* StoreKit.framework */; };
 		25F1A68B1BC17B2700143C18 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F1A6891BC17B2700143C18 /* SystemConfiguration.framework */; };
-		25F1A68F1BC1819E00143C18 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F1A68E1BC1819E00143C18 /* SignUpViewController.m */; settings = {ASSET_TAGS = (); }; };
-		25F1A6911BC1891800143C18 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F1A6901BC1891800143C18 /* FBSDKCoreKit.framework */; settings = {ASSET_TAGS = (); }; };
-		25F1A6931BC1892D00143C18 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F1A6921BC1892C00143C18 /* FBSDKLoginKit.framework */; settings = {ASSET_TAGS = (); }; };
-		25F1A6951BC1894D00143C18 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F1A6941BC1894D00143C18 /* FBSDKShareKit.framework */; settings = {ASSET_TAGS = (); }; };
-		EC4228261BC37D0A0043C3BD /* MakeBetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4228251BC37D0A0043C3BD /* MakeBetsViewController.m */; settings = {ASSET_TAGS = (); }; };
-		EC65B2F51BC1F79700C47D08 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC65B2F41BC1F79700C47D08 /* HomePageViewController.m */; settings = {ASSET_TAGS = (); }; };
-		ECC7811C1BD6A8DD00AA18AA /* BetsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC7811B1BD6A8DD00AA18AA /* BetsTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		25F1A68F1BC1819E00143C18 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F1A68E1BC1819E00143C18 /* SignUpViewController.m */; };
+		25F1A6911BC1891800143C18 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F1A6901BC1891800143C18 /* FBSDKCoreKit.framework */; };
+		25F1A6931BC1892D00143C18 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F1A6921BC1892C00143C18 /* FBSDKLoginKit.framework */; };
+		25F1A6951BC1894D00143C18 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F1A6941BC1894D00143C18 /* FBSDKShareKit.framework */; };
+		EC4228261BC37D0A0043C3BD /* MakeBetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4228251BC37D0A0043C3BD /* MakeBetsViewController.m */; };
+		EC65B2F51BC1F79700C47D08 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC65B2F41BC1F79700C47D08 /* HomePageViewController.m */; };
+		ECC7811C1BD6A8DD00AA18AA /* BetsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC7811B1BD6A8DD00AA18AA /* BetsTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -509,6 +509,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application: Claire Opila (E35Z9R298G)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -531,6 +532,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "f450a2cc-f4d4-48a4-8cb5-21a4f7cec4cf";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -552,6 +554,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application: Claire Opila (E35Z9R298G)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -567,6 +570,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "f450a2cc-f4d4-48a4-8cb5-21a4f7cec4cf";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -576,7 +580,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: edu.cs2048.Slamble";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -597,7 +601,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: edu.cs2048.Slamble";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (

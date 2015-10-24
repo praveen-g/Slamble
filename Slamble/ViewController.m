@@ -33,12 +33,17 @@
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:image];
     
+    //set the text field delegate as self so you hit return to dismiss keyboard
+    [self.usernameSignIn setDelegate:self];
+    [self.passwordSignIn setDelegate:self];
+    
 //present facebook sign in button
     
     FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
     loginButton.center = self.view.center;
     [self.view addSubview:loginButton];
     loginButton.readPermissions =@[@"public_profile", @"email", @"user_friends"];
+
     
 //    [PFFacebookUtils logInInBackgroundWithReadPermissions:@"public_profile", @"email", @"user_friends" block:^(PFUser *user, NSError *error) {
 //        if (!user) {
@@ -51,6 +56,12 @@
 //    }];
     
     
+}
+
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    return YES;
 }
 
 
@@ -74,6 +85,7 @@
                                             [self performSegueWithIdentifier:@"homePage" sender: sender];
                                             self.usernameSignIn.text = nil;
                                             self.passwordSignIn.text = nil;
+                                            [self.view endEditing:YES];
                                         }
                                         else if (error){
                                             //if error, show them an alert and ask them to check credentials
