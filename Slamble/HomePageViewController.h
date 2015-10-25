@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSArray *objectIdArray;
 @property (strong, nonatomic) NSString *objectId;
 @property (strong, nonatomic) NSString *createdAt;
+@property int UserPoints;
 @property (strong, nonatomic) NSString *stringUserPoints;
 //-(void) queryUserPoints;
 @end

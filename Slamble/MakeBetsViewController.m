@@ -52,7 +52,17 @@
     //take input from user for bet
     NSString * userNameForBet = self.usernameForBet.text;
     NSInteger hoursToSleepForBet = [self.sleepHoursForBet.text integerValue];
-    NSString *hoursToSleepString = self.sleepHoursForBet.text;
+    NSString*hoursToSleepString = self.sleepHoursForBet.text;
+    PFQuery *sleeperQuery = [PFUser query];
+    [sleeperQuery whereKey:@"username" equalTo:userNameForBet];
+    NSArray *sleeperInfo = [sleeperQuery findObjects];
+    NSLog(@"sleeper info array %@", sleeperInfo);
+    
+    NSArray*sleeperIdArr = [sleeperInfo valueForKey:@"objectId"];
+    self.sleeperId = sleeperIdArr[0];
+    NSLog(@"sleeper id %@", self.sleeperId);
+//    PFQuery *sleeperQu
+//    PFUser *sleeperUser = getUserObjectWithId:sleeperID;
     
     //log the information
     NSLog(@"username for bet: %@", userNameForBet);
@@ -69,8 +79,11 @@
     //create bet with user inputs
     PFObject *betObject = [PFObject objectWithClassName:@"betClass"];
     [betObject setObject: userNameForBet forKey:@"sleeper"];
+    [betObject setObject: self.sleeperId forKey:@"sleeperId"];
+//    [betObject setObject: [[PFUser sleeperInfo] objectForKey:@"objectId"] forKey:@"sleeperId"];
     [betObject setObject:hoursToSleepString forKey:@"betTime"];
     [betObject setObject:[[PFUser currentUser] objectForKey:@"username"] forKey:@"better"];
+    [betObject setObject: [PFUser currentUser].objectId forKey:@"betterid"];
     [betObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
      {
          if (!error) {

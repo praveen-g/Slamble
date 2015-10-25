@@ -12,5 +12,8 @@
 @property (strong, nonatomic) IBOutlet UITextField *sleepHoursForBet;
 @property (strong, nonatomic) IBOutlet UITextField *usernameForBet;
 @property (strong, nonatomic) NSString *currentUserName;
+@property (strong, nonatomic) NSArray  *sleeperInfoArr;
+@property (strong, nonatomic) NSString *sleeperId;
+
 
 @end

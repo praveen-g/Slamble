@@ -41,9 +41,10 @@
 //    NSString *currentUserName = [[NSString alloc] init];
     self.currentUserName= [[PFUser currentUser] objectForKey:@"username"];
     NSLog(@"current userName is: %@",self.currentUserName);
-    self.stringUserPoints = [[PFUser currentUser] objectForKey:@"points"];
+    self.UserPoints = [[[PFUser currentUser] objectForKey:@"points"] integerValue];
+    self.stringUserPoints = [NSString stringWithFormat:@"%i", self.UserPoints];
     self.myPoints.text = self.stringUserPoints;
-    self.pointsVal = [self.stringUserPoints integerValue];
+    self.pointsVal =  self.UserPoints;
     NSLog(@"user points value %ld", self.pointsVal);
     
     //declare variable for points value which we will keep in an object
@@ -63,6 +64,31 @@
     //taking input from user regarding sleep to validate bet
     long timeSlept = [self.amountSleptInput.text integerValue];
     NSLog(@"Timeslept: %ld", timeSlept);
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        //NSLog(@"LALALALALALA DONT FUNK WITH MY HEART");
+        //NSLog(@"self.objectd is:%@",self.objectId);
+        PFQuery *query = [PFQuery queryWithClassName:@"betClass"];
+        //            [query2 whereKey:@"objectId" equalTo:self.objectId];
+        [query whereKey:@"sleeperId" equalTo:[PFUser currentUser].objectId];
+        //[query2 orderByDescending:@"createdAt"]; // this reverses the query2 order so that the latest bet with self.currentUserName as sleeper, UPDATE THIS AND CHECK
+        //            [query2 getFirstObjectInBackgroundWithBlock:^(PFObject * betClassObject, NSError * error) {
+        [query findObjectsInBackgroundWithBlock:^(NSArray *betObjects, NSError * error) {
+            if(!error){
+                //Found betClass
+                for (PFObject *bet in betObjects) {
+                    [bet setObject:self.amountSleptInput.text forKey:@"hoursSlept"];
+                    [bet saveInBackground];
+                }
+            }
+            else{
+                // Did not find any betClass for self.currentuserName
+                NSLog(@"Error: %@",error);
+            }
+        }];
+        //[PFCloud callFunctionInBackground:@"betWinner" withParameters:@{@"objectId":self.objectId}];
+        [PFCloud callFunctionInBackground:@"computeBetOutcomesForSleeper" withParameters:@{@"sleeperId":[PFUser currentUser].objectId}];
+    });
 
 /*
 //    [[PFUser currentUser] objectForKey:@"username"];
@@ -184,67 +210,70 @@
     }];
     
 */
-    PFQuery *query = [PFQuery queryWithClassName:@"betClass"];
-    [query whereKey:@"sleeper" equalTo:self.currentUserName];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            // The find succeeded.
-            NSLog(@"Successfully retrieved bets. %lu", (unsigned long)objects.count);
-            
-            // parse the bet hours to compare to sleep input
-            
-            
-            NSArray *betValue= [objects valueForKey:@"betTime"];
-            NSLog(@"BetValue: %@", betValue);
-            //NSString* betValueNew = [betValue lastObject];
-            //long betValueNum = [betValueNew integerValue];
-            NSArray * objectIdArray=[objects valueForKey:@"objectId"];
-            NSLog(@"objectIdArray includes :%@",objectIdArray);
-            self.objectId=[objectIdArray firstObject];// objectIDarray displays objectID from most recent first to oldest last
-            NSLog(@"objectId is : %@",self.objectId);
-            
-            /*
-            NSArray *createdAtArray=[objects valueForKey:@"createdAt"];
-            //NSLog(@"createdAtArray includes :%@",createdAtArray);
-            self.createdAt=[createdAtArray lastObject];
-            //NSLog(@"createdAt is : %@",self.createdAt);
-            */
-            
-            
-        }
-        else {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            //NSLog(@"LALALALALALA DONT FUNK WITH MY HEART");
-            //NSLog(@"self.objectd is:%@",self.objectId);
-            PFQuery *query2 = [PFQuery queryWithClassName:@"betClass"];
-            [query2 whereKey:@"objectId" equalTo:self.objectId];
-            //[query2 orderByDescending:@"createdAt"]; // this reverses the query2 order so that the latest bet with self.currentUserName as sleeper, UPDATE THIS AND CHECK
-            [query2 getFirstObjectInBackgroundWithBlock:^(PFObject * betClassObject, NSError * error) {
-                
-                if(!error){
-                    //Found betClass
-                    [betClassObject setObject:self.amountSleptInput.text forKey:@"hoursSlept"];
-                    [betClassObject saveInBackground];
-                }
-                else{
-                    // Did not find any betClass for self.currentuserName
-                    NSLog(@"Error: %@",error);
-                }
-                
-                
-            }];
-            //[PFCloud callFunctionInBackground:@"betWinner" withParameters:@{@"objectId":self.objectId}];
-            [PFCloud callFunctionInBackground:@"betWinner2" withParameters:@{@"objectId":self.objectId}];
-            
-            
-            
-            
-        });
-        
-    }];
+//    PFQuery *query = [PFQuery queryWithClassName:@"betClass"];
+//    [query whereKey:@"sleeperId" equalTo:[PFUser currentUser].objectId];
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if (!error) {
+//            // The find succeeded.
+//            NSLog(@"Successfully retrieved bets. %lu", (unsigned long)objects.count);
+//            
+//            // parse the bet hours to compare to sleep input
+//            
+//            
+//            NSArray *betValue= [objects valueForKey:@"betTime"];
+//            NSLog(@"BetValue: %@", betValue);
+//            //NSString* betValueNew = [betValue lastObject];
+//            //long betValueNum = [betValueNew integerValue];
+//            NSArray * objectIdArray=[objects valueForKey:@"objectId"];
+//            NSLog(@"objectIdArray includes :%@",objectIdArray);
+//            self.objectId=[objectIdArray firstObject];// objectIDarray displays objectID from most recent first to oldest last
+//            NSLog(@"objectId is : %@",self.objectId);
+//            
+//            /*
+//            NSArray *createdAtArray=[objects valueForKey:@"createdAt"];
+//            //NSLog(@"createdAtArray includes :%@",createdAtArray);
+//            self.createdAt=[createdAtArray lastObject];
+//            //NSLog(@"createdAt is : %@",self.createdAt);
+//            */
+//            
+//            
+//        }
+//        else {
+//            // Log details of the failure
+//            NSLog(@"Error: %@ %@", error, [error userInfo]);
+//        }
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            //NSLog(@"LALALALALALA DONT FUNK WITH MY HEART");
+//            //NSLog(@"self.objectd is:%@",self.objectId);
+//            PFQuery *query2 = [PFQuery queryWithClassName:@"betClass"];
+////            [query2 whereKey:@"objectId" equalTo:self.objectId];
+//            [query whereKey:@"sleeperId" equalTo:[PFUser currentUser].objectId];
+//            //[query2 orderByDescending:@"createdAt"]; // this reverses the query2 order so that the latest bet with self.currentUserName as sleeper, UPDATE THIS AND CHECK
+////            [query2 getFirstObjectInBackgroundWithBlock:^(PFObject * betClassObject, NSError * error) {
+//            [query2 findObjectsInBackgroundWithBlock:^(NSArray *betObjects, NSError * error) {
+//                if(!error){
+//                    //Found betClass
+//                    for (PFObject *bet in betObjects) {
+//                        [bet setObject:self.amountSleptInput.text forKey:@"hoursSlept"];
+//                        [bet saveInBackground];
+//                    }
+//                }
+//                else{
+//                    // Did not find any betClass for self.currentuserName
+//                    NSLog(@"Error: %@",error);
+//                }
+//                
+//                
+//            }];
+//            //[PFCloud callFunctionInBackground:@"betWinner" withParameters:@{@"objectId":self.objectId}];
+////            [PFCloud callFunctionInBackground:@"computeBetOutcomesForSleeper" withParameters:@{@"sleeperId":[PFUser currentUser].objectId}];
+//            
+//            
+//            
+//            
+//        });
+//        
+//    }];
     
     
     
@@ -272,64 +301,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-//create object for the current user for points, initially set to 0
-//we don't want to create a points object every time a user logins
-//    PFObject *pointsObject = [PFObject objectWithClassName:@"userPoints"];
-//    [pointsObject setObject: self.currentUserName forKey:@"username"];
-//    [pointsObject setObject:@0 forKey:@"Points"];;
-//    [pointsObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
-//     {
-//         if (!error) {
-//             NSLog(@"saved bet object");
-//         } else{
-//             NSLog(@"Failed to save");
-//         }
-//     }];
-
-//-(void)queryUserPoints{
-//    // a method to query user points and set the label equal to points
-//    NSString *currentUserName = [PFUser currentUser] objectForKey:@"username"];
-//    PFQuery *query = [PFQuery queryWithClassName:@"userPoints"];
-//    [query whereKey:@"username" equalTo:currentUserName];
-//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//        if (!error) {
-//            // The find succeeded.
-//            NSLog(@"Successfully retrieved bets. %lu", (unsigned long)objects.count);
-//            // Do something with the found objects
-//            //        for (PFObject *object in objects) {
-//            NSArray *pointsArray= [objects valueForKey:@"Points"];
-//            NSLog(@"Current Points are: %@", pointsArray);
-//            NSString* pointsString = [pointsArray objectAtIndex:0];
-//            long pointsVal = [pointsString integerValue];
-//            NSLog(@"BetValueNUm: %ld", pointsVal);
-//            self.myPoints.text = pointsString;
-//            return pointsVal;
-//            //                NSArray *fromUser = [objects valueForKey:@"createdBy"];
-//            ////                NSString *fromUserName = [fromUser valueForKey:@"username"];
-//
-//            //              NSLog(@"Bet from User: %@", fromUser);
-//
-//        }
-//
-//        // Retrieve the object by id
-//        else {
-//            // Log details of the failure
-//            NSLog(@"Error calling points: %@ %@", error, [error userInfo]);
-//        }
-//
-//
-//    }];
-//
-//}
 
 @end
