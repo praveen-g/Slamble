@@ -90,7 +90,7 @@
              [self.view endEditing:YES];
              NSLog(@"saved bet object");
              UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Success"
-                                                                            message:@"Bet Sucess!"
+                                                                            message:@"Request Sent!"
                                                                      preferredStyle:UIAlertControllerStyleAlert];
              
              UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
@@ -135,9 +135,7 @@
     //sending push notification
     PFPush *push = [PFPush new];
     [push setQuery:sleepQuery];
-    NSString *msg = [[PFUser currentUser] objectForKey:@"username"];
-    [[[msg stringByAppendingString:@"has bet you"]stringByAppendingString:[[PFUser currentUser]objectForKey:@"betTime"]]stringByAppendingString:@"no of hours"];
-    [push setMessage:msg];
+    [push setMessage:[@"you have been bet" stringByAppendingString:hoursToSleepString]];
     [push setData:data];
     [push sendPushInBackground];
 

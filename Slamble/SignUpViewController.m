@@ -78,7 +78,7 @@
     user.username = self.userNameTextField.text;
     user.password = self.passwordTextField.text;
     user.email = self.emailTextField.text;
-    user[@"points"] = 0;
+    user[@"points"] = @0;
     
     // other fields can be set if you want to save more information
     
