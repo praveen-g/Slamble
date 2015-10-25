@@ -54,73 +54,84 @@
     NSInteger hoursToSleepForBet = [self.sleepHoursForBet.text integerValue];
     NSString*hoursToSleepString = self.sleepHoursForBet.text;
     PFQuery *sleeperQuery = [PFUser query];
-    [sleeperQuery whereKey:@"username" equalTo:userNameForBet];
-    NSArray *sleeperInfo = [sleeperQuery findObjects];
-    NSLog(@"sleeper info array %@", sleeperInfo);
-    
-    NSArray*sleeperIdArr = [sleeperInfo valueForKey:@"objectId"];
-    self.sleeperId = sleeperIdArr[0];
-    NSLog(@"sleeper id %@", self.sleeperId);
-//    PFQuery *sleeperQu
-//    PFUser *sleeperUser = getUserObjectWithId:sleeperID;
-    
-    //log the information
-    NSLog(@"username for bet: %@", userNameForBet);
-    NSLog(@"hours to sleep for bet: %ld", hoursToSleepForBet);
-    
-//    ****To send a notification to all users as a test// Create our Installation query
-//    PFQuery *pushQuery = [PFInstallation query];
-//    [pushQuery whereKey:@"deviceType" equalTo:@"ios"];
-//    
-//    // Send push notification to query
-//    [PFPush sendPushMessageToQueryInBackground:pushQuery
-//                                   withMessage:@"Hello World!"];
-    //create bet with user inputs
-    PFObject *betObject = [PFObject objectWithClassName:@"betClass"];
-    [betObject setObject: userNameForBet forKey:@"sleeper"];
-    [betObject setObject: self.sleeperId forKey:@"sleeperId"];
-//    [betObject setObject: [[PFUser sleeperInfo] objectForKey:@"objectId"] forKey:@"sleeperId"];
-    [betObject setObject:hoursToSleepString forKey:@"betTime"];
-    [betObject setObject:[[PFUser currentUser] objectForKey:@"username"] forKey:@"better"];
-    [betObject setObject: [PFUser currentUser].objectId forKey:@"betterid"];
-    [betObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
-     {
-         if (!error) {
-             //show if saving object was success with feedback to user
-             [self.view endEditing:YES];
-             NSLog(@"saved bet object");
-             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Success"
-                                                                            message:@"Request Sent!"
-                                                                     preferredStyle:UIAlertControllerStyleAlert];
-             
-             UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                   handler:^(UIAlertAction * action) {}];
-             
-             [alert addAction:defaultAction];
-             [self presentViewController:alert animated:YES completion:nil];
-             self.usernameForBet.text = nil;
-             self.sleepHoursForBet.text = nil;
-             
-         } else{
-             //show bet creation failed  with feedback to user
-             NSLog(@"Failed to save");
-             NSLog(@"saved bet object");
-             UIAlertController* alertFail = [UIAlertController alertControllerWithTitle:@"Uh Oh!"
-                                                                            message:@"Error: Please make sure you have the correct username!"
-                                                                     preferredStyle:UIAlertControllerStyleAlert];
-             
-             UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                   handler:^(UIAlertAction * action) {}];
-             
-             [alertFail addAction:defaultAction];
-             [self presentViewController:alertFail animated:YES completion:nil];
-         }
-     }];
-//    PFInstallation *installation = [PFInstallation currentInstallation];
-//    [installation setObject:userNameForBet forKey:@"sleeper"];
-//    [installation setObject:[[PFUser currentUser] objectForKey:@"username"] forKey:@"better"];
-//    [installation setObject:hoursToSleepString forKey:@"betTime"];
-    
+    [sleeperQuery whereKey:@"username" equalTo:self.usernameForBet.text];
+    [sleeperQuery findObjectsInBackgroundWithBlock:^(NSArray *sleeperInfo, NSError *error){
+        if (!error) {
+            if(sleeperInfo.count > 0){
+                // The find succeeded.
+                NSLog(@"Successfully retrieved sleeperInfo %@", sleeperInfo);
+                NSArray*sleeperIdArr = [sleeperInfo valueForKey:@"objectId"];
+                self.sleeperId = sleeperIdArr[0];
+                NSLog(@"sleeper id %@", self.sleeperId);
+                PFObject *betObject = [PFObject objectWithClassName:@"betClass"];
+                [betObject setObject: self.usernameForBet.text forKey:@"sleeper"];
+                [betObject setObject: self.sleeperId forKey:@"sleeperId"];
+                //    [betObject setObject: [[PFUser sleeperInfo] objectForKey:@"objectId"] forKey:@"sleeperId"];
+                [betObject setObject:self.sleepHoursForBet.text forKey:@"betTime"];
+                [betObject setObject:[[PFUser currentUser] objectForKey:@"username"] forKey:@"better"];
+                [betObject setObject: [PFUser currentUser].objectId forKey:@"betterid"];
+                [betObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+                 {
+                     if (!error) {
+                         //show if saving object was success with feedback to user
+                         [self.view endEditing:YES];
+                         NSLog(@"saved bet object");
+                         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Success"
+                                                                                        message:@"Bet Sucess!"
+                                                                                 preferredStyle:UIAlertControllerStyleAlert];
+                         
+                         UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                               handler:^(UIAlertAction * action) {}];
+                         
+                         [alert addAction:defaultAction];
+                         [self presentViewController:alert animated:YES completion:nil];
+                         self.usernameForBet.text = nil;
+                         self.sleepHoursForBet.text = nil;
+                         
+                     } else{
+                         //show bet creation failed  with feedback to user
+                         NSLog(@"Failed to save");
+                         NSLog(@"saved bet object");
+                         UIAlertController* alertFail = [UIAlertController alertControllerWithTitle:@"Uh Oh!"
+                                                                                            message:@"Error: Please make sure you have the correct username!"
+                                                                                     preferredStyle:UIAlertControllerStyleAlert];
+                         
+                         UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                               handler:^(UIAlertAction * action) {}];
+                         
+                         [alertFail addAction:defaultAction];
+                         [self presentViewController:alertFail animated:YES completion:nil];
+                     }
+                 }];
+            }
+            else if (sleeperInfo.count == 0){
+                UIAlertController* alertFail = [UIAlertController alertControllerWithTitle:@"Uh Oh!"
+                                                                                   message:@"Error: Please make sure you have the correct username!"
+                                                                            preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                      handler:^(UIAlertAction * action) {}];
+                
+                [alertFail addAction:defaultAction];
+                [self presentViewController:alertFail animated:YES completion:nil];
+                
+            }
+            // Do something with the found objects
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@", error);
+            UIAlertController* alertFail = [UIAlertController alertControllerWithTitle:@"Uh Oh!"
+                                                                               message:@"Error: Please make sure you have the correct username!"
+                                                                        preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                  handler:^(UIAlertAction * action) {}];
+            
+            [alertFail addAction:defaultAction];
+            [self presentViewController:alertFail animated:YES completion:nil];
+            
+        }
+    }];
     //sending push notification to user with who bet has been initiated
     //betQuery used to find betters
     PFQuery *betQuery = [PFUser query];
