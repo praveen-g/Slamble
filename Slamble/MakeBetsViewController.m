@@ -75,7 +75,6 @@
 //    // Send push notification to query
 //    [PFPush sendPushMessageToQueryInBackground:pushQuery
 //                                   withMessage:@"Hello World!"];
-    
     //create bet with user inputs
     PFObject *betObject = [PFObject objectWithClassName:@"betClass"];
     [betObject setObject: userNameForBet forKey:@"sleeper"];
@@ -117,6 +116,30 @@
              [self presentViewController:alertFail animated:YES completion:nil];
          }
      }];
+//    PFInstallation *installation = [PFInstallation currentInstallation];
+//    [installation setObject:userNameForBet forKey:@"sleeper"];
+//    [installation setObject:[[PFUser currentUser] objectForKey:@"username"] forKey:@"better"];
+//    [installation setObject:hoursToSleepString forKey:@"betTime"];
+    
+    //sending push notification to user with who bet has been initiated
+    //betQuery used to find betters
+    PFQuery *betQuery = [PFUser query];
+    [betQuery whereKey:@"betStatus" equalTo:@"0"];
+    
+    //finding corresponding sleeper
+    PFQuery *sleepQuery = [PFUser query];
+    [sleepQuery whereKey:@"sleeper" matchesQuery:betQuery];
+    
+    //sending data in push
+    NSDictionary *data = @{@"better":[[PFUser currentUser] objectForKey:@"username"], @"hoursToSleep":hoursToSleepString, @"betStatus": @"0"};
+    //sending push notification
+    PFPush *push = [PFPush new];
+    [push setQuery:sleepQuery];
+    NSString *msg = [[PFUser currentUser] objectForKey:@"username"];
+    [[[msg stringByAppendingString:@"has bet you"]stringByAppendingString:[[PFUser currentUser]objectForKey:@"betTime"]]stringByAppendingString:@"no of hours"];
+    [push setMessage:msg];
+    [push setData:data];
+    [push sendPushInBackground];
 
 }
 

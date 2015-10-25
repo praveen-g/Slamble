@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		085C955A1BC4B33F00728414 /* night.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 085C95591BC4B33F00728414 /* night.jpg */; };
+		2544528F1BDD53EF002F96B2 /* AcceptOrDecline.m in Sources */ = {isa = PBXBuildFile; fileRef = 2544528E1BDD53EF002F96B2 /* AcceptOrDecline.m */; };
+		254452911BDD5438002F96B2 /* SPLASH.png in Resources */ = {isa = PBXBuildFile; fileRef = 254452901BDD5438002F96B2 /* SPLASH.png */; };
 		25B9BD1A1BCC988400982D78 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B9BD191BCC988400982D78 /* Crashlytics.framework */; };
 		25B9BD1C1BCC992D00982D78 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B9BD1B1BCC992D00982D78 /* Fabric.framework */; };
 		25F1A62F1BC178D700143C18 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F1A62E1BC178D700143C18 /* main.m */; };
@@ -67,6 +69,9 @@
 
 /* Begin PBXFileReference section */
 		085C95591BC4B33F00728414 /* night.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = night.jpg; sourceTree = "<group>"; };
+		2544528D1BDD53EF002F96B2 /* AcceptOrDecline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptOrDecline.h; sourceTree = "<group>"; };
+		2544528E1BDD53EF002F96B2 /* AcceptOrDecline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptOrDecline.m; sourceTree = "<group>"; };
+		254452901BDD5438002F96B2 /* SPLASH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SPLASH.png; sourceTree = "<group>"; };
 		25B9BD191BCC988400982D78 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		25B9BD1B1BCC992D00982D78 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		25F1A62A1BC178D700143C18 /* Slamble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Slamble.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,6 +207,8 @@
 				EC65B2F31BC1F79700C47D08 /* HomePageViewController.h */,
 				EC65B2F41BC1F79700C47D08 /* HomePageViewController.m */,
 				25F1A6361BC178D700143C18 /* Main.storyboard */,
+				2544528D1BDD53EF002F96B2 /* AcceptOrDecline.h */,
+				2544528E1BDD53EF002F96B2 /* AcceptOrDecline.m */,
 				ECC7811A1BD6A8DD00AA18AA /* BetsTableViewController.h */,
 				ECC7811B1BD6A8DD00AA18AA /* BetsTableViewController.m */,
 				EC4228241BC37D0A0043C3BD /* MakeBetsViewController.h */,
@@ -212,6 +219,7 @@
 				25F1A63B1BC178D700143C18 /* LaunchScreen.storyboard */,
 				25F1A63E1BC178D700143C18 /* Info.plist */,
 				085C95591BC4B33F00728414 /* night.jpg */,
+				254452901BDD5438002F96B2 /* SPLASH.png */,
 				25F1A62D1BC178D700143C18 /* Supporting Files */,
 			);
 			path = Slamble;
@@ -390,6 +398,7 @@
 				25F1A63D1BC178D700143C18 /* LaunchScreen.storyboard in Resources */,
 				25F1A63A1BC178D700143C18 /* Assets.xcassets in Resources */,
 				085C955A1BC4B33F00728414 /* night.jpg in Resources */,
+				254452911BDD5438002F96B2 /* SPLASH.png in Resources */,
 				25F1A6381BC178D700143C18 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,6 +441,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				25F1A6351BC178D700143C18 /* ViewController.m in Sources */,
+				2544528F1BDD53EF002F96B2 /* AcceptOrDecline.m in Sources */,
 				25F1A6321BC178D700143C18 /* AppDelegate.m in Sources */,
 				ECC7811C1BD6A8DD00AA18AA /* BetsTableViewController.m in Sources */,
 				EC65B2F51BC1F79700C47D08 /* HomePageViewController.m in Sources */,

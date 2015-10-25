@@ -13,7 +13,7 @@
 #import "ViewController.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
-
+#import "AcceptOrDecline.h"
 @interface AppDelegate ()
 
 @end
@@ -35,7 +35,7 @@
     [application registerUserNotificationSettings:settings];
     [application registerForRemoteNotifications];
    
-
+   
 //    // Override point for customization after application launch.
 //    return [[FBSDKApplicationDelegate sharedInstance] application:application
 //                                    didFinishLaunchingWithOptions:launchOptions];
@@ -76,13 +76,29 @@
     [currentInstallation saveInBackground];
      [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"Registered"];
     NSLog(@"standard user default: %d", [[NSUserDefaults standardUserDefaults] boolForKey:@"Registered"]);
-
-}
-
+    }
 
 
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))handler {
+    // Create empty photo object {
     [PFPush handlePush:userInfo];
+    
+    //go to view controller to accept or decline bet
+    NSString *better = [userInfo objectForKey:@"better"];
+    NSString *hours = [userInfo objectForKey:@"hourstoSleep"];
+    NSString *betStatus = [userInfo objectForKey:@"betStatus"];
+    if([betStatus isEqualToString:@"0"]){
+        
+        AcceptOrDecline *viewController = [[AcceptOrDecline alloc]init];
+        [self.window.rootViewController presentViewController:viewController animated:YES completion:nil];
+        
+        AcceptOrDecline *obj = [AcceptOrDecline new];
+        NSString *msg = [[[ better stringByAppendingString:@" has bet you"] stringByAppendingString: hours]stringByAppendingString:@" to sleep"];
+        obj.displayInfo.text = msg;
+    }
+    
+
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
