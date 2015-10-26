@@ -36,6 +36,12 @@
     //set the text field delegate as self so you hit return to dismiss keyboard 
     [self.amountSleptInput  setDelegate:self];
     
+    PFInstallation *installation = [PFInstallation currentInstallation];
+    [installation setObject:[PFUser currentUser].username forKey:@"username"];
+    [installation setObject:[PFUser currentUser].objectId forKey:@"installationUserId"];;
+    [installation saveInBackground];
+    NSLog(@"installation is: %@", installation);
+    
     // Do any additional setup after loading the view.
     // get the username of the current user and log it in the consol
 //    NSString *currentUserName = [[NSString alloc] init];
