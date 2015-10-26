@@ -85,21 +85,26 @@
     [PFPush handlePush:userInfo];
     
     //go to view controller to accept or decline bet
-    NSString *better = [userInfo objectForKey:@"better"];
+    NSString *better = [userInfo objectForKey:@"objectId"];
     NSString *hours = [userInfo objectForKey:@"hourstoSleep"];
     NSString *betStatus = [userInfo objectForKey:@"betStatus"];
-    if([betStatus isEqualToString:@"0"]){
-        
-        AcceptOrDecline *viewController = [[AcceptOrDecline alloc]init];
-        [self.window.rootViewController presentViewController:viewController animated:YES completion:nil];
-        
-        AcceptOrDecline *obj = [AcceptOrDecline new];
-        NSString *msg = [[[ better stringByAppendingString:@" has bet you"] stringByAppendingString: hours]stringByAppendingString:@" to sleep"];
-        obj.displayInfo.text = msg;
+    PFObject *targetData = [ PFObject objectWithClassName:@"betClass"];
+    [targetData setObject:better forKey:@"objectId"];
+    [targetData fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        if (error) {
+            handler(UIBackgroundFetchResultFailed);
+        }
+        else if([[targetData objectForKey:betStatus] isEqualToString:@"0"]){
+            AcceptOrDecline *viewController = [[AcceptOrDecline alloc]init];
+            [self.window.rootViewController presentViewController:viewController animated:YES completion:nil];
+            
+            AcceptOrDecline *obj = [AcceptOrDecline new];
+            NSString *msg = [[[ better stringByAppendingString:@" has bet you"] stringByAppendingString: hours]stringByAppendingString:@" to sleep"];
+            obj.displayInfo.text = msg;
+        }
+    }];
     }
-    
 
-}
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.

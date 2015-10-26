@@ -60,7 +60,7 @@
     NSString * userNameForBet = self.usernameForBet.text;
     NSInteger hoursToSleepForBet = [self.sleepHoursForBet.text integerValue];
     NSString*hoursToSleepString = self.sleepHoursForBet.text;
-    NSDictionary *data = @{@"better":[[PFUser currentUser] objectForKey:@"username"], @"hoursToSleep":hoursToSleepString, @"betStatus": @"0"};
+    NSDictionary *data = @{@"betterID":[[PFUser currentUser] objectForKey:@"objectId"], @"hoursToSleep":hoursToSleepString, @"betStatus": @"0"};
     
     // query to find the sleeper user's object id
     PFQuery *sleeperQuery = [PFUser query];
@@ -86,7 +86,7 @@
                 //set the parameters of the push notification
                 PFPush *push = [[PFPush alloc] init];
                 [push setQuery:pushQuery];
-                [push setMessage:[@"you have been bet" stringByAppendingString:hoursToSleepString]];
+                [push setMessage:@"you have a bet"];
                 [push setData:data];
                 [push sendPushInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded) {
@@ -108,6 +108,7 @@
                 [betObject setObject:self.sleepHoursForBet.text forKey:@"betTime"];
                 [betObject setObject:[[PFUser currentUser] objectForKey:@"username"] forKey:@"better"];
                 [betObject setObject: [PFUser currentUser].objectId forKey:@"betterid"];
+                [betObject setObject:@"0" forKey:@"betStatus"];
                 [betObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
                  {
                      if (!error) {
