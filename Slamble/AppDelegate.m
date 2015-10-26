@@ -88,8 +88,7 @@
     NSString *better = [userInfo objectForKey:@"objectId"];
     NSString *hours = [userInfo objectForKey:@"hourstoSleep"];
     NSString *betStatus = [userInfo objectForKey:@"betStatus"];
-    PFObject *targetData = [ PFObject objectWithClassName:@"betClass"];
-    [targetData setObject:better forKey:@"objectId"];
+    PFObject *targetData = [ PFObject objectWithoutDataWithClassName:@"betClass" objectId:@"objectId"];
     [targetData fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         if (error) {
             handler(UIBackgroundFetchResultFailed);

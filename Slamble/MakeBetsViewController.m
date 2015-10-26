@@ -60,7 +60,7 @@
     NSString * userNameForBet = self.usernameForBet.text;
     NSInteger hoursToSleepForBet = [self.sleepHoursForBet.text integerValue];
     NSString*hoursToSleepString = self.sleepHoursForBet.text;
-    NSDictionary *data = @{@"betterID":[[PFUser currentUser] objectForKey:@"objectId"], @"hoursToSleep":hoursToSleepString, @"betStatus": @"0"};
+    NSDictionary *data = @{@"better":[[PFUser currentUser] objectForKey:@"username"], @"hoursToSleep":hoursToSleepString, @"betStatus": @"0"};
     
     // query to find the sleeper user's object id
     PFQuery *sleeperQuery = [PFUser query];
@@ -108,7 +108,7 @@
                 [betObject setObject:self.sleepHoursForBet.text forKey:@"betTime"];
                 [betObject setObject:[[PFUser currentUser] objectForKey:@"username"] forKey:@"better"];
                 [betObject setObject: [PFUser currentUser].objectId forKey:@"betterid"];
-                [betObject setObject:@"0" forKey:@"betStatus"];
+                [betObject setValue:@"0" forKey:@"betStatus"];
                 [betObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
                  {
                      if (!error) {
