@@ -347,7 +347,7 @@ Parse.Cloud.define("sendPushNotificationsToSleeper", function (request, response
 	var sleeperId = request.params.sleeperId,
 		pushQuery = new Parse.Query(Parse.Installation),
 		message = request.params.message;
-		
+
 	console.log("sleeperId is" + sleeperId);
 	console.log("message is" + message);
 
@@ -358,13 +358,15 @@ Parse.Cloud.define("sendPushNotificationsToSleeper", function (request, response
 
 	// var pushQuery = new Parse.Query(Parse.Installation);
 	// pushQuery.equalTo('deviceType', 'ios');
-	pushQuery.equalTo('installationUserId', 'sleeperId');
+	pushQuery.equalTo('installationUserId', sleeperId);
 
 
 	Parse.Push.send({
 		where: pushQuery, // Set our Installation query
 		data: {
-		alert: message
+		alert: message,
+		badge: "Increment",
+		title: "New Bet!",
 		}
 	}, {
 		success: function() {

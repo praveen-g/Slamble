@@ -37,9 +37,15 @@
     
     // Do any additional setup after loading the view.
     //set username of current usr
-    NSString *currentUserName = [[NSString alloc] init];
-    currentUserName = [[PFUser currentUser] objectForKey:@"username"];
-    NSLog(@"%@",currentUserName);
+    self.currentUserName = [[NSString alloc] init];
+    self.currentUserName = [[PFUser currentUser] objectForKey:@"username"];
+    NSLog(@"%@",self.currentUserName);
+    self.currentUserFirstName = [[NSString alloc] init];
+    self.currentUserFirstName = [[PFUser currentUser] objectForKey:@"firstName"];
+    self.currentUserLastName = [[NSString alloc] init];
+    self.currentUserLastName = [[PFUser currentUser] objectForKey:@"lastName"];
+    NSLog(@"the user's name is: %@%@%@", self.currentUserFirstName, @" ", self.currentUserLastName);
+    
     //create an installation instance of the app in order to be able to target the user by user id for push notifications
     
     PFInstallation *installation = [PFInstallation currentInstallation];
@@ -114,8 +120,6 @@
                      if (!error) {
                          
                          
-                         [PFCloud callFunctionInBackground:@"sendPushNotificationsToSleeper" withParameters:@{@"sleeperId": self.sleeperId, @"message": @"A bet has been set against you!"}];
-                         
                          //show if saving object was success with feedback to user
                          [self.view endEditing:YES];
                          NSLog(@"saved bet object");
@@ -130,6 +134,11 @@
                          [self presentViewController:alert animated:YES completion:nil];
                          self.usernameForBet.text = nil;
                          self.sleepHoursForBet.text = nil;
+                         
+                         NSString* message = [NSString stringWithFormat:@"%s%@%s%@%@%@%@", "You have been bet by ", self.currentUserFirstName, " ", self.currentUserLastName, @" to sleep ", hoursToSleepString, @" hours"];
+                         [self.view endEditing:YES];
+                         NSLog(@"message to send via push is %@", message);
+                         [PFCloud callFunctionInBackground:@"sendPushNotificationsToSleeper" withParameters:@{@"sleeperId": self.sleeperId, @"message": message}];
                          
                      } else{
                          //show bet creation failed  with feedback to user

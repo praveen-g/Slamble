@@ -14,6 +14,8 @@
 @property (strong, nonatomic) NSString *currentUserName;
 @property (strong, nonatomic) NSArray  *sleeperInfoArr;
 @property (strong, nonatomic) NSString *sleeperId;
+@property (strong, nonatomic) NSString *currentUserFirstName;
+@property (strong, nonatomic) NSString *currentUserLastName;
 
 
 @end

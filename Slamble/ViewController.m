@@ -38,9 +38,9 @@
     [self.usernameSignIn setDelegate:self];
     [self.passwordSignIn setDelegate:self];
     
-    if ([PFUser currentUser]) {
-        [self performSegueWithIdentifier:@"homePage" sender: self];
-    };
+//    if ([PFUser currentUser]) {
+//        [self performSegueWithIdentifier:@"homePage" sender: self];
+//    };
 
     
     

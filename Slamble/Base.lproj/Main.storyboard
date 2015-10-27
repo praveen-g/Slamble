@@ -17,8 +17,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="m1G-Rf-i4d" kind="relationship" relationship="viewControllers" id="Sdx-vD-bQi"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="dOw-F3-eio"/>
+                        <segue destination="m1G-Rf-i4d" kind="relationship" relationship="viewControllers" id="Sdx-vD-bQi"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tya-th-LJ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -366,6 +366,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ISl-ap-zNu"/>
+        <segue reference="6Rt-DN-VTL"/>
     </inferredMetricsTieBreakers>
 </document>

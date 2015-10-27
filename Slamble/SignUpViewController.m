@@ -30,6 +30,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+//    if ([PFUser currentUser]) {
+//        [self performSegueWithIdentifier:@"goToHomePage" sender: self];
+//        
+//    };
+    
     // this code adds the background image across the entire screen
     UIGraphicsBeginImageContext(self.view.frame.size);
     [[UIImage imageNamed:@"night.jpg"] drawInRect:self.view.bounds];
@@ -38,6 +43,8 @@
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:image];
     
+    
+    
     //set the text field delegate as self so you hit return to dismiss keyboard 
     [self.firstNameTextField setDelegate:self];
     [self.lastNameTextField setDelegate:self];
@@ -45,9 +52,6 @@
     [self.passwordTextField setDelegate:self];
     [self.emailTextField setDelegate:self];
     
-    if ([PFUser currentUser]) {
-        [self performSegueWithIdentifier:@"goToHomePage" sender: self];
-    };
     
     
     //UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"night.jpg"]];
