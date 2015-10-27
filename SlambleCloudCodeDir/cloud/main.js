@@ -267,6 +267,7 @@ Parse.Cloud.define("computeBetOutcomesForSleeper", function (request, response) 
 				//update bet object points for sleeper and better
 				bet.set("betterPoints", betterPoints.toString());
 				bet.set("sleeperPoints", sleeperPoints.toString());
+				bet.set("betStatus", "3");
 				bet.save();
 
 				// update each user's total points
@@ -334,6 +335,47 @@ Parse.Cloud.define("computeBetOutcomesForSleeper", function (request, response) 
 		error: function(error) {
 			console.log("Error: " + error.code + " " + error.message);
 			response.error("oh no");
+		}
+	});
+});
+
+Parse.Cloud.define("sendPushNotificationsToSleeper", function (request, response){
+// Parse.Cloud.afterSave("message", function(request, response) {
+//   // Our "Comment" class has a "text" key with the body of the comment itself
+  
+// var data = request.params.data;
+	var sleeperId = request.params.sleeperId,
+		pushQuery = new Parse.Query(Parse.Installation),
+		message = request.params.message;
+		
+	console.log("sleeperId is" + sleeperId);
+	console.log("message is" + message);
+
+
+	Parse.Cloud.useMasterKey();
+
+
+
+	// var pushQuery = new Parse.Query(Parse.Installation);
+	// pushQuery.equalTo('deviceType', 'ios');
+	pushQuery.equalTo('installationUserId', 'sleeperId');
+
+
+	Parse.Push.send({
+		where: pushQuery, // Set our Installation query
+		data: {
+		alert: message
+		}
+	}, {
+		success: function() {
+			// Push was successful
+			console.log("push was successful");
+			response.success("push was a success");
+		},
+		error: function(error) {
+			throw "Got an error " + error.code + " : " + error.message;
+			console.log("push caused an error");
+			response.error("push failed")
 		}
 	});
 });

@@ -45,6 +45,11 @@
     [self.passwordTextField setDelegate:self];
     [self.emailTextField setDelegate:self];
     
+    if ([PFUser currentUser]) {
+        [self performSegueWithIdentifier:@"goToHomePage" sender: self];
+    };
+    
+    
     //UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"night.jpg"]];
     //[self.view addSubview:backgroundView];
     

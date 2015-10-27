@@ -80,23 +80,23 @@
 
                 
                 
-                // create push notification to send to the sleeper by object id to notify of the bet
-                PFQuery *pushQuery = [PFInstallation query];
-                [pushQuery whereKey:@"installationUserId" equalTo:self.sleeperId];
-                //set the parameters of the push notification
-                PFPush *push = [[PFPush alloc] init];
-                [push setQuery:pushQuery];
-                [push setMessage:@"you have a bet"];
-                [push setData:data];
-                [push sendPushInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                    if (succeeded) {
-                    NSLog(@"The push campaign has been created.");
-                } else if (error.code == kPFErrorPushMisconfigured) {
-                    NSLog(@"Could not send push. Push is misconfigured: %@", error.description);
-                } else {
-                    NSLog(@"Error sending push: %@", error.description);
-                }
-                }];
+//                // create push notification to send to the sleeper by object id to notify of the bet
+//                PFQuery *pushQuery = [PFInstallation query];
+//                [pushQuery whereKey:@"installationUserId" equalTo:self.sleeperId];
+//                //set the parameters of the push notification
+//                PFPush *push = [[PFPush alloc] init];
+//                [push setQuery:pushQuery];
+//                [push setMessage:@"you have a bet"];
+//                [push setData:data];
+//                [push sendPushInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//                    if (succeeded) {
+//                    NSLog(@"The push campaign has been created.");
+//                } else if (error.code == kPFErrorPushMisconfigured) {
+//                    NSLog(@"Could not send push. Push is misconfigured: %@", error.description);
+//                } else {
+//                    NSLog(@"Error sending push: %@", error.description);
+//                }
+//                }];
 
 
                 
@@ -112,6 +112,10 @@
                 [betObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
                  {
                      if (!error) {
+                         
+                         
+                         [PFCloud callFunctionInBackground:@"sendPushNotificationsToSleeper" withParameters:@{@"sleeperId": self.sleeperId, @"message": @"A bet has been set against you!"}];
+                         
                          //show if saving object was success with feedback to user
                          [self.view endEditing:YES];
                          NSLog(@"saved bet object");

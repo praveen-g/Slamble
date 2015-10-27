@@ -48,6 +48,8 @@
 		EC4228261BC37D0A0043C3BD /* MakeBetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4228251BC37D0A0043C3BD /* MakeBetsViewController.m */; };
 		EC65B2F51BC1F79700C47D08 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC65B2F41BC1F79700C47D08 /* HomePageViewController.m */; };
 		ECC7811C1BD6A8DD00AA18AA /* BetsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC7811B1BD6A8DD00AA18AA /* BetsTableViewController.m */; };
+		ECD2AC7F1BDF2AEA00686F9D /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD2AC7E1BDF2AEA00686F9D /* Icon@2x.png */; };
+		ECD2AC811BDF2B7900686F9D /* Slamble.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD2AC801BDF2B7900686F9D /* Slamble.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +125,8 @@
 		EC65B2F41BC1F79700C47D08 /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
 		ECC7811A1BD6A8DD00AA18AA /* BetsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BetsTableViewController.h; sourceTree = "<group>"; };
 		ECC7811B1BD6A8DD00AA18AA /* BetsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BetsTableViewController.m; sourceTree = "<group>"; };
+		ECD2AC7E1BDF2AEA00686F9D /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		ECD2AC801BDF2B7900686F9D /* Slamble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Slamble.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +220,8 @@
 				25F1A68D1BC1819E00143C18 /* SignUpViewController.h */,
 				25F1A68E1BC1819E00143C18 /* SignUpViewController.m */,
 				25F1A6391BC178D700143C18 /* Assets.xcassets */,
+				ECD2AC801BDF2B7900686F9D /* Slamble.png */,
+				ECD2AC7E1BDF2AEA00686F9D /* Icon@2x.png */,
 				25F1A63B1BC178D700143C18 /* LaunchScreen.storyboard */,
 				25F1A63E1BC178D700143C18 /* Info.plist */,
 				085C95591BC4B33F00728414 /* night.jpg */,
@@ -398,7 +404,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECD2AC811BDF2B7900686F9D /* Slamble.png in Resources */,
 				25F1A63D1BC178D700143C18 /* LaunchScreen.storyboard in Resources */,
+				ECD2AC7F1BDF2AEA00686F9D /* Icon@2x.png in Resources */,
 				25F1A63A1BC178D700143C18 /* Assets.xcassets in Resources */,
 				085C955A1BC4B33F00728414 /* night.jpg in Resources */,
 				254452911BDD5438002F96B2 /* SPLASH.png in Resources */,

@@ -13,6 +13,7 @@
 #import <Parse/Parse.h>
 #import <Parse/PFUser.h>
 #import <ParseUI/ParseUI.h>
+#import <QuartzCore/QuartzCore.h>
 
 //#import <ParseFacebookUtils/PFFacebookUtils.h>
 
@@ -37,6 +38,14 @@
     [self.usernameSignIn setDelegate:self];
     [self.passwordSignIn setDelegate:self];
     
+    if ([PFUser currentUser]) {
+        [self performSegueWithIdentifier:@"homePage" sender: self];
+    };
+
+    
+    
+
+    
 //present facebook sign in button
     
     FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
@@ -54,7 +63,7 @@
 //            NSLog(@"User logged in through Facebook!");
 //        }
 //    }];
-    
+//    
     
 }
 
