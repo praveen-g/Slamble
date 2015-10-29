@@ -5,7 +5,7 @@
 //  Created by Claire Opila on 10/4/15.
 //  Copyright © 2015 Praveen Gupta. All rights reserved.
 //
-
+#import "PendingBetRequests.h"
 #import "HomePageViewController.h"
 #import "SignUpViewController.h"
 #import "ViewController.h"
@@ -65,6 +65,8 @@
     return YES;
 }
 
+- (IBAction)betRequestButtonPressed:(id)sender {
+    }
 
 - (IBAction)enterSleepButtonPressed:(id)sender {
     //taking input from user regarding sleep to validate bet

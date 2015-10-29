@@ -55,6 +55,7 @@
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="LoginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jur-hL-bc4"/>
+                                    <segue destination="Jfn-mG-AkB" kind="modal" identifier="homePage" id="cyL-lh-ztJ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -67,7 +68,6 @@
                     <connections>
                         <outlet property="passwordSignIn" destination="SQT-Hp-BLf" id="59D-CA-dOb"/>
                         <outlet property="usernameSignIn" destination="WiY-0n-XEk" id="hEQ-cb-65v"/>
-                        <segue destination="6lx-LS-Ep5" kind="modal" identifier="homePage" id="ISl-ap-zNu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -133,12 +133,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ewh-Np-HpL">
-                                <rect key="frame" x="67" y="58" width="187" height="30"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IhE-eI-mlt">
                                 <rect key="frame" x="67" y="203" width="187" height="30"/>
                                 <animations/>
@@ -163,10 +157,17 @@
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
                                     <action selector="signUpButtonPressed:" destination="m1G-Rf-i4d" eventType="touchUpInside" id="T0V-UF-HyP"/>
+                                    <segue destination="Jfn-mG-AkB" kind="modal" identifier="goToHomePage" id="Kje-su-KjV"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tbF-EU-r0m">
                                 <rect key="frame" x="67" y="156" width="187" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ewh-Np-HpL">
+                                <rect key="frame" x="67" y="58" width="187" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -182,12 +183,11 @@
                         <outlet property="lastNameTextField" destination="Ht2-za-xz0" id="CRN-7S-5I8"/>
                         <outlet property="passwordTextField" destination="IhE-eI-mlt" id="IVC-pk-PT8"/>
                         <outlet property="userNameTextField" destination="tbF-EU-r0m" id="szf-Mr-Qer"/>
-                        <segue destination="6lx-LS-Ep5" kind="modal" identifier="goToHomePage" id="6Rt-DN-VTL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SPY-b7-yZG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="206" y="676"/>
+            <point key="canvasLocation" x="107" y="781"/>
         </scene>
         <!--My Page-->
         <scene sceneID="hLI-Cg-gbQ">
@@ -244,6 +244,15 @@
                                     <action selector="logOutButtonPressed:" destination="fwX-Zg-8Gc" eventType="touchUpInside" id="3kd-lO-3Ui"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVW-PY-ZUd">
+                                <rect key="frame" x="115" y="249" width="91" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Bet Requests"/>
+                                <connections>
+                                    <action selector="betRequestButtonPressed:" destination="fwX-Zg-8Gc" eventType="touchUpInside" id="73f-rv-dlf"/>
+                                    <segue destination="ljS-df-dS5" kind="push" id="zHk-NY-gHI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -256,7 +265,39 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WJE-0q-ejN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1599" y="72"/>
+            <point key="canvasLocation" x="1749" y="-52"/>
+        </scene>
+        <!--Root View Controller-->
+        <scene sceneID="VUT-Xf-sPd">
+            <objects>
+                <tableViewController id="ljS-df-dS5" customClass="PendingBetRequests" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Gpz-rs-dyN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Xyn-oU-2Pj">
+                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xyn-oU-2Pj" id="wCf-oI-C5g">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ljS-df-dS5" id="P2W-O0-zAA"/>
+                            <outlet property="delegate" destination="ljS-df-dS5" id="oTb-iy-zGO"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="SGU-5C-BZq"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ryz-qw-8C8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2246" y="-151"/>
         </scene>
         <!--Outstanding Bets-->
         <scene sceneID="v7r-IP-fW5">
@@ -270,10 +311,10 @@
                         <color key="sectionIndexBackgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="omS-Du-nCx">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="omS-Du-nCx" id="gfK-Fg-ilT">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                 </tableViewCellContentView>
@@ -342,12 +383,30 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F9d-ra-RpO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1358" y="1187"/>
+            <point key="canvasLocation" x="1876" y="1393"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="LL0-qH-aRR">
+            <objects>
+                <navigationController id="Jfn-mG-AkB" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uPF-mg-gZh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="6lx-LS-Ep5" kind="relationship" relationship="rootViewController" id="yqN-Mv-xL5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qhJ-WQ-Q9y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="581" y="577"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="8ow-TE-CLJ">
             <objects>
                 <tabBarController id="6lx-LS-Ep5" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="DW0-fw-f3t"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Hhf-cx-xKM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -362,10 +421,10 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Fi-NA-bCD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1074" y="467"/>
+            <point key="canvasLocation" x="1392" y="683"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6Rt-DN-VTL"/>
+        <segue reference="Kje-su-KjV"/>
     </inferredMetricsTieBreakers>
 </document>

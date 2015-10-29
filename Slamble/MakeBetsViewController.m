@@ -105,7 +105,7 @@
 //                }];
 
 
-                
+                PFObject *betRequest = [PFObject objectWithClassName:@"betRequest"];
                 //create bet object with the below fields
                 PFObject *betObject = [PFObject objectWithClassName:@"betClass"];
                 [betObject setObject: self.usernameForBet.text forKey:@"sleeper"];
@@ -119,7 +119,10 @@
                  {
                      if (!error) {
                          
-                         
+                         [betRequest setObject:[[PFUser currentUser] objectForKey:@"username"] forKey:@"betterName"];
+                         [betRequest setObject: self.usernameForBet.text forKey:@"sleeperName"];
+                         [betRequest setObject:@"0" forKey:@"betStatus"];
+                         [betRequest saveInBackground];
                          //show if saving object was success with feedback to user
                          [self.view endEditing:YES];
                          NSLog(@"saved bet object");
@@ -139,7 +142,8 @@
                          [self.view endEditing:YES];
                          NSLog(@"message to send via push is %@", message);
                          [PFCloud callFunctionInBackground:@"sendPushNotificationsToSleeper" withParameters:@{@"sleeperId": self.sleeperId, @"message": message}];
-                         
+                         [PFCloud callFunctionInBackground:@"sendPushNotificationsToSleeper" withParameters:@{@"sleeperId": self.sleeperId, @"message": message}];
+    
                      } else{
                          //show bet creation failed  with feedback to user
                          NSLog(@"Failed to save");

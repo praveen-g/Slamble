@@ -45,6 +45,7 @@
 		25F1A6911BC1891800143C18 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F1A6901BC1891800143C18 /* FBSDKCoreKit.framework */; };
 		25F1A6931BC1892D00143C18 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F1A6921BC1892C00143C18 /* FBSDKLoginKit.framework */; };
 		25F1A6951BC1894D00143C18 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F1A6941BC1894D00143C18 /* FBSDKShareKit.framework */; };
+		25F1E33D1BE1A6B100E35884 /* PendingBetRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F1E33C1BE1A6B100E35884 /* PendingBetRequests.m */; };
 		EC4228261BC37D0A0043C3BD /* MakeBetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4228251BC37D0A0043C3BD /* MakeBetsViewController.m */; };
 		EC65B2F51BC1F79700C47D08 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC65B2F41BC1F79700C47D08 /* HomePageViewController.m */; };
 		ECC7811C1BD6A8DD00AA18AA /* BetsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC7811B1BD6A8DD00AA18AA /* BetsTableViewController.m */; };
@@ -119,6 +120,8 @@
 		25F1A6901BC1891800143C18 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "FacebookSDKs-iOS-20150910/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
 		25F1A6921BC1892C00143C18 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "FacebookSDKs-iOS-20150910/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
 		25F1A6941BC1894D00143C18 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "FacebookSDKs-iOS-20150910/FBSDKShareKit.framework"; sourceTree = "<group>"; };
+		25F1E33B1BE1A6B100E35884 /* PendingBetRequests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PendingBetRequests.h; sourceTree = "<group>"; };
+		25F1E33C1BE1A6B100E35884 /* PendingBetRequests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PendingBetRequests.m; sourceTree = "<group>"; };
 		EC4228241BC37D0A0043C3BD /* MakeBetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeBetsViewController.h; sourceTree = "<group>"; };
 		EC4228251BC37D0A0043C3BD /* MakeBetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeBetsViewController.m; sourceTree = "<group>"; };
 		EC65B2F31BC1F79700C47D08 /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
@@ -217,6 +220,8 @@
 				ECC7811B1BD6A8DD00AA18AA /* BetsTableViewController.m */,
 				EC4228241BC37D0A0043C3BD /* MakeBetsViewController.h */,
 				EC4228251BC37D0A0043C3BD /* MakeBetsViewController.m */,
+				25F1E33B1BE1A6B100E35884 /* PendingBetRequests.h */,
+				25F1E33C1BE1A6B100E35884 /* PendingBetRequests.m */,
 				25F1A68D1BC1819E00143C18 /* SignUpViewController.h */,
 				25F1A68E1BC1819E00143C18 /* SignUpViewController.m */,
 				25F1A6391BC178D700143C18 /* Assets.xcassets */,
@@ -458,6 +463,7 @@
 				EC65B2F51BC1F79700C47D08 /* HomePageViewController.m in Sources */,
 				25F1A68F1BC1819E00143C18 /* SignUpViewController.m in Sources */,
 				EC4228261BC37D0A0043C3BD /* MakeBetsViewController.m in Sources */,
+				25F1E33D1BE1A6B100E35884 /* PendingBetRequests.m in Sources */,
 				25F1A62F1BC178D700143C18 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

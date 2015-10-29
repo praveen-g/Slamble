@@ -365,7 +365,7 @@ Parse.Cloud.define("sendPushNotificationsToSleeper", function (request, response
 		where: pushQuery, // Set our Installation query
 		data: {
 		alert: message,
-		badge: "Increment",
+		// badge: "Increment",
 		title: "New Bet!",
 		}
 	}, {
@@ -381,6 +381,71 @@ Parse.Cloud.define("sendPushNotificationsToSleeper", function (request, response
 		}
 	});
 });
+
+// Parse.cloud.define("updateBetRequest", function(request,response){
+// var betterID = request.params.betterId;
+// var betStatus = request.params.betStatus;
+// //update status of bet
+// var betReqQuery = new Parse.Query(Parse.betRequest);
+// 	betReqQuery.get(betterId, {
+// 						success: function (user) {
+// 							console.log("updating bet status");
+// 								user.set("betStatus", betStatus);
+// 							},
+// 							error: function(error){
+// 								console.log("bet status not updated");
+// 							}
+// 	});
+// });
+
+Parse.cloud.define("sendPushNotificiationstoBetter", function(request,response){
+	var betterID = request.params.betterID;
+	var objectID = request.params.objectID;
+	var message = request.params.message;
+	var betStatus=request.params.betStatus;
+	var pushQuery = new pushQuery(Parse.Installation);
+
+	var filterQuery = new Parse.Query(Parse.betRequest);
+	filterQuery.equalTo('betStatus', "0" );
+
+	pushQuery.equalTo('installationUserId', betterID);
+	pushQuery.matchesKeyInQuery(username, betterName, filterQuery);
+
+	Parse.Cloud.useMasterKey();
+
+	console.log("betterId " + betterId);
+	consoe.log("betStatus "+ betStatus);
+	console.log("message "+ message);
+
+	Parse.Push.send({	
+	where:pushQuery,
+	data:{
+	alert:message
+	}
+	}, {
+	success: function(){
+	console.log("push was successful");
+	response.success("push was a success");
+	},
+	error: function(error){
+	throw "Got an error " + error.code + " : " + error.message;
+	console.log("push caused an error");
+	response.error("push failed")
+	}});
+
+	var betReqQuery = new Parse.Query(Parse.betRequest);
+	betReqQuery.get(betterId, {
+						success: function (user) {
+							console.log("updating bet status");
+								user.set("betStatus", betStatus);
+							},
+							error: function(error){
+								console.log("bet status not updated");
+							}
+	});
+	//updateBetRequest(request.params.betterID,request.params.betStatus,response);
+});
+
 
 // Parse.Cloud.define("betWinner2", function(request,response){
 // 	var objectId=request.params.objectId;
