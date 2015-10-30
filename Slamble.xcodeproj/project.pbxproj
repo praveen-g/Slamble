@@ -207,23 +207,20 @@
 		25F1A62C1BC178D700143C18 /* Slamble */ = {
 			isa = PBXGroup;
 			children = (
+				25F1A6361BC178D700143C18 /* Main.storyboard */,
+				ECBAC6C81BE3298A00D59FC3 /* SignUp/Login */,
 				25F1A6301BC178D700143C18 /* AppDelegate.h */,
 				25F1A6311BC178D700143C18 /* AppDelegate.m */,
-				25F1A6331BC178D700143C18 /* ViewController.h */,
-				25F1A6341BC178D700143C18 /* ViewController.m */,
 				EC65B2F31BC1F79700C47D08 /* HomePageViewController.h */,
 				EC65B2F41BC1F79700C47D08 /* HomePageViewController.m */,
-				25F1A6361BC178D700143C18 /* Main.storyboard */,
-				2544528D1BDD53EF002F96B2 /* AcceptOrDecline.h */,
-				2544528E1BDD53EF002F96B2 /* AcceptOrDecline.m */,
-				ECC7811A1BD6A8DD00AA18AA /* BetsTableViewController.h */,
-				ECC7811B1BD6A8DD00AA18AA /* BetsTableViewController.m */,
 				EC4228241BC37D0A0043C3BD /* MakeBetsViewController.h */,
 				EC4228251BC37D0A0043C3BD /* MakeBetsViewController.m */,
+				ECC7811A1BD6A8DD00AA18AA /* BetsTableViewController.h */,
+				ECC7811B1BD6A8DD00AA18AA /* BetsTableViewController.m */,
 				25F1E33B1BE1A6B100E35884 /* PendingBetRequests.h */,
 				25F1E33C1BE1A6B100E35884 /* PendingBetRequests.m */,
-				25F1A68D1BC1819E00143C18 /* SignUpViewController.h */,
-				25F1A68E1BC1819E00143C18 /* SignUpViewController.m */,
+				2544528D1BDD53EF002F96B2 /* AcceptOrDecline.h */,
+				2544528E1BDD53EF002F96B2 /* AcceptOrDecline.m */,
 				25F1A6391BC178D700143C18 /* Assets.xcassets */,
 				ECD2AC801BDF2B7900686F9D /* Slamble.png */,
 				ECD2AC7E1BDF2AEA00686F9D /* Icon@2x.png */,
@@ -294,6 +291,17 @@
 				25F1A6651BC1794A00143C18 /* ParseUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ECBAC6C81BE3298A00D59FC3 /* SignUp/Login */ = {
+			isa = PBXGroup;
+			children = (
+				25F1A68D1BC1819E00143C18 /* SignUpViewController.h */,
+				25F1A68E1BC1819E00143C18 /* SignUpViewController.m */,
+				25F1A6331BC178D700143C18 /* ViewController.h */,
+				25F1A6341BC178D700143C18 /* ViewController.m */,
+			);
+			name = SignUp/Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

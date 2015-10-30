@@ -354,12 +354,10 @@ Parse.Cloud.define("sendPushNotificationsToSleeper", function (request, response
 
 	Parse.Cloud.useMasterKey();
 
-
-
 	// var pushQuery = new Parse.Query(Parse.Installation);
 	// pushQuery.equalTo('deviceType', 'ios');
-	pushQuery.equalTo('installationUserId', sleeperId);
 
+	pushQuery.equalTo("installationUserId", sleeperId);
 
 	Parse.Push.send({
 		where: pushQuery, // Set our Installation query
@@ -375,10 +373,92 @@ Parse.Cloud.define("sendPushNotificationsToSleeper", function (request, response
 			response.success("push was a success");
 		},
 		error: function(error) {
-			throw "Got an error " + error.code + " : " + error.message;
+			throw "Got an error" + error.code + " : " + error.message;
 			console.log("push caused an error");
 			response.error("push failed")
 		}
+	});
+});
+
+
+Parse.Cloud.define("sendPushNotificationsToBetter", function (request, response){
+	var betterID = request.params.betterID,
+		objectID = request.params.objectID,
+		message = request.params.message,
+		betStatus = request.params.betStatus
+		pushQuery = new Parse.Query(Parse.Installation),
+		betQuery = new Parse.Query("betClass");
+
+	console.log("betterID is " + betterID);
+	console.log("objectID " + objectID);
+	console.log("message is " + message);
+	console.log("betStatus " + betStatus);
+
+	// pushQuery.matchesKeyInQuery(username, betterName, filterQuery);
+
+	Parse.Cloud.useMasterKey();
+
+	// var filterQuery = new Parse.Query(Parse.betRequest);
+	// filterQuery.equalTo('betStatus', "0" );
+
+	pushQuery.equalTo("installationUserId", betterID);
+
+	Parse.Push.send({
+		where: pushQuery, // Set our Installation query
+		data: {
+		alert: message,
+		// badge: "Increment",
+		title: "Updated Bet!",
+		}
+	}, {
+		success: function() {
+			// Push was successful
+			console.log("push was successful");
+			// response.success("push was a success");
+		},
+		error: function(error) {
+			throw "Got an error" + error.code + " : " + error.message;
+			console.log("push caused an error");
+			// response.error("push failed")
+		}
+	});
+
+	betQuery.equalTo("objectId", objectID);
+	betQuery.find({
+
+		success: function (results) {
+			var results,
+			betStatusOld,
+			betStatusCurrent,
+			bet;
+
+			console.log("results is " + results);
+
+			bet = results[0];
+			console.log("bet is" + bet);
+			betStatusOld = bet.get("betStatus");
+			console.log("betStatusOld" + betStatusOld);
+			bet.set("betStatus", betStatus);
+			// bet.save();
+			bet.save(null, 
+            {
+                success:function ()
+                {
+                    response.success("updated status!");
+                },
+                error:function (error)
+                {
+                    throw "Got an error" + error.code + " : " + error.message;
+                    response.error("Failed to save bet with status, Error=" + error.message);
+                }
+            });
+
+		},
+		error: function(error) {
+			throw "Got an error " + error.code + " : " + error.message;
+		}
+
+		 	
 	});
 });
 
@@ -398,53 +478,18 @@ Parse.Cloud.define("sendPushNotificationsToSleeper", function (request, response
 // 	});
 // });
 
-Parse.cloud.define("sendPushNotificiationstoBetter", function(request,response){
-	var betterID = request.params.betterID;
-	var objectID = request.params.objectID;
-	var message = request.params.message;
-	var betStatus=request.params.betStatus;
-	var pushQuery = new pushQuery(Parse.Installation);
-
-	var filterQuery = new Parse.Query(Parse.betRequest);
-	filterQuery.equalTo('betStatus', "0" );
-
-	pushQuery.equalTo('installationUserId', betterID);
-	pushQuery.matchesKeyInQuery(username, betterName, filterQuery);
-
-	Parse.Cloud.useMasterKey();
-
-	console.log("betterId " + betterId);
-	consoe.log("betStatus "+ betStatus);
-	console.log("message "+ message);
-
-	Parse.Push.send({	
-	where:pushQuery,
-	data:{
-	alert:message
-	}
-	}, {
-	success: function(){
-	console.log("push was successful");
-	response.success("push was a success");
-	},
-	error: function(error){
-	throw "Got an error " + error.code + " : " + error.message;
-	console.log("push caused an error");
-	response.error("push failed")
-	}});
-
-	var betReqQuery = new Parse.Query(Parse.betRequest);
-	betReqQuery.get(betterId, {
-						success: function (user) {
-							console.log("updating bet status");
-								user.set("betStatus", betStatus);
-							},
-							error: function(error){
-								console.log("bet status not updated");
-							}
-	});
+	// var betReqQuery = new Parse.Query(Parse.betRequest);
+	// betReqQuery.get(betterId, {
+	// 					success: function (user) {
+	// 						console.log("updating bet status");
+	// 							user.set("betStatus", betStatus);
+	// 						},
+	// 						error: function(error){
+	// 							console.log("bet status not updated");
+	// 						}
+	// });
 	//updateBetRequest(request.params.betterID,request.params.betStatus,response);
-});
+
 
 
 // Parse.Cloud.define("betWinner2", function(request,response){

@@ -72,6 +72,12 @@
     return YES;
 }
 
+-(void) viewDidAppear:(BOOL)animated{
+    if ([PFUser currentUser]) {
+        [self performSegueWithIdentifier:@"goToHomePage" sender: self];
+    };
+}
+
 
 - (IBAction)signUpButtonPressed:(id)sender {
     

@@ -67,6 +67,13 @@
     
 }
 
+
+-(void) viewDidAppear:(BOOL)animated{
+    if ([PFUser currentUser]) {
+        [self performSegueWithIdentifier:@"homePage" sender: self];
+    };
+}
+
 -(BOOL) textFieldShouldReturn:(UITextField *)textField{
     
     [textField resignFirstResponder];
@@ -78,8 +85,10 @@
     //set the username and password inputs
     self.username = self.usernameSignIn.text;
     self.password = self.passwordSignIn.text;
-    NSLog(@"self.username entered: %@", self.usernameSignIn.text);
-    NSLog(@"self.password entered: %@", self.passwordSignIn.text);
+    NSLog(@"self.username.text entered: %@", self.usernameSignIn.text);
+    NSLog(@"self.password.text entered: %@", self.passwordSignIn.text);
+    NSLog(@"self.username entered: %@", self.username);
+    NSLog(@"self.password entered: %@", self.password);
     
     
     //initiate login with username and password
@@ -91,7 +100,7 @@
                                             NSLog(@"Login is Success");
                                             //                                          ;
                                             // Do stuff after successful login.
-                                            [self performSegueWithIdentifier:@"homePage" sender: sender];
+                                            [self performSegueWithIdentifier:@"homePage" sender: self];
                                             self.usernameSignIn.text = nil;
                                             self.passwordSignIn.text = nil;
                                             [self.view endEditing:YES];

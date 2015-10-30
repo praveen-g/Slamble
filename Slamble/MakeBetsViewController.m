@@ -46,8 +46,8 @@
     self.currentUserLastName = [[PFUser currentUser] objectForKey:@"lastName"];
     NSLog(@"the user's name is: %@%@%@", self.currentUserFirstName, @" ", self.currentUserLastName);
     
-    //create an installation instance of the app in order to be able to target the user by user id for push notifications
-    
+//    //create an installation instance of the app in order to be able to target the user by user id for push notifications
+//    
     PFInstallation *installation = [PFInstallation currentInstallation];
     [installation setObject:[PFUser currentUser].username forKey:@"username"];
     [installation setObject:[PFUser currentUser].objectId forKey:@"installationUserId"];
@@ -138,11 +138,11 @@
                          self.usernameForBet.text = nil;
                          self.sleepHoursForBet.text = nil;
                          
-                         NSString* message = [NSString stringWithFormat:@"%s%@%s%@%@%@%@", "You have been bet by ", self.currentUserFirstName, " ", self.currentUserLastName, @" to sleep ", hoursToSleepString, @" hours"];
+                         NSString* message = [NSString stringWithFormat:@"%s%@%s%@%@%@%@", "You have been bet by ", self.currentUserFirstName, "", self.currentUserLastName, @" to sleep ", hoursToSleepString, @" hours"];
                          [self.view endEditing:YES];
                          NSLog(@"message to send via push is %@", message);
                          [PFCloud callFunctionInBackground:@"sendPushNotificationsToSleeper" withParameters:@{@"sleeperId": self.sleeperId, @"message": message}];
-                         [PFCloud callFunctionInBackground:@"sendPushNotificationsToSleeper" withParameters:@{@"sleeperId": self.sleeperId, @"message": message}];
+//                         [PFCloud callFunctionInBackground:@"sendPushNotificationsToSleeper" withParameters:@{@"sleeperId": self.sleeperId, @"message": message}];
     
                      } else{
                          //show bet creation failed  with feedback to user
@@ -188,38 +188,8 @@
             
         }
     }];
-    //sending push notification to user with who bet has been initiated
-    //betQuery used to find betters
-//    
-//    
-//    PFQuery *betQuery = [PFUser query];
-//    [betQuery whereKey:@"betStatus" equalTo:@"0"];
-    
-    //finding corresponding sleeper
-//    PFQuery *sleepQuery = [PFUser query];
-//    [sleepQuery whereKey:@"sleeper" matchesQuery:betQuery];
-    
-    
-   
-    
-//    sending data in push
 
-//    
-//    PFQuery *betQuery = [PFUser query];
-//    [betQuery whereKey:@"betStatus" equalTo:@"0"];
-//    
-//    //finding corresponding sleeper
-//    PFQuery *sleepQuery = [PFUser query];
-//    [sleepQuery whereKey:@"sleeper" matchesQuery:betQuery];
-//    
-//    //sending data in push
-//    NSDictionary *data = @{@"better":[[PFUser currentUser] objectForKey:@"username"], @"hoursToSleep":hoursToSleepString, @"betStatus": @"0"};
-//    //sending push notification
-//    PFPush *push = [PFPush new];
-//    [push setQuery:sleepQuery];
-//    [push setMessage:[@"you have been bet" stringByAppendingString:hoursToSleepString]];
-//    [push setData:data];
-//    [push sendPushInBackground];
+
 
 }
 

@@ -68,7 +68,7 @@
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    // Store the deviceToken in the current installation and save it to Parse.
+     //Store the deviceToken in the current installation and save it to Parse.
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
     NSLog(@"device token is: %@", deviceToken);
@@ -84,22 +84,23 @@
     // Create empty photo object {
     [PFPush handlePush:userInfo];
     
-    //go to view controller to accept or decline bet
-    NSString *better = [userInfo objectForKey:@"objectId"];
-    NSString *hours = [userInfo objectForKey:@"hourstoSleep"];
-    NSString *betStatus = [userInfo objectForKey:@"betStatus"];
+//    //go to view controller to accept or decline bet
+//    NSString *better = [userInfo objectForKey:@"objectId"];
+//    NSString *hours = [userInfo objectForKey:@"hourstoSleep"];
+//    NSString *betStatus = [userInfo objectForKey:@"betStatus"];
     PFObject *targetData = [ PFObject objectWithoutDataWithClassName:@"betClass" objectId:@"objectId"];
     [targetData fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         if (error) {
             handler(UIBackgroundFetchResultFailed);
         }
-        else if([[targetData objectForKey:betStatus] isEqualToString:@"0"]){
-            AcceptOrDecline *viewController = [[AcceptOrDecline alloc]init];
-            [self.window.rootViewController presentViewController:viewController animated:YES completion:nil];
-            
-            AcceptOrDecline *obj = [AcceptOrDecline new];
-            NSString *msg = [[[ better stringByAppendingString:@" has bet you"] stringByAppendingString: hours]stringByAppendingString:@" to sleep"];
-            obj.displayInfo.text = msg;
+        else{
+//        else if([[targetData objectForKey:betStatus] isEqualToString:@"0"]){
+//            AcceptOrDecline *viewController = [[AcceptOrDecline alloc]init];
+//            [self.window.rootViewController presentViewController:viewController animated:YES completion:nil];
+//            
+//            AcceptOrDecline *obj = [AcceptOrDecline new];
+//            NSString *msg = [[[ better stringByAppendingString:@" has bet you"] stringByAppendingString: hours]stringByAppendingString:@" to sleep"];
+//            obj.displayInfo.text = msg;
         }
     }];
     }

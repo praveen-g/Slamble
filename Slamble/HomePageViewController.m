@@ -35,12 +35,13 @@
 
     //set the text field delegate as self so you hit return to dismiss keyboard 
     [self.amountSleptInput  setDelegate:self];
+//    AppDelegate *delegate =[[UIApplication sharedApplication] delegate];
     
-    PFInstallation *installation = [PFInstallation currentInstallation];
-    [installation setObject:[PFUser currentUser].username forKey:@"username"];
-    [installation setObject:[PFUser currentUser].objectId forKey:@"installationUserId"];;
-    [installation saveInBackground];
-    NSLog(@"installation is: %@", installation);
+//    PFInstallation *installation = [PFInstallation currentInstallation];
+//    [installation setObject:[PFUser currentUser].username forKey:@"username"];
+//    [installation setObject:[PFUser currentUser].objectId forKey:@"installationUserId"];;
+//    [installation saveInBackground];
+//    NSLog(@"installation is: %@", installation);
     
     // Do any additional setup after loading the view.
     // get the username of the current user and log it in the consol
@@ -55,6 +56,7 @@
     
     //declare variable for points value which we will keep in an object
     
+
     
    
 }
