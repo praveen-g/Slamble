@@ -24,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+  
     // this code adds the background image across the entire screen
     UIGraphicsBeginImageContext(self.view.frame.size);
     [[UIImage imageNamed:@"night.jpg"] drawInRect:self.view.bounds];
@@ -60,6 +61,21 @@
     
    
 }
+
+-(void)registerToReceivePushNotification {
+    // Register for push notifications
+    UIApplication* application =[UIApplication sharedApplication];
+    
+    UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+                                                    UIUserNotificationTypeBadge |
+                                                    UIUserNotificationTypeSound);
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+                                                                             categories:nil];
+    [application registerUserNotificationSettings:settings];
+    [application registerForRemoteNotifications];
+
+}
+
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField{
     
@@ -113,6 +129,16 @@
 - (IBAction)logOutButtonPressed:(id)sender {
     //lout out user
     [PFUser logOut];
+    
+    //removing installation data upon logout creates issues logging the user in next time if you don't do so.
+    PFInstallation *currentInstallation=[PFInstallation currentInstallation];
+    [currentInstallation removeObjectForKey:@"currentUser"];
+    [currentInstallation removeObjectForKey:@"username"];
+    [currentInstallation removeObjectForKey:@"installationUserId"];
+    [currentInstallation saveInBackground];
+
+    [currentInstallation saveInBackground];
+    
     
     //go to initial page
     [self dismissViewControllerAnimated:YES completion:nil];

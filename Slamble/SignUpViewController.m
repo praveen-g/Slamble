@@ -111,7 +111,15 @@
                                                 if (user) {
                                                     NSLog(@"Login is Success");
                                                     [self.view endEditing:YES];
+                                                    
+                                                    //updating the installation with user information to target for push notifications
+                                                    PFInstallation *currentInstallation=[PFInstallation currentInstallation];
+                                                    currentInstallation[@"currentUser"]=[PFUser currentUser];
+                                                    [currentInstallation setObject:[PFUser currentUser].username forKey:@"username"];
+                                                    [currentInstallation setObject:[PFUser currentUser].objectId forKey:@"installationUserId"];
+                                                    [currentInstallation saveInBackground];
                                                     [self performSegueWithIdentifier:@"goToHomePage" sender: self];
+                                                    
                                                     //                                            
                                                     // Do stuff after successful login.
                                                 } else {

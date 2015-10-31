@@ -33,6 +33,9 @@
     
     //get current username
     self.currentUserName= [[PFUser currentUser] objectForKey:@"username"];
+    self.currentFirstName = [[PFUser currentUser] objectForKey:@"firstName"];
+    self.currentLastName = [[PFUser currentUser] objectForKey:@"lastName"];
+    
     NSString * userId= [PFUser currentUser].objectId;
     NSLog(@"current user ID is %@", userId);
     PFQuery *query = [PFQuery queryWithClassName:@"betClass"];
@@ -59,51 +62,16 @@
             NSLog(@"no of hours: %@", self.noOfHours);
             NSLog(@"cretedAt Bets Against called: %@", self.betsCreatedAt);
             NSLog(@"no of hours: %@", self.objectID);
-            NSLog(@"cretedAt Bets Against called: %@", self.betterID);
-            [self.tableView reloadData];
+//            NSLog(@"cretedAt Bets Against called: %@", self.betterID);
+//            [self.tableView reloadData];
+            dispatch_async(dispatch_get_main_queue(), ^ {
+                [self.tableView reloadData];
+            });
         }
         else{
             NSLog(@"error %@", error);
         }
     }];
-    
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//
-//        PFQuery *query = [PFQuery queryWithClassName:@"betClass"];
-//        //            [query2 whereKey:@"objectId" equalTo:self.objectId];
-//        [query whereKey:@"sleeperId" equalTo:[PFUser currentUser].objectId];
-//        [query whereKey:@"betStatus" equalTo: @"0"];
-//        [query findObjectsInBackgroundWithBlock:^(NSArray *pendingBetObjects, NSError * error) {
-//            if(!error){
-//                self.listOfBets = pendingBetObjects;
-//                NSLog(@"bet objects are: %@", self.listOfBets);
-//                NSLog(@"bet objects are: %lu", (unsigned long)self.listOfBets.count);
-//                //set a badge for the app depending on number of requests
-//                [[UIApplication sharedApplication] setApplicationIconBadgeNumber:self.listOfBets.count];
-//                
-//                // parses the bet objects into 3 arrays to present in the table view controller (the better, bet status, and created Date
-//                self.better= [self.listOfBets valueForKey:@"better"];
-//                self.noOfHours = [self.listOfBets valueForKey:@"betTime"];
-//                self.betsCreatedAt = [self.listOfBets valueForKey:@"createdAt"];
-//                self.objectID = [self.listOfBets valueForKey:@"objectId"];
-//                self.betterID = [self.listOfBets valueForKey:@"betterid"];
-//                //logs them for testing purposes
-//                NSLog(@"betterArray called: %@", self.better);
-//                NSLog(@"no of hours: %@", self.noOfHours);
-//                NSLog(@"cretedAt Bets Against called: %@", self.betsCreatedAt);
-//                NSLog(@"no of hours: %@", self.objectID);
-//                NSLog(@"cretedAt Bets Against called: %@", self.betterID);
-//
-//                }
-//         else{
-//                // Did not find any betClass for self.currentuserName
-//                NSLog(@"Error: %@",error);
-//            }
-//        }];
-//        //[PFCloud callFunctionInBackground:@"betWinner" withParameters:@{@"objectId":self.objectId}];
-//        [self.tableView reloadData];
-//    });
-//    
 
     
     

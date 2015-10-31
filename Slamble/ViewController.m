@@ -103,7 +103,17 @@
                                             [self performSegueWithIdentifier:@"homePage" sender: self];
                                             self.usernameSignIn.text = nil;
                                             self.passwordSignIn.text = nil;
+                                            
+                                            //updating the installation once the user is logged in
+                                            PFInstallation *currentInstallation=[PFInstallation currentInstallation];
+                                            currentInstallation[@"currentUser"]=[PFUser currentUser];
+                                            [currentInstallation setObject:[PFUser currentUser].username forKey:@"username"];
+                                            [currentInstallation setObject:[PFUser currentUser].objectId forKey:@"installationUserId"];
+                                            [currentInstallation saveInBackground];
+
+                                            
                                             [self.view endEditing:YES];
+                                            
                                         }
                                         else if (error){
                                             //if error, show them an alert and ask them to check credentials

@@ -219,8 +219,7 @@
 				ECC7811B1BD6A8DD00AA18AA /* BetsTableViewController.m */,
 				25F1E33B1BE1A6B100E35884 /* PendingBetRequests.h */,
 				25F1E33C1BE1A6B100E35884 /* PendingBetRequests.m */,
-				2544528D1BDD53EF002F96B2 /* AcceptOrDecline.h */,
-				2544528E1BDD53EF002F96B2 /* AcceptOrDecline.m */,
+				EC69D47A1BE4319B00D89803 /* unused */,
 				25F1A6391BC178D700143C18 /* Assets.xcassets */,
 				ECD2AC801BDF2B7900686F9D /* Slamble.png */,
 				ECD2AC7E1BDF2AEA00686F9D /* Icon@2x.png */,
@@ -291,6 +290,15 @@
 				25F1A6651BC1794A00143C18 /* ParseUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EC69D47A1BE4319B00D89803 /* unused */ = {
+			isa = PBXGroup;
+			children = (
+				2544528D1BDD53EF002F96B2 /* AcceptOrDecline.h */,
+				2544528E1BDD53EF002F96B2 /* AcceptOrDecline.m */,
+			);
+			name = unused;
 			sourceTree = "<group>";
 		};
 		ECBAC6C81BE3298A00D59FC3 /* SignUp/Login */ = {

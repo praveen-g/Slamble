@@ -44,15 +44,17 @@
     self.currentUserFirstName = [[PFUser currentUser] objectForKey:@"firstName"];
     self.currentUserLastName = [[NSString alloc] init];
     self.currentUserLastName = [[PFUser currentUser] objectForKey:@"lastName"];
+    NSLog(@"%@",self.currentUserFirstName);
+    NSLog(@"%@",self.currentUserLastName);
     NSLog(@"the user's name is: %@%@%@", self.currentUserFirstName, @" ", self.currentUserLastName);
     
 //    //create an installation instance of the app in order to be able to target the user by user id for push notifications
 //    
-    PFInstallation *installation = [PFInstallation currentInstallation];
-    [installation setObject:[PFUser currentUser].username forKey:@"username"];
-    [installation setObject:[PFUser currentUser].objectId forKey:@"installationUserId"];
-    [installation saveInBackground];
-    NSLog(@"installation is: %@", installation);
+//    PFInstallation *installation = [PFInstallation currentInstallation];
+//    [installation setObject:[PFUser currentUser].username forKey:@"username"];
+//    [installation setObject:[PFUser currentUser].objectId forKey:@"installationUserId"];
+//    [installation saveInBackground];
+//    NSLog(@"installation is: %@", installation);
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField{

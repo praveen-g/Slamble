@@ -27,14 +27,14 @@
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
      [Fabric with:@[[Crashlytics class]]];
   
-    UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
-                                                   UIUserNotificationTypeBadge |
-                                                   UIUserNotificationTypeSound);
-    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
-                                                                             categories:nil];
-    [application registerUserNotificationSettings:settings];
-    [application registerForRemoteNotifications];
-   
+//    UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+//                                                   UIUserNotificationTypeBadge |
+//                                                   UIUserNotificationTypeSound);
+//    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+//                                                                             categories:nil];
+//    [application registerUserNotificationSettings:settings];
+//    [application registerForRemoteNotifications];
+//   
    
 //    // Override point for customization after application launch.
 //    return [[FBSDKApplicationDelegate sharedInstance] application:application
@@ -70,13 +70,23 @@
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
      //Store the deviceToken in the current installation and save it to Parse.
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-    [currentInstallation setDeviceTokenFromData:deviceToken];
-    NSLog(@"device token is: %@", deviceToken);
-//    currentInstallation.channels = @[ @"global" ];
-    [currentInstallation saveInBackground];
-     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"Registered"];
-    NSLog(@"standard user default: %d", [[NSUserDefaults standardUserDefaults] boolForKey:@"Registered"]);
+    if ([PFUser currentUser] != nil)
+    {
+        //if the installation recognizes the current user, i.e. they haven't logged out set the installation to current user
+        currentInstallation[@"currentUser"]=[PFUser currentUser];
+        [currentInstallation setObject:[PFUser currentUser].username forKey:@"username"];
+        [currentInstallation setObject:[PFUser currentUser].objectId forKey:@"installationUserId"];
     }
+    else {
+        //otherwise remove the previous installation data
+        [currentInstallation removeObjectForKey:@"currentUser"];
+        [currentInstallation removeObjectForKey:@"username"];
+        [currentInstallation removeObjectForKey:@"installationUserId"];
+    }
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    [currentInstallation saveInBackground];
+}
+
 
 
 

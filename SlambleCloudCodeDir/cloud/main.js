@@ -223,6 +223,7 @@ Parse.Cloud.define("computeBetOutcomesForSleeper", function (request, response) 
 	Parse.Cloud.useMasterKey();
 
 	betQuery.equalTo("sleeperId", sleeperId);
+	betQuery.equalTo("betStatus", "1");
 	betQuery.find({
 		success: function (results) {
 			var i,

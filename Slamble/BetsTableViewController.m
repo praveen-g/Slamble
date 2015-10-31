@@ -39,44 +39,132 @@
     
     //calls the current username and assigns it to a string
     self.currentUserName= [[PFUser currentUser] objectForKey:@"username"];
-//    NSLog(@"current userName is: %@",self.currentUserName);
+    //calls the current user ID and assings it to a string
+    self.currentUserId = [PFUser currentUser].objectId;
+    NSLog(@"current userName is: %@",self.currentUserName);
+    NSLog(@"current userName is: %@",self.currentUserId);
+
     
     //creates a query to look at all bets where the current user is a sleeper
     PFQuery *query = [PFQuery queryWithClassName:@"betClass"];
-    [query whereKey:@"sleeper" equalTo:self.currentUserName];
-    self.sleeperObjects =[query findObjects];
-    //counts the number of objects in the sleeper objects array
-    self.sleeperObjectCount = self.sleeperObjects.count;
-    NSLog(@"Successfully retrieved bets. %lu", (unsigned long)self.sleeperObjects.count);
-    NSLog(@"bet objects are: %@", self.sleeperObjects);
+    [query whereKey:@"sleeperId" equalTo:self.currentUserId];
+    [query whereKey:@"betStatus" equalTo:@"1"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * objects, NSError *error){
+        if(!error){
+            self.sleeperObjects =objects;
+//    //counts the number of objects in the sleeper objects array
+//    self.sleeperObjectCount = self.sleeperObjects.count;
+            NSLog(@"Successfully retrieved bets. %lu", (unsigned long)self.sleeperObjects.count);
+            NSLog(@"bet objects are: %@", self.sleeperObjects);
     
-    // parses the sleeper objects into 3 arrays to present in the table view controller (the better, bet times, and created Date"
-    self.betterArrBetsAgainst = [self.sleeperObjects valueForKey:@"better"];
-    self.betTimeArrBetsAgainst= [self.sleeperObjects valueForKey:@"betTime"];
-    self.createdAtBetsArrAgainst = [self.sleeperObjects valueForKey:@"createdAt"];
-    
+            // parses the sleeper objects into 3 arrays to present in the table view controller (the better, bet times, and created Date"
+            self.betterArrBetsAgainst = [self.sleeperObjects valueForKey:@"better"];
+            self.betTimeArrBetsAgainst= [self.sleeperObjects valueForKey:@"betTime"];
+            self.createdAtBetsArrAgainst = [self.sleeperObjects valueForKey:@"createdAt"];
+            id anObject = [self.createdAtBetsArrAgainst objectAtIndex:0];
+            NSLog(@"%@", NSStringFromClass([anObject class]));
+            dispatch_async(dispatch_get_main_queue(), ^ {
+                [self.tableView reloadData];
+            });
+        }
+        else{
+            NSLog(@"error! %@", error);
+        }
+    }];
     //logs them for testing purposes
-    NSLog(@"betterArray called: %@", self.betterArrBetsAgainst);
-    NSLog(@"timeArray called: %@", self.betTimeArrBetsAgainst);
-    NSLog(@"cretedAt Bets Against called: %@", self.createdAtBetsArrAgainst);
+//    NSLog(@"betterArray called: %@", self.betterArrBetsAgainst);
+//    NSLog(@"timeArray called: %@", self.betTimeArrBetsAgainst);
+//    NSLog(@"cretedAt Bets Against called: %@", self.createdAtBetsArrAgainst);
 
     
     //creates a second query to store all bets where the current user is a better
     PFQuery *query2 = [PFQuery queryWithClassName:@"betClass"];
-    [query2 whereKey:@"better" equalTo:self.currentUserName];
-    self.betterObjects =[query2 findObjects];
-    //counts the number of bet objects where the current user is the better
-    self.betterObjectCount =self.betterObjects.count;
-    NSLog(@"Successfully retrieved bets. %lu", (unsigned long)self.betterObjects.count);
-    NSLog(@"bet objects are: %@", self.betterObjects);
+    [query2 whereKey:@"betterId" equalTo:self.currentUserId];
+    [query2 whereKey:@"betStatus" equalTo:@"1"];
+    [query2 findObjectsInBackgroundWithBlock:^(NSArray * objects2, NSError *error){
+        if(!error){
+            self.betterObjects =objects2;
+            //counts the number of bet objects where the current user is the better
+//            self.betterObjectCount =self.betterObjects.count;
+            //    NSLog(@"Successfully retrieved bets. %lu", (unsigned long)self.betterObjects.count);
+            //    NSLog(@"bet objects are: %@", self.betterObjects);
+            
+            //parses the betterObjects into three arrays to present to the Table View Controller
+            self.sleeperArrBetsFor = [self.betterObjects valueForKey:@"sleeper"];
+            self.betTimeBetsFor= [self.betterObjects valueForKey:@"betTime"];
+            self.createdAtBetsArrsFor = [self.betterObjects valueForKey:@"createdAt"];
+            //    NSLog(@"sleeperArray called: %@", self.sleeperArrBetsFor);
+            //    NSLog(@"bettimeArray called: %@", self.betTimeBetsFor);
+            //    NSLog(@"bettimeArray called: %@", self.createdAtBetsArrsFor);
+             //reload table after query finishes
+            dispatch_async(dispatch_get_main_queue(), ^ {
+                [self.tableView reloadData];
+            });
+        }
+        else{
+            NSLog(@"error! %@", error);
+        }
+    }];
     
-    //parses the betterObjects into three arrays to present to the Table View Controller
-    self.sleeperArrBetsFor = [self.betterObjects valueForKey:@"sleeper"];
-    self.betTimeBetsFor= [self.betterObjects valueForKey:@"betTime"];
-    self.createdAtBetsArrAgainst = [self.betterObjects valueForKey:@"createdAt"];
-    NSLog(@"sleeperArray called: %@", self.sleeperArrBetsFor);
-    NSLog(@"bettimeArray called: %@", self.betTimeBetsFor);
-    NSLog(@"bettimeArray called: %@", self.createdAtBetsArrsFor);
+    
+    PFQuery *query3 = [PFQuery queryWithClassName:@"betClass"];
+    [query3 whereKey:@"sleeperId" equalTo:self.currentUserId];
+    [query3 whereKey:@"betStatus" equalTo:@"3"];
+    [query3 findObjectsInBackgroundWithBlock:^(NSArray * objects3, NSError *error){
+        if(!error){
+            self.sleeperObjectsComplete =objects3;
+            //counts the number of bet objects where the current user is the better
+            //            self.betterObjectCount =self.betterObjects.count;
+            //    NSLog(@"Successfully retrieved bets. %lu", (unsigned long)self.betterObjects.count);
+            //    NSLog(@"bet objects are: %@", self.betterObjects);
+            
+            //parses the betterObjects into three arrays to present to the Table View Controller
+            self.betterArrBetsAgainstComplete = [self.sleeperObjectsComplete valueForKey:@"sleeper"];
+            self.betTimeArrBetsAgainstComplete= [self.sleeperObjectsComplete valueForKey:@"betTime"];
+            self.createdAtBetsArrAgainstComplete = [self.sleeperObjectsComplete valueForKey:@"createdAt"];
+            self.betterPointsBetsAgainstComplete = [self.sleeperObjectsComplete valueForKey:@"betterPoints"];
+            self.sleeperPointsBetsAgainstComplete = [self.sleeperObjectsComplete valueForKey:@"sleeperPoints"];
+            //    NSLog(@"sleeperArray called: %@", self.sleeperArrBetsFor);
+            //    NSLog(@"bettimeArray called: %@", self.betTimeBetsFor);
+            //    NSLog(@"bettimeArray called: %@", self.createdAtBetsArrsFor);
+            //reload table after query finishes
+            dispatch_async(dispatch_get_main_queue(), ^ {
+                [self.tableView reloadData];
+            });
+        }
+        else{
+            NSLog(@"error! %@", error);
+        }
+    }];
+    
+    
+    PFQuery *query4 = [PFQuery queryWithClassName:@"betClass"];
+    [query4 whereKey:@"betterId" equalTo:self.currentUserId];
+    [query4 whereKey:@"betStatus" equalTo:@"3"];
+    [query4 findObjectsInBackgroundWithBlock:^(NSArray * objects4, NSError *error){
+        if(!error){
+            self.betterObjectsComplete =objects4;
+            
+            //parses the betterObjects into three arrays to present to the Table View Controller
+            self.sleeperArrBetsForComplete= [self.betterObjectsComplete valueForKey:@"sleeper"];
+            self.betTimeBetsForComplete= [self.betterObjectsComplete valueForKey:@"betTime"];
+            self.createdAtBetsArrsForComplete = [self.betterObjectsComplete valueForKey:@"createdAt"];
+            self.betterPointsBetsForComplete = [self.sleeperObjectsComplete valueForKey:@"betterPoints"];
+            self.sleeperPointsBetsForComplete = [self.sleeperObjectsComplete valueForKey:@"sleeperPoints"];
+            //    NSLog(@"sleeperArray called: %@", self.sleeperArrBetsFor);
+            //    NSLog(@"bettimeArray called: %@", self.betTimeBetsFor);
+            //    NSLog(@"bettimeArray called: %@", self.createdAtBetsArrsFor);
+            //reloading the table after query finishes
+            dispatch_async(dispatch_get_main_queue(), ^ {
+                [self.tableView reloadData];
+            });
+        }
+        else{
+            NSLog(@"error! %@", error);
+        }
+    }];
+    
+    
 
 
     // Uncomment the following line to preserve selection between presentations.
@@ -92,9 +180,10 @@
 }
 
 
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
    //returns the number of sections based on the number of bet objects for the sleeper array and better array
-    return 2;
+    return 4;
 //    if ((self.sleeperObjects.count > 0) && (self.betterObjects.count>0)) {
 //        return 2;
 //    }
@@ -130,6 +219,24 @@
         return self.betterObjects.count;
         }
     }
+    
+    if (section == 2){
+        if (self.sleeperObjectsComplete.count == 0){
+            return 1;
+        }
+        else {
+            return self.sleeperObjectsComplete.count;
+        }
+        
+    }
+    if (section == 3){
+        if(self.betterObjectsComplete.count ==0){
+            return 1;
+        }
+        else{
+            return self.betterObjectsComplete.count;
+        }
+    }
     else{
         return 0;
     }
@@ -145,11 +252,19 @@
         //creates a header for each section
         
     {
-        return @"Bets Against";
+        return @"Active Bets Against";
     }
     else if(section == 1)
     {
-        return @"Bets For";
+        return @"Active Bets For";
+    }
+    else if(section == 2)
+    {
+        return @"Completed Bets For";
+    }
+    else if(section == 3)
+    {
+        return @"Completed Bets Against";
     }
     else
     {
@@ -201,6 +316,38 @@
         cell.detailTextLabel.text  = detailText2;
         }
 
+    }
+    if (indexPath.section ==2){
+        if (self.sleeperObjectsComplete.count == 0){
+            cell.textLabel.text = @"No Completed Bets Against You";
+            cell.detailTextLabel.text = @"";
+        }
+        else{
+            // first creates a string of the better
+            NSString *labelText3 = [NSString stringWithFormat:@"%s%@%s%@%s", "Bet By: ", self.betterArrBetsAgainstComplete[indexPath.row], " To Sleep: ", self.betTimeArrBetsAgainstComplete[indexPath.row], " hours"];
+            //then creates a string of the hours bet
+            NSString *detailText3 = [NSString stringWithFormat:@"%s%@%s%@%s%@", "Your points: ", self.sleeperPointsBetsAgainstComplete[indexPath.row], "  ", self.betterArrBetsAgainstComplete[indexPath.row], "'s points: ", self.betterPointsBetsAgainstComplete[indexPath.row]];
+            cell.textLabel.text = labelText3;
+            cell.detailTextLabel.text  = detailText3;
+        }
+        //
+    }
+    if (indexPath.section ==3){
+        if (self.betterObjectsComplete.count == 0){
+            cell.textLabel.text = @"No Completed Bets Against Anyone";
+            cell.detailTextLabel.text = @"";
+        }
+        
+        else{
+            
+            NSString *labelText4 = [NSString stringWithFormat:@"%s%@%s%@%s", "Bet By: ", self.sleeperArrBetsForComplete[indexPath.row], " To Sleep: ", self.betTimeBetsForComplete[indexPath.row], " hours"];
+            //then creates a string of the hours bet
+            NSString *detailText4 = [NSString stringWithFormat:@"%s%@%s%@%s%@", "Your points: ", self.betterPointsBetsForComplete[indexPath.row], "  ", self.sleeperArrBetsForComplete[indexPath.row], "'s points: ", self.sleeperPointsBetsForComplete[indexPath.row]];
+            cell.textLabel.text = labelText4;
+            cell.detailTextLabel.text  = detailText4;
+    
+        }
+        
     }
     
     
