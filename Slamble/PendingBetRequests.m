@@ -25,6 +25,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIGraphicsBeginImageContext(self.view.frame.size);
+    [[UIImage imageNamed:@"night.jpg"] drawInRect:self.view.bounds];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
     
     //initialize array for list of bets that have not been validated yet
     self.listOfBets =[[NSArray alloc]init];
@@ -83,6 +89,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.3];
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     //returns the number of sections based on the number of bet objects for the sleeper array and better array
@@ -123,6 +132,7 @@
     if (self.listOfBets.count == 0){
         cell.textLabel.text = @"No Outstanding Bets Against You";
         cell.detailTextLabel.text = @"";
+        
     }
     else{
         // first creates a string of the better
@@ -180,8 +190,10 @@
     
     return @[accept, decline];
 }
-
-/*
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 2.0;
+}/*
  // Override to support rearranging the table view.
  - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
  }
