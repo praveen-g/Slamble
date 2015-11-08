@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		085C955A1BC4B33F00728414 /* night.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 085C95591BC4B33F00728414 /* night.jpg */; };
+		08D515C71BEF281E0054AA9F /* ContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08D515C61BEF281E0054AA9F /* ContactsTableViewController.m */; };
 		2544528F1BDD53EF002F96B2 /* AcceptOrDecline.m in Sources */ = {isa = PBXBuildFile; fileRef = 2544528E1BDD53EF002F96B2 /* AcceptOrDecline.m */; };
 		254452911BDD5438002F96B2 /* SPLASH.png in Resources */ = {isa = PBXBuildFile; fileRef = 254452901BDD5438002F96B2 /* SPLASH.png */; };
 		25B9BD1A1BCC988400982D78 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B9BD191BCC988400982D78 /* Crashlytics.framework */; };
@@ -72,6 +73,8 @@
 
 /* Begin PBXFileReference section */
 		085C95591BC4B33F00728414 /* night.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = night.jpg; sourceTree = "<group>"; };
+		08D515C51BEF281E0054AA9F /* ContactsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsTableViewController.h; sourceTree = "<group>"; };
+		08D515C61BEF281E0054AA9F /* ContactsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsTableViewController.m; sourceTree = "<group>"; };
 		2544528D1BDD53EF002F96B2 /* AcceptOrDecline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptOrDecline.h; sourceTree = "<group>"; };
 		2544528E1BDD53EF002F96B2 /* AcceptOrDecline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptOrDecline.m; sourceTree = "<group>"; };
 		254452901BDD5438002F96B2 /* SPLASH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SPLASH.png; sourceTree = "<group>"; };
@@ -208,6 +211,8 @@
 			isa = PBXGroup;
 			children = (
 				25F1A6361BC178D700143C18 /* Main.storyboard */,
+				08D515C51BEF281E0054AA9F /* ContactsTableViewController.h */,
+				08D515C61BEF281E0054AA9F /* ContactsTableViewController.m */,
 				ECBAC6C81BE3298A00D59FC3 /* SignUp/Login */,
 				25F1A6301BC178D700143C18 /* AppDelegate.h */,
 				25F1A6311BC178D700143C18 /* AppDelegate.m */,
@@ -474,6 +479,7 @@
 			files = (
 				25F1A6351BC178D700143C18 /* ViewController.m in Sources */,
 				2544528F1BDD53EF002F96B2 /* AcceptOrDecline.m in Sources */,
+				08D515C71BEF281E0054AA9F /* ContactsTableViewController.m in Sources */,
 				25F1A6321BC178D700143C18 /* AppDelegate.m in Sources */,
 				ECC7811C1BD6A8DD00AA18AA /* BetsTableViewController.m in Sources */,
 				EC65B2F51BC1F79700C47D08 /* HomePageViewController.m in Sources */,
