@@ -20,5 +20,7 @@
 @property (strong, nonatomic) NSString *createdAt;
 @property int UserPoints;
 @property (strong, nonatomic) NSString *stringUserPoints;
+@property (strong, nonatomic) IBOutlet UILabel *welcomeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *pendingBets;
 //-(void) queryUserPoints;
 @end

@@ -16,9 +16,7 @@
 		25F1A62F1BC178D700143C18 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F1A62E1BC178D700143C18 /* main.m */; };
 		25F1A6321BC178D700143C18 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F1A6311BC178D700143C18 /* AppDelegate.m */; };
 		25F1A6351BC178D700143C18 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F1A6341BC178D700143C18 /* ViewController.m */; };
-		25F1A6381BC178D700143C18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25F1A6361BC178D700143C18 /* Main.storyboard */; };
 		25F1A63A1BC178D700143C18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25F1A6391BC178D700143C18 /* Assets.xcassets */; };
-		25F1A63D1BC178D700143C18 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25F1A63B1BC178D700143C18 /* LaunchScreen.storyboard */; };
 		25F1A6481BC178D700143C18 /* SlambleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F1A6471BC178D700143C18 /* SlambleTests.m */; };
 		25F1A6531BC178D700143C18 /* SlambleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F1A6521BC178D700143C18 /* SlambleUITests.m */; };
 		25F1A6661BC1794A00143C18 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F1A6601BC1794A00143C18 /* Bolts.framework */; };
@@ -49,6 +47,21 @@
 		25F1E33D1BE1A6B100E35884 /* PendingBetRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F1E33C1BE1A6B100E35884 /* PendingBetRequests.m */; };
 		EC4228261BC37D0A0043C3BD /* MakeBetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4228251BC37D0A0043C3BD /* MakeBetsViewController.m */; };
 		EC65B2F51BC1F79700C47D08 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC65B2F41BC1F79700C47D08 /* HomePageViewController.m */; };
+		EC70C7281BF03DAE0039A262 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC70C7261BF03DAE0039A262 /* Main.storyboard */; };
+		EC70C7291BF03DAE0039A262 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC70C7271BF03DAE0039A262 /* LaunchScreen.storyboard */; };
+		EC70C73E1BF03E030039A262 /* backdrop3.png in Resources */ = {isa = PBXBuildFile; fileRef = EC70C72B1BF03E030039A262 /* backdrop3.png */; };
+		EC70C7401BF03E030039A262 /* cloudButton.png in Resources */ = {isa = PBXBuildFile; fileRef = EC70C72D1BF03E030039A262 /* cloudButton.png */; };
+		EC70C7421BF03E030039A262 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC70C72F1BF03E030039A262 /* Icon@2x.png */; };
+		EC70C7431BF03E030039A262 /* lauchScreen2.png in Resources */ = {isa = PBXBuildFile; fileRef = EC70C7301BF03E030039A262 /* lauchScreen2.png */; };
+		EC70C7441BF03E030039A262 /* launchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = EC70C7311BF03E030039A262 /* launchScreen.png */; };
+		EC70C7451BF03E030039A262 /* launchScreen2.png in Resources */ = {isa = PBXBuildFile; fileRef = EC70C7321BF03E030039A262 /* launchScreen2.png */; };
+		EC70C7461BF03E030039A262 /* make bets icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EC70C7331BF03E030039A262 /* make bets icon.png */; };
+		EC70C7471BF03E030039A262 /* My Bets.png in Resources */ = {isa = PBXBuildFile; fileRef = EC70C7341BF03E030039A262 /* My Bets.png */; };
+		EC70C7481BF03E030039A262 /* My Page.png in Resources */ = {isa = PBXBuildFile; fileRef = EC70C7351BF03E030039A262 /* My Page.png */; };
+		EC70C7491BF03E030039A262 /* night.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EC70C7361BF03E030039A262 /* night.jpg */; };
+		EC70C74A1BF03E030039A262 /* Rectangle 2.png in Resources */ = {isa = PBXBuildFile; fileRef = EC70C7371BF03E030039A262 /* Rectangle 2.png */; };
+		EC70C74F1BF03E030039A262 /* slambleIcon4.png in Resources */ = {isa = PBXBuildFile; fileRef = EC70C73C1BF03E030039A262 /* slambleIcon4.png */; };
+		EC70C7501BF03E030039A262 /* SPLASH.png in Resources */ = {isa = PBXBuildFile; fileRef = EC70C73D1BF03E030039A262 /* SPLASH.png */; };
 		ECC7811C1BD6A8DD00AA18AA /* BetsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC7811B1BD6A8DD00AA18AA /* BetsTableViewController.m */; };
 		ECD2AC7F1BDF2AEA00686F9D /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD2AC7E1BDF2AEA00686F9D /* Icon@2x.png */; };
 		ECD2AC811BDF2B7900686F9D /* Slamble.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD2AC801BDF2B7900686F9D /* Slamble.png */; };
@@ -86,9 +99,7 @@
 		25F1A6311BC178D700143C18 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		25F1A6331BC178D700143C18 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		25F1A6341BC178D700143C18 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		25F1A6371BC178D700143C18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		25F1A6391BC178D700143C18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		25F1A63C1BC178D700143C18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25F1A63E1BC178D700143C18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25F1A6431BC178D700143C18 /* SlambleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlambleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		25F1A6471BC178D700143C18 /* SlambleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SlambleTests.m; sourceTree = "<group>"; };
@@ -129,6 +140,21 @@
 		EC4228251BC37D0A0043C3BD /* MakeBetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeBetsViewController.m; sourceTree = "<group>"; };
 		EC65B2F31BC1F79700C47D08 /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
 		EC65B2F41BC1F79700C47D08 /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
+		EC70C7261BF03DAE0039A262 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		EC70C7271BF03DAE0039A262 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EC70C72B1BF03E030039A262 /* backdrop3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = backdrop3.png; path = assets/backdrop3.png; sourceTree = "<group>"; };
+		EC70C72D1BF03E030039A262 /* cloudButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloudButton.png; sourceTree = "<group>"; };
+		EC70C72F1BF03E030039A262 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		EC70C7301BF03E030039A262 /* lauchScreen2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lauchScreen2.png; sourceTree = "<group>"; };
+		EC70C7311BF03E030039A262 /* launchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchScreen.png; sourceTree = "<group>"; };
+		EC70C7321BF03E030039A262 /* launchScreen2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = launchScreen2.png; path = assets/launchScreen2.png; sourceTree = "<group>"; };
+		EC70C7331BF03E030039A262 /* make bets icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "make bets icon.png"; sourceTree = "<group>"; };
+		EC70C7341BF03E030039A262 /* My Bets.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "My Bets.png"; sourceTree = "<group>"; };
+		EC70C7351BF03E030039A262 /* My Page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "My Page.png"; sourceTree = "<group>"; };
+		EC70C7361BF03E030039A262 /* night.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = night.jpg; sourceTree = "<group>"; };
+		EC70C7371BF03E030039A262 /* Rectangle 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rectangle 2.png"; sourceTree = "<group>"; };
+		EC70C73C1BF03E030039A262 /* slambleIcon4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slambleIcon4.png; sourceTree = "<group>"; };
+		EC70C73D1BF03E030039A262 /* SPLASH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SPLASH.png; sourceTree = "<group>"; };
 		ECC7811A1BD6A8DD00AA18AA /* BetsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BetsTableViewController.h; sourceTree = "<group>"; };
 		ECC7811B1BD6A8DD00AA18AA /* BetsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BetsTableViewController.m; sourceTree = "<group>"; };
 		ECD2AC7E1BDF2AEA00686F9D /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
@@ -210,7 +236,8 @@
 		25F1A62C1BC178D700143C18 /* Slamble */ = {
 			isa = PBXGroup;
 			children = (
-				25F1A6361BC178D700143C18 /* Main.storyboard */,
+				EC70C7261BF03DAE0039A262 /* Main.storyboard */,
+				EC70C7271BF03DAE0039A262 /* LaunchScreen.storyboard */,
 				08D515C51BEF281E0054AA9F /* ContactsTableViewController.h */,
 				08D515C61BEF281E0054AA9F /* ContactsTableViewController.m */,
 				ECBAC6C81BE3298A00D59FC3 /* SignUp/Login */,
@@ -226,9 +253,11 @@
 				25F1E33C1BE1A6B100E35884 /* PendingBetRequests.m */,
 				EC69D47A1BE4319B00D89803 /* unused */,
 				25F1A6391BC178D700143C18 /* Assets.xcassets */,
+				EC70C7321BF03E030039A262 /* launchScreen2.png */,
+				EC70C72B1BF03E030039A262 /* backdrop3.png */,
+				EC70C72A1BF03E030039A262 /* assets */,
 				ECD2AC801BDF2B7900686F9D /* Slamble.png */,
 				ECD2AC7E1BDF2AEA00686F9D /* Icon@2x.png */,
-				25F1A63B1BC178D700143C18 /* LaunchScreen.storyboard */,
 				25F1A63E1BC178D700143C18 /* Info.plist */,
 				085C95591BC4B33F00728414 /* night.jpg */,
 				254452901BDD5438002F96B2 /* SPLASH.png */,
@@ -304,6 +333,24 @@
 				2544528E1BDD53EF002F96B2 /* AcceptOrDecline.m */,
 			);
 			name = unused;
+			sourceTree = "<group>";
+		};
+		EC70C72A1BF03E030039A262 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				EC70C72D1BF03E030039A262 /* cloudButton.png */,
+				EC70C72F1BF03E030039A262 /* Icon@2x.png */,
+				EC70C7301BF03E030039A262 /* lauchScreen2.png */,
+				EC70C7311BF03E030039A262 /* launchScreen.png */,
+				EC70C7331BF03E030039A262 /* make bets icon.png */,
+				EC70C7341BF03E030039A262 /* My Bets.png */,
+				EC70C7351BF03E030039A262 /* My Page.png */,
+				EC70C7361BF03E030039A262 /* night.jpg */,
+				EC70C7371BF03E030039A262 /* Rectangle 2.png */,
+				EC70C73C1BF03E030039A262 /* slambleIcon4.png */,
+				EC70C73D1BF03E030039A262 /* SPLASH.png */,
+			);
+			path = assets;
 			sourceTree = "<group>";
 		};
 		ECBAC6C81BE3298A00D59FC3 /* SignUp/Login */ = {
@@ -430,13 +477,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC70C7421BF03E030039A262 /* Icon@2x.png in Resources */,
+				EC70C7281BF03DAE0039A262 /* Main.storyboard in Resources */,
 				ECD2AC811BDF2B7900686F9D /* Slamble.png in Resources */,
-				25F1A63D1BC178D700143C18 /* LaunchScreen.storyboard in Resources */,
 				ECD2AC7F1BDF2AEA00686F9D /* Icon@2x.png in Resources */,
+				EC70C7461BF03E030039A262 /* make bets icon.png in Resources */,
+				EC70C7501BF03E030039A262 /* SPLASH.png in Resources */,
 				25F1A63A1BC178D700143C18 /* Assets.xcassets in Resources */,
+				EC70C74A1BF03E030039A262 /* Rectangle 2.png in Resources */,
+				EC70C7441BF03E030039A262 /* launchScreen.png in Resources */,
+				EC70C7401BF03E030039A262 /* cloudButton.png in Resources */,
+				EC70C7431BF03E030039A262 /* lauchScreen2.png in Resources */,
 				085C955A1BC4B33F00728414 /* night.jpg in Resources */,
+				EC70C7491BF03E030039A262 /* night.jpg in Resources */,
+				EC70C7481BF03E030039A262 /* My Page.png in Resources */,
+				EC70C74F1BF03E030039A262 /* slambleIcon4.png in Resources */,
+				EC70C7451BF03E030039A262 /* launchScreen2.png in Resources */,
 				254452911BDD5438002F96B2 /* SPLASH.png in Resources */,
-				25F1A6381BC178D700143C18 /* Main.storyboard in Resources */,
+				EC70C7471BF03E030039A262 /* My Bets.png in Resources */,
+				EC70C73E1BF03E030039A262 /* backdrop3.png in Resources */,
+				EC70C7291BF03DAE0039A262 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,25 +580,6 @@
 			targetProxy = 25F1A64F1BC178D700143C18 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		25F1A6361BC178D700143C18 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				25F1A6371BC178D700143C18 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		25F1A63B1BC178D700143C18 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				25F1A63C1BC178D700143C18 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		25F1A6551BC178D700143C18 /* Debug */ = {

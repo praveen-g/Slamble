@@ -26,11 +26,14 @@
     [super viewDidLoad];
     
     UIGraphicsBeginImageContext(self.view.frame.size);
-    [[UIImage imageNamed:@"night.jpg"] drawInRect:self.view.bounds];
+    [[UIImage imageNamed:@"backdrop3.png"] drawInRect:self.view.bounds];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:image];
+    self.automaticallyAdjustsScrollViewInsets=YES;
+//    self.tableView.tableHeaderView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 20)];
+//     [self.tableView.tableHeaderView setBackgroundColor:[UIColor whiteColor]];
     
     // initializes two arrays, one to keep all bet objects where the current user is a better
     // the other to keep all bets where the current user is a sleeper
@@ -246,33 +249,42 @@
     
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if(self.betterObjects.count <1 && self.sleeperObjects.count <1){
-        return @"";
-    }
+
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    // 1. The view for the header
+      UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 20)];
     
-    else if(section == 0)
-        //creates a header for each section
-        
-    {
-        return @"Active Bets Against";
+    // 2. Set a custom background color and a border
+    headerView.backgroundColor = [UIColor whiteColor];
+    headerView.layer.borderColor = [UIColor colorWithWhite:0.5 alpha:1.0].CGColor;
+    headerView.layer.borderWidth = 1.0;
+    
+    // 3. Add a label
+    UILabel* headerLabel = [[UILabel alloc] init];
+    headerLabel.frame = CGRectMake(5, 2, tableView.frame.size.width - 5, 18);
+    headerLabel.backgroundColor = [UIColor clearColor];
+    headerLabel.textColor = [UIColor blackColor];
+    headerLabel.font = [UIFont boldSystemFontOfSize:16.0];
+    headerLabel.textAlignment = NSTextAlignmentLeft;
+    
+    // 4. Add the label to the header view
+    [headerView addSubview:headerLabel];
+
+    if (section == 0){
+        headerLabel.text = @"Active Bets Against";
+
     }
-    else if(section == 1)
-    {
-        return @"Active Bets For";
+    else if (section == 1){
+        headerLabel.text = @"Active Bets For";
     }
-    else if(section == 2)
-    {
-        return @"Completed Bets For";
+    else if (section == 2){
+        headerLabel.text = @"Completed Bets Against";
     }
-    else if(section == 3)
-    {
-        return @"Completed Bets Against";
+    else if (section == 3){
+        headerLabel.text = @"Completed Bets For";
     }
-    else
-    {
-        return @" ";
-    }
+    return headerView;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

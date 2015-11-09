@@ -17,8 +17,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.automaticallyAdjustsScrollViewInsets=NO;
-    self.tableView.tableHeaderView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 20)];
+    UIGraphicsBeginImageContext(self.view.frame.size);
+    [[UIImage imageNamed:@"backdrop3.png"] drawInRect:self.view.bounds];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
+    
+    self.automaticallyAdjustsScrollViewInsets=YES;
+//    self.tableView.tableHeaderView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 20)];
     self.contactsArray=[[NSMutableArray alloc]init];
     self.contactsFirstName=[[NSMutableArray alloc]init];
     self.contactsLastName=[[NSMutableArray alloc]init];
@@ -105,6 +112,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.3];
+}
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     //NSLog(@"1");
@@ -150,6 +161,30 @@
     
     
     return cell;
+}
+
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    // 1. The view for the header
+    UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 20)];
+    
+    // 2. Set a custom background color and a border
+    headerView.backgroundColor = [UIColor whiteColor];
+    headerView.layer.borderColor = [UIColor colorWithWhite:0.5 alpha:1.0].CGColor;
+    headerView.layer.borderWidth = 1.0;
+    
+    // 3. Add a label
+    UILabel* headerLabel = [[UILabel alloc] init];
+    headerLabel.frame = CGRectMake(5, 2, tableView.frame.size.width - 5, 18);
+    headerLabel.backgroundColor = [UIColor clearColor];
+    headerLabel.textColor = [UIColor blackColor];
+    headerLabel.font = [UIFont boldSystemFontOfSize:16.0];
+    headerLabel.textAlignment = NSTextAlignmentLeft;
+    headerLabel.text = @"Contacts";
+    
+    // 4. Add the label to the header view
+    [headerView addSubview:headerLabel];
+    return headerView;
 }
 
 

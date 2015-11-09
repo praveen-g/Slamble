@@ -28,7 +28,7 @@
     
     // this code adds the background image across the entire screen
     UIGraphicsBeginImageContext(self.view.frame.size);
-    [[UIImage imageNamed:@"night.jpg"] drawInRect:self.view.bounds];
+    [[UIImage imageNamed:@"backdrop3.png"] drawInRect:self.view.bounds];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     

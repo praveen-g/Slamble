@@ -26,24 +26,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIGraphicsBeginImageContext(self.view.frame.size);
-    [[UIImage imageNamed:@"night.jpg"] drawInRect:self.view.bounds];
+    [[UIImage imageNamed:@"backdrop3.png"] drawInRect:self.view.bounds];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:image];
+    
+    self.automaticallyAdjustsScrollViewInsets=YES;
     
     //initialize array for list of bets that have not been validated yet
     self.listOfBets =[[NSArray alloc]init];
     self.currentFirstName = [[NSString alloc] init];
     self.currentLastName = [[NSString alloc] init];
     
-    //get current username
+    //get current username, first name, last name, object ID
     self.currentUserName= [[PFUser currentUser] objectForKey:@"username"];
     self.currentFirstName = [[PFUser currentUser] objectForKey:@"firstName"];
     self.currentLastName = [[PFUser currentUser] objectForKey:@"lastName"];
-    
     NSString * userId= [PFUser currentUser].objectId;
     NSLog(@"current user ID is %@", userId);
+    
+    //query for all bets that have status of 0, i.e. not actioned
     PFQuery *query = [PFQuery queryWithClassName:@"betClass"];
     [query whereKey:@"sleeperId" equalTo:[PFUser currentUser].objectId];
     [query whereKey:@"betStatus" equalTo: @"0"];
@@ -112,8 +115,10 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"Active Bet Requests";
+    return @"Bets Not Yet Actioned";
 }
+
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -158,6 +163,11 @@
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
+//    dispatch_async(dispatch_get_main_queue(), ^ {
+//        [self.tableView reloadData];
+//    });
+    
     
 }
 -(NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -174,6 +184,9 @@
                                         NSString* messageAccept = [NSString stringWithFormat:@"%s%@%s%@%@%@%@", "Your bet to ", self.currentFirstName, "", self.currentLastName, @" to sleep ", self.noOfHours[indexPath.row], @" hours has been accepted"];
                                         
                                         [PFCloud callFunctionInBackground:@"sendPushNotificationsToBetter" withParameters:@{@"betterID":self.betterID[indexPath.row] ,@"objectID":self.objectID[indexPath.row], @"message": messageAccept, @"betStatus": @"1"}];
+//                                        dispatch_async(dispatch_get_main_queue(), ^ {
+//                                            [self.tableView reloadData];
+//                                        });
                                         
                                     }];
     accept.backgroundColor = [UIColor redColor];
@@ -183,6 +196,9 @@
                                          NSString* messageDecline = [NSString stringWithFormat:@"%s%@%s%@%@%@%@", "Your bet to ", self.currentFirstName, "", self.currentLastName, @" to sleep ", self.noOfHours[indexPath.row], @" hours has been declined"];
                                          
                                          [PFCloud callFunctionInBackground:@"sendPushNotificationsToBetter" withParameters:@{@"betterID":self.betterID[indexPath.row], @"objectID":self.objectID[indexPath.row], @"message": messageDecline, @"betStatus": @"2"}];
+//                                         dispatch_async(dispatch_get_main_queue(), ^ {
+//                                             [self.tableView reloadData];
+//                                         });
                                      }];
     
     
@@ -190,10 +206,36 @@
     
     return @[accept, decline];
 }
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    return 2.0;
-}/*
+    // 1. The view for the header
+    UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 20)];
+    
+    // 2. Set a custom background color and a border
+    headerView.backgroundColor = [UIColor whiteColor];
+    headerView.layer.borderColor = [UIColor colorWithWhite:0.5 alpha:1.0].CGColor;
+    headerView.layer.borderWidth = 1.0;
+    
+    // 3. Add a label
+    UILabel* headerLabel = [[UILabel alloc] init];
+    headerLabel.frame = CGRectMake(5, 2, tableView.frame.size.width - 5, 18);
+    headerLabel.backgroundColor = [UIColor clearColor];
+    headerLabel.textColor = [UIColor blackColor];
+    headerLabel.font = [UIFont boldSystemFontOfSize:16.0];
+    headerLabel.textAlignment = NSTextAlignmentLeft;
+    headerLabel.text = @"Bets Not Yet Actioned";
+    
+    // 4. Add the label to the header view
+    [headerView addSubview:headerLabel];
+    return headerView;
+}
+
+//-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//{
+//    return 2.0;
+//}
+/*
  // Override to support rearranging the table view.
  - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
  }

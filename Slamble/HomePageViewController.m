@@ -27,7 +27,7 @@
   
     // this code adds the background image across the entire screen
     UIGraphicsBeginImageContext(self.view.frame.size);
-    [[UIImage imageNamed:@"night.jpg"] drawInRect:self.view.bounds];
+    [[UIImage imageNamed:@"backdrop3.png"] drawInRect:self.view.bounds];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
@@ -48,6 +48,10 @@
     // get the username of the current user and log it in the consol
 //    NSString *currentUserName = [[NSString alloc] init];
     self.currentUserName= [[PFUser currentUser] objectForKey:@"username"];
+    NSString *firstName = [[PFUser currentUser] objectForKey:@"firstName"];
+    self.UserPoints = [[[PFUser currentUser] objectForKey:@"points"] integerValue];
+    NSLog(@"firstName String is %@", firstName);
+    self.welcomeLabel.text = [NSString stringWithFormat:@"%s%@%s", "Welcome ", firstName, "!"];
     NSLog(@"current userName is: %@",self.currentUserName);
     self.UserPoints = [[[PFUser currentUser] objectForKey:@"points"] integerValue];
     self.stringUserPoints = [NSString stringWithFormat:@"%i", self.UserPoints];
@@ -58,8 +62,26 @@
     //declare variable for points value which we will keep in an object
     
 
-    
+
    
+}
+
+-(void) viewDidAppear:(BOOL)animated{
+    // counts the number of bets with a status of 0
+    PFQuery *query = [PFQuery queryWithClassName:@"betClass"];
+    [query whereKey:@"sleeperId" equalTo:[PFUser currentUser].objectId];
+    [query whereKey:@"betStatus" equalTo: @"0"];
+    //    self.listOfBets = [query findObjects];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * pendingBets, NSError *error){
+        if(!error){
+            self.pendingBets.text =[NSString stringWithFormat:@"%lu", (unsigned long)pendingBets.count];
+            NSLog(@"setting betsCount");
+        }
+        else{
+            NSLog(@"error is %@", error);
+        }
+        //declare variable for points value which we will keep in an object
+    }];
 }
 
 -(void)registerToReceivePushNotification {
@@ -91,30 +113,31 @@
     long timeSlept = [self.amountSleptInput.text integerValue];
     NSLog(@"Timeslept: %ld", timeSlept);
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        //NSLog(@"LALALALALALA DONT FUNK WITH MY HEART");
-        //NSLog(@"self.objectd is:%@",self.objectId);
-        PFQuery *query = [PFQuery queryWithClassName:@"betClass"];
-        //            [query2 whereKey:@"objectId" equalTo:self.objectId];
-        [query whereKey:@"sleeperId" equalTo:[PFUser currentUser].objectId];
-        //[query2 orderByDescending:@"createdAt"]; // this reverses the query2 order so that the latest bet with self.currentUserName as sleeper, UPDATE THIS AND CHECK
-        //            [query2 getFirstObjectInBackgroundWithBlock:^(PFObject * betClassObject, NSError * error) {
-        [query findObjectsInBackgroundWithBlock:^(NSArray *betObjects, NSError * error) {
-            if(!error){
-                //Found betClass
-                for (PFObject *bet in betObjects) {
-                    [bet setObject:self.amountSleptInput.text forKey:@"hoursSlept"];
-                    [bet saveInBackground];
-                }
-            }
-            else{
-                // Did not find any betClass for self.currentuserName
-                NSLog(@"Error: %@",error);
-            }
-        }];
-        //[PFCloud callFunctionInBackground:@"betWinner" withParameters:@{@"objectId":self.objectId}];
+            //[PFCloud callFunctionInBackground:@"betWinner" withParameters:@{@"objectId":self.objectId}];
+    if (self.amountSleptInput.text == nil || timeSlept < -1 || timeSlept > 24){
+        UIAlertController* alertError = [UIAlertController alertControllerWithTitle:@"Ruh Roh!"
+                                                                       message:@"Please enter a valid amount of time slept"
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action) {}];
+        
+        [alertError addAction:defaultAction];
+        [self presentViewController:alertError animated:YES completion:nil];
+        
+    }
         [PFCloud callFunctionInBackground:@"computeBetOutcomesForSleeper" withParameters:@{@"sleeperId":[PFUser currentUser].objectId}];
-    });
+    self.amountSleptInput.text = nil;
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Sleep Entered Successfully!"
+                                                                   message:@"Let's Hope You Won!"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+    
     
     
     
