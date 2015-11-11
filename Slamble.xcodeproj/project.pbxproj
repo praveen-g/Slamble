@@ -65,6 +65,9 @@
 		ECC7811C1BD6A8DD00AA18AA /* BetsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC7811B1BD6A8DD00AA18AA /* BetsTableViewController.m */; };
 		ECD2AC7F1BDF2AEA00686F9D /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD2AC7E1BDF2AEA00686F9D /* Icon@2x.png */; };
 		ECD2AC811BDF2B7900686F9D /* Slamble.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD2AC801BDF2B7900686F9D /* Slamble.png */; };
+		ECF142611BF2DDDB0058397C /* cloudsBest.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECF142601BF2DDDB0058397C /* cloudsBest.jpg */; };
+		ECF142631BF2E1A10058397C /* cloudsNew.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF142621BF2E1A10058397C /* cloudsNew.png */; };
+		ECF142651BF2E3560058397C /* cloudsNew.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF142641BF2E3560058397C /* cloudsNew.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,6 +162,9 @@
 		ECC7811B1BD6A8DD00AA18AA /* BetsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BetsTableViewController.m; sourceTree = "<group>"; };
 		ECD2AC7E1BDF2AEA00686F9D /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		ECD2AC801BDF2B7900686F9D /* Slamble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Slamble.png; sourceTree = "<group>"; };
+		ECF142601BF2DDDB0058397C /* cloudsBest.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cloudsBest.jpg; sourceTree = "<group>"; };
+		ECF142621BF2E1A10058397C /* cloudsNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloudsNew.png; sourceTree = "<group>"; };
+		ECF142641BF2E3560058397C /* cloudsNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloudsNew.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -338,7 +344,10 @@
 		EC70C72A1BF03E030039A262 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				ECF142641BF2E3560058397C /* cloudsNew.png */,
 				EC70C72D1BF03E030039A262 /* cloudButton.png */,
+				ECF142621BF2E1A10058397C /* cloudsNew.png */,
+				ECF142601BF2DDDB0058397C /* cloudsBest.jpg */,
 				EC70C72F1BF03E030039A262 /* Icon@2x.png */,
 				EC70C7301BF03E030039A262 /* lauchScreen2.png */,
 				EC70C7311BF03E030039A262 /* launchScreen.png */,
@@ -478,16 +487,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC70C7421BF03E030039A262 /* Icon@2x.png in Resources */,
+				ECF142611BF2DDDB0058397C /* cloudsBest.jpg in Resources */,
 				EC70C7281BF03DAE0039A262 /* Main.storyboard in Resources */,
 				ECD2AC811BDF2B7900686F9D /* Slamble.png in Resources */,
 				ECD2AC7F1BDF2AEA00686F9D /* Icon@2x.png in Resources */,
 				EC70C7461BF03E030039A262 /* make bets icon.png in Resources */,
+				ECF142631BF2E1A10058397C /* cloudsNew.png in Resources */,
 				EC70C7501BF03E030039A262 /* SPLASH.png in Resources */,
 				25F1A63A1BC178D700143C18 /* Assets.xcassets in Resources */,
 				EC70C74A1BF03E030039A262 /* Rectangle 2.png in Resources */,
 				EC70C7441BF03E030039A262 /* launchScreen.png in Resources */,
 				EC70C7401BF03E030039A262 /* cloudButton.png in Resources */,
 				EC70C7431BF03E030039A262 /* lauchScreen2.png in Resources */,
+				ECF142651BF2E3560058397C /* cloudsNew.png in Resources */,
 				085C955A1BC4B33F00728414 /* night.jpg in Resources */,
 				EC70C7491BF03E030039A262 /* night.jpg in Resources */,
 				EC70C7481BF03E030039A262 /* My Page.png in Resources */,
