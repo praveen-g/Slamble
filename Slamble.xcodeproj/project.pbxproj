@@ -67,7 +67,6 @@
 		ECD2AC811BDF2B7900686F9D /* Slamble.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD2AC801BDF2B7900686F9D /* Slamble.png */; };
 		ECF142611BF2DDDB0058397C /* cloudsBest.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECF142601BF2DDDB0058397C /* cloudsBest.jpg */; };
 		ECF142631BF2E1A10058397C /* cloudsNew.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF142621BF2E1A10058397C /* cloudsNew.png */; };
-		ECF142651BF2E3560058397C /* cloudsNew.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF142641BF2E3560058397C /* cloudsNew.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -436,7 +435,7 @@
 		25F1A6221BC178D700143C18 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Praveen Gupta";
 				TargetAttributes = {
 					25F1A6291BC178D700143C18 = {
@@ -453,10 +452,12 @@
 					};
 					25F1A6421BC178D700143C18 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = E35Z9R298G;
 						TestTargetID = 25F1A6291BC178D700143C18;
 					};
 					25F1A64D1BC178D700143C18 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = E35Z9R298G;
 						TestTargetID = 25F1A6291BC178D700143C18;
 					};
 				};
@@ -499,7 +500,6 @@
 				EC70C7441BF03E030039A262 /* launchScreen.png in Resources */,
 				EC70C7401BF03E030039A262 /* cloudButton.png in Resources */,
 				EC70C7431BF03E030039A262 /* lauchScreen2.png in Resources */,
-				ECF142651BF2E3560058397C /* cloudsNew.png in Resources */,
 				085C955A1BC4B33F00728414 /* night.jpg in Resources */,
 				EC70C7491BF03E030039A262 /* night.jpg in Resources */,
 				EC70C7481BF03E030039A262 /* My Page.png in Resources */,
@@ -724,10 +724,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SlambleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cs2048.SlambleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Slamble.app/Slamble";
 			};
 			name = Debug;
@@ -736,10 +739,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SlambleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cs2048.SlambleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Slamble.app/Slamble";
 			};
 			name = Release;
@@ -747,10 +753,13 @@
 		25F1A65E1BC178D700143C18 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SlambleUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cs2048.SlambleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_TARGET_NAME = Slamble;
 				USES_XCTRUNNER = YES;
 			};
@@ -759,10 +768,13 @@
 		25F1A65F1BC178D700143C18 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SlambleUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cs2048.SlambleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_TARGET_NAME = Slamble;
 				USES_XCTRUNNER = YES;
 			};
