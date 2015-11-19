@@ -51,7 +51,7 @@
     [self.userNameTextField setDelegate:self];
     [self.passwordTextField setDelegate:self];
     [self.emailTextField setDelegate:self];
-    
+    [self.phoneTextField setDelegate:self];
     
     
     //UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"night.jpg"]];
@@ -94,6 +94,7 @@
     user.password = self.passwordTextField.text;
     user.email = self.emailTextField.text;
     user[@"points"] = @0;
+    user[@"phone"]= self.phoneTextField.text;
     
     // other fields can be set if you want to save more information
     
@@ -164,7 +165,7 @@
 -(void) checkFieldsComplete{
     //method to check if fields are complete, and not blank
     //if fields are not complete, it presents an alert
-    if ([self.userNameTextField.text isEqualToString:@""] || [self.passwordTextField.text isEqualToString:@""] || [self.emailTextField.text isEqualToString:@""] ||[self.firstNameTextField.text isEqualToString:@""] || [self.lastNameTextField.text isEqualToString:@""])
+    if ([self.userNameTextField.text isEqualToString:@""] || [self.passwordTextField.text isEqualToString:@""] || [self.emailTextField.text isEqualToString:@""] ||[self.firstNameTextField.text isEqualToString:@""] || [self.lastNameTextField.text isEqualToString:@""] || [self.phoneTextField.text isEqualToString:@""])
         {
             
             
