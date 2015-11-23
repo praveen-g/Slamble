@@ -6,218 +6,10 @@
 // });
 
 
-// Parse.Cloud.define("bet",function(request,response){
-// 	var objectId = request.params.objectId;
-
-// 	var query = new Parse.Query("betClass");
-// 	query.get(objectId,{
-// 		success:function(bet){
-// 			response.success(bet.get("better")+" "+"has bet"+bet.get("sleeper")+ " " +"to sleep at least"+ " " + bet.get("betTime"));
-// 		},
-// 		error:function(error){
-// 			response.error(error.message);
-// 		}
-// 	});
-// });
-
-	
-// Parse.Cloud.define("winner", function(request,response){
-// 	var objectId=request.params.objectId;
-// 	var query=new Parse.Query("betClass");
-// 	query.equalTo("objectId",objectId);
-// 	query.first({
-
-// 		success:function(bet){
-// 			//console.log("ok")
-// 			var points=parseInt(bet.get("points"));
-// 			if (parseInt(bet.get("betTime")) < parseInt(bet.get("hoursSlept"))){
-// 				points ++;
-
-// 			}
-
-// 			else if (parseInt(bet.get("betTime")) === parseInt(bet.get("hoursSlept"))){
-// 				points +=0;
-
-// 			}
-
-// 			else {
-// 				points --;
-// 			}
-
-// 			// else if (parseInt(query.betTime) === parseInt(query.hoursSlept)){
-// 			// 	points=0
-// 			// }
-// 			betPoints=points.toString();
-
-
-// 			bet.set("points",betPoints);
-// 			bet.save();
-// 			response.success("Success Message");
-
-// 		},
-// 		error:function(error){
-// 			response.error("Error Message");
-// 		}
-
-// 	});
-
-
-// });
-
-// Parse.Cloud.define("betWinner", function(request,response){
-// 	var objectId=request.params.objectId;
-// 	var query=new Parse.Query("betClass");
-// 	query.equalTo("objectId",objectId);
-// 	query.first({
-
-// 		success:function(bet){
-// 			//console.log("ok")
-// 			if(bet.get("betterPoints") !== undefined){
-// 				var betterPoints=parseInt(bet.get("betterPoints"));
-// 			}
-// 			else{
-// 				var betterPoints=0;
-// 			}
-			
-// 			if(bet.get("sleeperPoints") !== undefined){
-// 				var sleeperPoints=parseInt(bet.get("sleeperPoints"));
-// 			}
-// 			else{
-// 				var sleeperPoints=0;
-// 			}
-// 			if (parseInt(bet.get("betTime")) < parseInt(bet.get("hoursSlept"))){
-// 				betterPoints ++;
-// 				sleeperPoints ++;
-
-// 			}
-
-// 			else if (parseInt(bet.get("betTime")) === parseInt(bet.get("hoursSlept"))){
-// 				betterPoints ++;
-// 				sleeperPoints +=0;
-
-// 			}
-
-// 			else {
-// 				betterPoints +=2;
-// 				sleeperPoints --;
-// 			}
-
-// 			// else if (parseInt(query.betTime) === parseInt(query.hoursSlept)){
-// 			// 	points=0
-// 			// }
-// 			betterBetPoints=betterPoints.toString();
-// 			sleeperBetPoints=sleeperPoints.toString();
-
-// 			bet.set("betterPoints",betterBetPoints);
-// 			bet.set("sleeperPoints",sleeperBetPoints);
-// 			bet.save();
-// 			response.success("Success Message");
-
-// 		},
-// 		error:function(error){
-// 			response.error("Error Message");
-// 		}
-
-// 	});
-
-
-// });
-
-
-// Parse.Cloud.define("updateUserSleeperPoints", function(request,response){
-// 	var currentUser=request.params.currentUsername;
-// 	var query=new Parse.Query("betClass");
-// 	query.equalTo("sleeper",currentUser);
-// 	query.find({
-
-// 		success:function(results){
-// 			//console.log("ok")
-// 			var sum=0;
-// 			for( var i=0; i< results.length;i++){
-// 				sum +=parseInt(results[i].get("sleeperPoints"));
-// 			}
-// 			userSleeperPoints=sum.toString();
-// 			console.log("sdfafervtve");
-// 			console.log(userSleeperPoints);
-// 			results.save();
-// 			console.log(userSleeperPoints);
-// 			response.success("Success Message");
-
-// 		},
-// 		error:function(error){
-// 			response.error("Error Message");
-// 		}
-
-// 	});
-
-
-// });
-
-// Parse.Cloud.define("updateUserBetterPoints", function(request,response){
-// 	var currentUser=request.params.currentUsername;
-// 	var query=new Parse.Query("betClass");
-// 	query.equalTo("better",currentUser);
-// 	query.find({
-
-// 		success:function(results){
-// 			//console.log("ok")
-// 			var sum2=0;
-// 			for( var i=0; i< results.length;i++){
-// 				sum2 +=parseInt(results[i].get("betterPoints"));
-// 			}
-// 			userBetterPoints=sum.toString();
-// 			results.save();
-// 			response.success("Success Message");
-
-// 		},
-// 		error:function(error){
-// 			response.error("Error Message");
-// 		}
-
-// 	});
-
-
-// });
-
-// Parse.Cloud.define("updateUserPoints", function(request,response){
-// 	var currentUsername=request.params.currentUsername;
-// 	var pointsBetter=updateUserBetterPoints(currentUsername);
-// 	var pointsSleeper=updateUserSleeperPoints(currentUsername);
-// 	intPointsBetter=parseInt(pointsBetter);
-// 	intPointsSleeper=parseInt(pointsSleeper);
-// 	var points= intPointsSleeper + intPointsBetter;
-	
-// 	var query=new Parse.Query(Parse.User);
-// 	query.equalTo("username",currentUser);
-// 	query.first({
-
-// 		success:function(results){
-// 			//console.log("ok")
-
-// 			if(results.get("points") !== undefined){
-// 				var currentPoints=parseInt(results.get("points"));
-// 			}
-// 			else{
-// 				var currentPoints=0;
-// 			}
-
-// 			currentPoints += points;
-// 			userCurrentPoints=currentPoints.toString();
-// 			results.save();
-// 			response.success("Success Message");
-
-// 		},
-// 		error:function(error){
-// 			response.error("Error Message");
-// 		}
-
-// 	});
-
-
-// });
 
 Parse.Cloud.define("computeBetOutcomesForSleeper", function (request, response) {
 	var sleeperId = request.params.sleeperId,
+		hoursSlept = request.params.hoursSlept
 		betQuery = new Parse.Query("betClass");
 
 	Parse.Cloud.useMasterKey();
@@ -230,7 +22,7 @@ Parse.Cloud.define("computeBetOutcomesForSleeper", function (request, response) 
 				rlen = results.length,
 				bet,
 				betTime,
-				hoursSlept,
+				// hoursSlept,
 				betterId,
 				userQuery,
 				betterPoints,
@@ -242,7 +34,7 @@ Parse.Cloud.define("computeBetOutcomesForSleeper", function (request, response) 
 				// TODO: check timestamp and ignore if > 24 hours earlier
 				bet = results[i];
 				betTime = parseInt(bet.get("betTime"));
-				hoursSlept = parseInt(bet.get("hoursSlept"));
+				// hoursSlept = parseInt(bet.get("hoursSlept"));
 				betterId = bet.get("betterid");
 
 				// calculate how much to increment points per user
@@ -269,6 +61,7 @@ Parse.Cloud.define("computeBetOutcomesForSleeper", function (request, response) 
 				bet.set("betterPoints", betterPoints.toString());
 				bet.set("sleeperPoints", sleeperPoints.toString());
 				bet.set("betStatus", "3");
+				bet.set("hoursSlept", hoursSlept);
 				bet.save();
 
 				// update each user's total points
@@ -282,10 +75,12 @@ Parse.Cloud.define("computeBetOutcomesForSleeper", function (request, response) 
 								user.set("points", 0);
 							}
 							user.increment("points", betterPoints);
+							console.log("incrementing user points" + betterPoints.toString());
 							user.save();
 							doneBets++;
 							if (doneBets === rlen && doneSleeps === rlen) {
 								response.success("better was last");
+								console.log("better was last")
 							}
 						},
 						error: function (user, error) {
@@ -297,25 +92,27 @@ Parse.Cloud.define("computeBetOutcomesForSleeper", function (request, response) 
 				else {
 					doneBets++;
 					if (doneBets === rlen && doneSleeps === rlen) {
-						response.success("better was last");
+						// response.success("better was last");
 					}
 					console.log("i hate my life");
 				}
 
-				if (sleeperPoints !== 0) {
+				if (sleeperPoints !== 0){
 					userQuery = new Parse.Query(Parse.User);
 					userQuery.get(sleeperId, {
 						success: function (user) {
 							console.log("got sleeper user");
-							if (user.get("points") === undefined) {
+							if (user.get("points") === undefined){
 								console.log("resetting sleeper points");
 								user.set("points", 0);
 							}
 							user.increment("points", sleeperPoints);
+							console.log("incrementing user points" + sleeperPoints.toString());
 							user.save();
 							doneSleeps++;
 							if (doneBets === rlen && doneSleeps === rlen) {
 								response.success("better was last");
+								console.log("better was last");
 							}
 						},
 						error: function (user, error) {
@@ -327,17 +124,20 @@ Parse.Cloud.define("computeBetOutcomesForSleeper", function (request, response) 
 				else {
 					doneSleeps++;
 					if (doneBets === rlen && doneSleeps === rlen) {
+						console.log("better was last")
 						response.success("better was last");
 					}
 					console.log("i hate my life 2");
 				}
 			}
+			// response.success("success");
 		},
 		error: function(error) {
 			console.log("Error: " + error.code + " " + error.message);
 			response.error("oh no");
 		}
 	});
+
 });
 
 Parse.Cloud.define("sendPushNotificationsToSleeper", function (request, response){
@@ -379,6 +179,7 @@ Parse.Cloud.define("sendPushNotificationsToSleeper", function (request, response
 			response.error("push failed")
 		}
 	});
+	
 });
 
 
@@ -415,11 +216,12 @@ Parse.Cloud.define("sendPushNotificationsToBetter", function (request, response)
 		success: function() {
 			// Push was successful
 			console.log("push was successful");
-			// response.success("push was a success");
+			response.success("push was a success");
 		},
 		error: function(error) {
 			throw "Got an error" + error.code + " : " + error.message;
 			console.log("push caused an error");
+			response.error("oh no");
 			// response.error("push failed")
 		}
 	});
@@ -463,393 +265,127 @@ Parse.Cloud.define("sendPushNotificationsToBetter", function (request, response)
 	});
 });
 
-// Parse.cloud.define("updateBetRequest", function(request,response){
-// var betterID = request.params.betterId;
-// var betStatus = request.params.betStatus;
-// //update status of bet
-// var betReqQuery = new Parse.Query(Parse.betRequest);
-// 	betReqQuery.get(betterId, {
-// 						success: function (user) {
-// 							console.log("updating bet status");
-// 								user.set("betStatus", betStatus);
-// 							},
-// 							error: function(error){
-// 								console.log("bet status not updated");
-// 							}
-// 	});
-// });
+Parse.Cloud.job("sendPushReminderMorning", function(request, status) {
 
-	// var betReqQuery = new Parse.Query(Parse.betRequest);
-	// betReqQuery.get(betterId, {
-	// 					success: function (user) {
-	// 						console.log("updating bet status");
-	// 							user.set("betStatus", betStatus);
-	// 						},
-	// 						error: function(error){
-	// 							console.log("bet status not updated");
-	// 						}
-	// });
-	//updateBetRequest(request.params.betterID,request.params.betStatus,response);
+	// pushQuery.matchesKeyInQuery(username, betterName, filterQuery);
 
+	Parse.Cloud.useMasterKey();
 
+	// var filterQuery = new Parse.Query(Parse.betRequest);
+	// filterQuery.equalTo('betStatus', "0" );
+	var pushQuery = new Parse.Query(Parse.Installation);
+	pushQuery.equalTo("deviceType", "ios");
 
-// Parse.Cloud.define("betWinner2", function(request,response){
-// 	var objectId=request.params.objectId;
-// 	var query=new Parse.Query("betClass");
+	Parse.Push.send({
+		where: pushQuery, // Set our Installation query
+		data: {
+		alert: "Morning Sunshine! How much did you sleep last night?",
+		// badge: "Increment",
+		title: "Morning Sunshine!",
+		}
+	}, {
+		success: function() {
+			// Push was successful
+			console.log("push was successful");
+			status.success("push was a success");
+		},
+		error: function(error) {
+			throw "Got an error" + error.code + " : " + error.message;
+			console.log("push caused an error");
+			status.error("failed to send push");
+			// response.error("push failed")
+		}
+	});
+	// response.success("push was successful");
 
-// console.log("--= Function STart =--");
-// console.log("Object ID: "+ objectId);
+  // Set up to modify user data
 
-// 	query.equalTo("objectId",objectId);
+});
 
-//  	query.count().then(function(cnt){
-// 	   console.log("THE NUMBER OF OBJECTS FOUND IS: " +cnt);
+Parse.Cloud.job("sendPushReminderEvening", function(request, status) {
+  // Set up to modify user data
+  Parse.Cloud.useMasterKey();
+  var pushQuery = new Parse.Query(Parse.Installation);
+  pushQuery.equalTo("deviceType", "ios");
 
-//  	}, function(){
-//  		console.log("Fail");
-//  		console.log(arguments);
-//  	}).always(function(){
-//  		console.log('Count Happened');
-//  	});
+	Parse.Push.send({
+		where: pushQuery, // Set our Installation query
+		data: {
+		alert: "It's Getting Late! Make sure you sleep enough to win your bets!",
+		// badge: "Increment",
+		title: "It's Getting Late!",
+		}
+	}, {
+		success: function() {
+			// Push was successful
+			console.log("push was successful");
+			status.success("push was a success");
+		},
+		error: function(error) {
+			throw "Got an error" + error.code + " : " + error.message;
+			console.log("push caused an error");
+			status.error("push failed");
+			// response.error("push failed")
+		}
+	});
+	// response.success("push was successful");
 
-
-// 	query.first({
-
-// 		success:function(bet){
-// 			//console.log("ok")
-// 			var points=parseInt(bet.get("points"));
-// 			var better=bet.get("better");
-// 			var sleeper=bet.get("sleeper");
-// 			console.log('start!!!');
-
-// 			console.log(better + " bet "+sleeper+" will sleep "+bet.get("betTime"));
-
-
-// 			if (parseInt(bet.get("betTime")) < parseInt(bet.get("hoursSlept"))){
-// 				console.log('sleeper wins');
-// 				var queryUser= new Parse.Query("User");
-// 				console.log("created query "+queryUser);
-// 				queryUser.equalTo("username",better);
-// 				console.log("added constraint to "+JSON.stringify(queryUser.toJSON()));
-// 				queryUser.first(
-// 					/*success:function(user){
-// 						console.log("Got user obj");
-// 						var userPoints=parseInt(user.get("points"));
-// 						userPoints ++;
-// 						userBetPoints=userPoints.toString();
-// 						console.log("New points = "+userBetPoints);
-// 						user.set("points",userBetPoints);
-// 						console.log("111111111111");
-// 						user.save();
-// 						response.success("Success Message");
-// 					},
-// 					error:function(error){
-// 						console.log("got error "+error);
-// 						response.error("Error Message");
-// 					}
-// 				}*/
-// 				).always(function(){
-// console.log('ALWASY');
-// 					console.log(arguments);
-// 				});
-
-// 				/*_continueWith(
-// 			function(){
-// 					console.log("TIMER!");
-// 					console.log(arguments);
-// 				}
-// 					);*/
-
-				
-
-// 				console.log('sle');
-// 				var queryUser= new Parse.Query("User");
-// 				queryUser.equalTo("username",sleeper);
-// 				queryUser.first({
-// 					success:function(user){
-// 						var userPoints=parseInt(user.get("points"));
-// 						userPoints ++;
-// 						userBetPoints=userPoints.toString();
-// 						user.set("points",userBetPoints);
-// 						console.log("22222222222");
-// 						user.save();
-// 						response.success("Success Message");
-
-// 					},
-// 					error:function(error){
-// 						response.error("Error Message");
-// 					}
-// 				});
-
-// 			}
-
-// 			else if (parseInt(bet.get("betTime")) === parseInt(bet.get("hoursSlept"))){
-// 				console.log('tiessssss');
-// 				var queryUser= new Parse.Query(Parse.User);
-// 				queryUser.equalTo("username",better);
-// 				queryUser.first({
-// 					success:function(user){
-// 						var userPoints=parseInt(user.get("points"));
-// 						userPoints ++;
-// 						userBetPoints=userPoints.toString();
-// 						user.set("points",userBetPoints);
-// 						console.log("333333333333");
-// 						user.save();
-// 						response.success("Success Message");
-
-// 					},
-// 					error:function(error){
-// 						response.error("Error Message");
-// 					}
-// 				});
-
-// 				console.log("lol");
-// 				var queryUser= new Parse.Query(Parse.User);
-// 				queryUser.equalTo("username",sleeper);
-// 				queryUser.first({
-// 					success:function(user){
-// 						var userPoints=parseInt(user.get("points"));
-// 						userPoints +=0;
-// 						userBetPoints=userPoints.toString();
-// 						user.set("points",userBetPoints);
-// 						console.log("4444444");
-// 						user.save();
-// 						response.success("Success Message");
-
-// 					},
-// 					error:function(error){
-// 						response.error("Error Message");
-// 					}
-// 				});
-
-// 			}
-
-// 			else {
-// 				console.log("better wins");
-// 				var queryUser= new Parse.Query(Parse.User);
-// 				queryUser.equalTo("username",better);
-// 				console.log("You are in");
-// 				queryUser.first({
-// 					success:function(user){
-// 						var userPoints=parseInt(user.get("points"));
-// 						userPoints +=2;
-// 						userBetPoints=userPoints.toString();
-// 						user.set("points",userBetPoints);
-// 						console.log("55555555");
-// 						user.save();
-// 						console.log("aaaaaaa");
-// 						response.success("Success Message");
-
-// 					},
-// 					error:function(error){
-// 						response.error("Error Message");
-// 					}
-// 				});
-
-				
-// 				console.log("lmfao");
-// 				var queryUser= new Parse.Query(Parse.User);
-// 				queryUser.equalTo("username",sleeper);
-// 				queryUser.first({
-// 					success:function(user){
-// 						var userPoints=parseInt(user.get("points"));
-// 						userPoints --;
-// 						userBetPoints=userPoints.toString();
-// 						user.set("points",userBetPoints);
-// 						console.log("6666666");
-// 						user.save();
-// 						console.log("bbbbbbbb");
-// 						response.success("Success Message");
-
-// 					},
-// 					error:function(error){
-// 						response.error("Error Message");
-// 					}
-// 				});
-
-// 			}
-
-			
-// 			console.log("done");
-// 			response.success("Success Message %%%%%%%");
-
-// 		},
-// 		error:function(error){
-// 			response.error("Error Message");
-// 		}
-
-// 	});
+});
 
 
-// });
-
-
-// Parse.Cloud.define("betWinner3", function(request,response){
-// 	var objectId=request.params.objectId;
-// 	var query=new Parse.Query("betClass");
-// 	query.equalTo("objectId",objectId);
-// 	query.first({
-
-// 		success:function(bet){
-// 			//console.log("ok")
-// 			var points=parseInt(bet.get("points"));
-// 			var better=bet.get("better");
-// 			var sleeper=bet.get("sleeper");
-// 			console.log('start!!!');
-
-			
+Parse.Cloud.define("getContacts", function(request,response){
+ 
+    var query = new Parse.Query(Parse.User);
+          query.containedIn("phone", request.params.phoneNumbers);
+          query.find().then(function(result) {
+            var i
+            var contacts=[]
+            for (i=0;i <result.length ; i++) {
+                contacts.push(result[i].get("firstName"))
+                contacts.push(result[i].get("lastName"))
+                contacts.push(result[i].get("username"))
+                console.log(contacts)
+                 
+            }
+            console.log("yo")
+            console.log(contacts)
+            response.success(result);
+          }, function (error) {
+             
+            response.error(error);
+        });
+ 
+});
+ 
+Parse.Cloud.define("get", function(request,response){
+ 
+    var query = new Parse.Query(Parse.User);
+          query.containedIn("phone", request.params.phoneNumbers);
+          query.find().then(function(result) {
+            var i
+            var contacts=[]
+             
+             for (i=0;i <result.length ; i++) {
+                contacts.push(result[i].get("firstName"))
+                contacts.push(result[i].get("lastName"))
+                contacts.push(result[i].get("username"))
+                 
+                 
+            }
+            console.log("yo")
+            console.log(contacts)
+            result.set("Contacts",contacts)
+            result.save()
+            response.success(result);
+           
+          }, function (error) {
+             
+            response.error(error);
+        });
+ 
+});
 
 
 
-// 			if (parseInt(bet.get("betTime")) < parseInt(bet.get("hoursSlept"))){
-// 				console.log('sleeper wins');
-// 				var queryUser= new Parse.Query(Parse.User);
-// 				queryUser.equalTo("username",better);
-// 				queryUser.first({
-// 					sucess:function(user){
-// 						var userPoints=parseInt(user.get("points"));
-// 						userPoints ++;
-// 						userBetPoints=userPoints.toString();
-// 						user.set("points",userBetPoints);
-// 						console.log("111111111111");
-// 						user.save();
-// 						response.success("Success Message");
 
-// 					},
-// 					error:function(error){
-// 						response.error("Error Message");
-// 					}
-// 				});
-
-// 				console.log('sle');
-// 				var queryUser= new Parse.Query(Parse.User);
-// 				queryUser.equalTo("username",sleeper);
-// 				queryUser.first({
-// 					sucess:function(user){
-// 						var userPoints=parseInt(user.get("points"));
-// 						userPoints ++;
-// 						userBetPoints=userPoints.toString();
-// 						user.set("points",userBetPoints);
-// 						console.log("22222222222");
-// 						user.save();
-// 						response.success("Success Message");
-
-// 					},
-// 					error:function(error){
-// 						response.error("Error Message");
-// 					}
-// 				});
-
-// 			}
-
-// 			else if (parseInt(bet.get("betTime")) === parseInt(bet.get("hoursSlept"))){
-// 				console.log('tiessssss');
-// 				var queryUser= new Parse.Query(Parse.User);
-// 				queryUser.equalTo("username",better);
-// 				queryUser.first({
-// 					sucess:function(user){
-// 						var userPoints=parseInt(user.get("points"));
-// 						userPoints ++;
-// 						userBetPoints=userPoints.toString();
-// 						user.set("points",userBetPoints);
-// 						console.log("333333333333");
-// 						user.save();
-// 						response.success("Success Message");
-
-// 					},
-// 					error:function(error){
-// 						response.error("Error Message");
-// 					}
-// 				});
-
-// 				console.log("lol");
-// 				var queryUser= new Parse.Query(Parse.User);
-// 				queryUser.equalTo("username",sleeper);
-// 				queryUser.first({
-// 					sucess:function(user){
-// 						var userPoints=parseInt(user.get("points"));
-// 						userPoints +=0;
-// 						userBetPoints=userPoints.toString();
-// 						user.set("points",userBetPoints);
-// 						console.log("4444444");
-// 						user.save();
-// 						response.success("Success Message");
-
-// 					},
-// 					error:function(error){
-// 						response.error("Error Message");
-// 					}
-// 				});
-
-// 			}
-
-// 			else {
-// 				console.log("better wins");
-// 				var queryUser= new Parse.Query(Parse.User);
-// 				queryUser.equalTo("username",better);
-// 				console.log("You are in");
-// 				queryUser.first({
-// 					sucess:function(user){
-// 						var userPoints=parseInt(user.get("points"));
-// 						userPoints +=2;
-// 						userBetPoints=userPoints.toString();
-// 						user.set("points",userBetPoints);
-// 						console.log("55555555");
-// 						user.save();
-// 						console.log("aaaaaaa");
-// 						response.success("Success Message");
-
-// 					},
-// 					error:function(error){
-// 						response.error("Error Message");
-// 					}
-// 				});
-
-// 				var u=0;
-// 				for(i=0; i<1000000;i++){
-// 				u=i;
-// 				}
-
-// 				console.log("lmfao");
-// 				var queryUser= new Parse.Query(Parse.User);
-// 				queryUser.equalTo("username",sleeper);
-// 				queryUser.first({
-// 					sucess:function(user){
-// 						var userPoints=parseInt(user.get("points"));
-// 						userPoints --;
-// 						userBetPoints=userPoints.toString();
-// 						user.set("points",userBetPoints);
-// 						console.log("6666666");
-// 						user.save();
-// 						console.log("bbbbbbbb");
-// 						response.success("Success Message");
-
-// 					},
-// 					error:function(error){
-// 						response.error("Error Message");
-// 					}
-// 				});
-
-// 			}
-
-// 			// else if (parseInt(query.betTime) === parseInt(query.hoursSlept)){
-// 			// 	points=0
-// 			// }
-// 			//betPoints=points.toString();
-
-
-// 			//bet.set("points",betPoints);
-// 			//bet.save();
-// 			console.log("wiiiiiiiiiiiiiii");
-// 			response.success("Success Message %%%%%%%");
-
-// 		},
-// 		error:function(error){
-// 			response.error("Error Message");
-// 		}
-
-// 	});
-
-
-// });
 

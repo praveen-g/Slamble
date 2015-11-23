@@ -13,8 +13,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchScreen2.png" id="KgK-92-P2O">
-                                <rect key="frame" x="-35" y="-28" width="390" height="657"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="-59" y="-28" width="437" height="694"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <animations/>
                             </imageView>
                         </subviews>

@@ -244,7 +244,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXh-fq-I5r">
-                                <rect key="frame" x="72" y="170" width="57" height="33"/>
+                                <rect key="frame" x="76" y="174" width="57" height="33"/>
                                 <animations/>
                                 <attributedString key="attributedText">
                                     <fragment content="Points">
@@ -271,7 +271,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MR6-DY-xVe">
-                                <rect key="frame" x="141" y="167" width="113" height="38"/>
+                                <rect key="frame" x="141" y="172" width="113" height="38"/>
                                 <animations/>
                                 <attributedString key="attributedText">
                                     <fragment content="Pending Bets">
@@ -324,7 +324,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O85-MT-OMJ">
-                                <rect key="frame" x="78" y="147" width="45" height="33"/>
+                                <rect key="frame" x="41" y="139" width="97" height="41"/>
                                 <animations/>
                                 <attributedString key="attributedText">
                                     <fragment content="0">
@@ -339,7 +339,7 @@
                                 <color key="shadowColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xkz-gX-osz">
-                                <rect key="frame" x="165" y="147" width="45" height="33"/>
+                                <rect key="frame" x="165" y="139" width="45" height="41"/>
                                 <animations/>
                                 <attributedString key="attributedText">
                                     <fragment content="0">
