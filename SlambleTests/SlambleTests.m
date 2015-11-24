@@ -32,6 +32,11 @@
     
 }
 
+-(void)testPhoneNumber{
+    XCTAssert([SignUpViewController isValidPhoneNumber:@"6467247289"]);
+    XCTAssertFalse([SignUpViewController isValidPhoneNumber:@"646-724-7289"]);
+}
+
 - (void)testExample {
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.

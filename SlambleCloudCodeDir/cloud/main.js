@@ -1,9 +1,4 @@
 
-// Use Parse.Cloud.define to define as many cloud functions as you want.
-// For example:
-// Parse.Cloud.define("hello", function(request, response) {
-//   response.success("Hello world!");
-// });
 
 
 
@@ -354,6 +349,7 @@ Parse.Cloud.define("sendPushNotificationsToBetter", function (request, response)
 	});
 });
 
+
 Parse.Cloud.job("sendPushReminderMorning", function(request, status) {
 
 	// pushQuery.matchesKeyInQuery(username, betterName, filterQuery);
@@ -477,4 +473,5 @@ Parse.Cloud.define("get", function(request,response){
 
 
 
+>>>>>>> fd68ac2771d1b01849e616a08ef091dc0ec34a80
 

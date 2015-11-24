@@ -26,6 +26,17 @@
     return [emailTest evaluateWithObject:emailAddress];
     
 }
++ (BOOL)isValidPhoneNumber:(NSString *)phoneNumber {
+    
+    NSString *phoneRegex = @"^[0-9]{3}[0-9]{3}[0-9]{4}$";
+    NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
+    BOOL phoneValidates = [phoneTest evaluateWithObject:phoneNumber];
+    return phoneValidates;
+    
+}
+
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -84,7 +95,9 @@
     //Testing if email is valid
     
     [SignUpViewController isValidEmailAddress:self.emailTextField.text];
+    [SignUpViewController isValidPhoneNumber:self.phoneTextField.text];
     NSLog(@"%d",[SignUpViewController isValidEmailAddress:self.emailTextField.text]);
+   
     
     //create new user with userinputs
     PFUser *user = [PFUser user];

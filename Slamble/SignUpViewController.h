@@ -17,8 +17,11 @@
 @property (strong, nonatomic) IBOutlet UITextField *passwordTextField;
 
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
+
 -(void) checkFieldsComplete;
 +(BOOL)isValidEmailAddress:(NSString *)emailAddress;
++(BOOL)isValidPhoneNumber:(NSString *) phoneNumber;
+
 @property (strong, nonatomic) IBOutlet UITextField *phoneTextField;
 
 @end
