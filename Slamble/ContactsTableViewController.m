@@ -66,6 +66,8 @@
                         [numbers addObject:formattedPhoneNumbers];
                     }
                 }
+                NSLog(@"the phone numbers are : %@",numbers);
+                NSLog(@"My contacts are :,%@",self.contactsArray);
             }
             
             //Compare the contacts from the userto the contacts on Parse and get the user "Parse

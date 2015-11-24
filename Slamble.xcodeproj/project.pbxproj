@@ -45,6 +45,9 @@
 		25F1A6931BC1892D00143C18 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F1A6921BC1892C00143C18 /* FBSDKLoginKit.framework */; };
 		25F1A6951BC1894D00143C18 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F1A6941BC1894D00143C18 /* FBSDKShareKit.framework */; };
 		25F1E33D1BE1A6B100E35884 /* PendingBetRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F1E33C1BE1A6B100E35884 /* PendingBetRequests.m */; };
+		EC1819991C04D8AA00785B8B /* slambleIconNew1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC1819981C04D8AA00785B8B /* slambleIconNew1@2x.png */; };
+		EC18199B1C04D8D700785B8B /* slambleIconNew1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC18199A1C04D8D700785B8B /* slambleIconNew1@3x.png */; };
+		EC18199D1C04D91600785B8B /* slambleIconNeww@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC18199C1C04D91600785B8B /* slambleIconNeww@2x.png */; };
 		EC4228261BC37D0A0043C3BD /* MakeBetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4228251BC37D0A0043C3BD /* MakeBetsViewController.m */; };
 		EC65B2F51BC1F79700C47D08 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC65B2F41BC1F79700C47D08 /* HomePageViewController.m */; };
 		EC70C7281BF03DAE0039A262 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC70C7261BF03DAE0039A262 /* Main.storyboard */; };
@@ -138,6 +141,9 @@
 		25F1A6941BC1894D00143C18 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "FacebookSDKs-iOS-20150910/FBSDKShareKit.framework"; sourceTree = "<group>"; };
 		25F1E33B1BE1A6B100E35884 /* PendingBetRequests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PendingBetRequests.h; sourceTree = "<group>"; };
 		25F1E33C1BE1A6B100E35884 /* PendingBetRequests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PendingBetRequests.m; sourceTree = "<group>"; };
+		EC1819981C04D8AA00785B8B /* slambleIconNew1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slambleIconNew1@2x.png"; sourceTree = "<group>"; };
+		EC18199A1C04D8D700785B8B /* slambleIconNew1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slambleIconNew1@3x.png"; sourceTree = "<group>"; };
+		EC18199C1C04D91600785B8B /* slambleIconNeww@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slambleIconNeww@2x.png"; sourceTree = "<group>"; };
 		EC4228241BC37D0A0043C3BD /* MakeBetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeBetsViewController.h; sourceTree = "<group>"; };
 		EC4228251BC37D0A0043C3BD /* MakeBetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeBetsViewController.m; sourceTree = "<group>"; };
 		EC65B2F31BC1F79700C47D08 /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
@@ -346,13 +352,16 @@
 				ECF142641BF2E3560058397C /* cloudsNew.png */,
 				EC70C72D1BF03E030039A262 /* cloudButton.png */,
 				ECF142621BF2E1A10058397C /* cloudsNew.png */,
+				EC18199A1C04D8D700785B8B /* slambleIconNew1@3x.png */,
 				ECF142601BF2DDDB0058397C /* cloudsBest.jpg */,
 				EC70C72F1BF03E030039A262 /* Icon@2x.png */,
 				EC70C7301BF03E030039A262 /* lauchScreen2.png */,
 				EC70C7311BF03E030039A262 /* launchScreen.png */,
+				EC18199C1C04D91600785B8B /* slambleIconNeww@2x.png */,
 				EC70C7331BF03E030039A262 /* make bets icon.png */,
 				EC70C7341BF03E030039A262 /* My Bets.png */,
 				EC70C7351BF03E030039A262 /* My Page.png */,
+				EC1819981C04D8AA00785B8B /* slambleIconNew1@2x.png */,
 				EC70C7361BF03E030039A262 /* night.jpg */,
 				EC70C7371BF03E030039A262 /* Rectangle 2.png */,
 				EC70C73C1BF03E030039A262 /* slambleIcon4.png */,
@@ -489,12 +498,14 @@
 			files = (
 				EC70C7421BF03E030039A262 /* Icon@2x.png in Resources */,
 				ECF142611BF2DDDB0058397C /* cloudsBest.jpg in Resources */,
+				EC18199D1C04D91600785B8B /* slambleIconNeww@2x.png in Resources */,
 				EC70C7281BF03DAE0039A262 /* Main.storyboard in Resources */,
 				ECD2AC811BDF2B7900686F9D /* Slamble.png in Resources */,
 				ECD2AC7F1BDF2AEA00686F9D /* Icon@2x.png in Resources */,
 				EC70C7461BF03E030039A262 /* make bets icon.png in Resources */,
 				ECF142631BF2E1A10058397C /* cloudsNew.png in Resources */,
 				EC70C7501BF03E030039A262 /* SPLASH.png in Resources */,
+				EC18199B1C04D8D700785B8B /* slambleIconNew1@3x.png in Resources */,
 				25F1A63A1BC178D700143C18 /* Assets.xcassets in Resources */,
 				EC70C74A1BF03E030039A262 /* Rectangle 2.png in Resources */,
 				EC70C7441BF03E030039A262 /* launchScreen.png in Resources */,
@@ -505,6 +516,7 @@
 				EC70C7481BF03E030039A262 /* My Page.png in Resources */,
 				EC70C74F1BF03E030039A262 /* slambleIcon4.png in Resources */,
 				EC70C7451BF03E030039A262 /* launchScreen2.png in Resources */,
+				EC1819991C04D8AA00785B8B /* slambleIconNew1@2x.png in Resources */,
 				254452911BDD5438002F96B2 /* SPLASH.png in Resources */,
 				EC70C7471BF03E030039A262 /* My Bets.png in Resources */,
 				EC70C73E1BF03E030039A262 /* backdrop3.png in Resources */,

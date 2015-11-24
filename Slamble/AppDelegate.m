@@ -92,11 +92,25 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))handler {
     // Create empty photo object {
     [PFPush handlePush:userInfo];
+
+//    NSString *photoId = [userInfo objectForKey:@"p"];
+//    PFObject *targetPhoto = [PFObject objectWithoutDataWithClassName:@"Photo"   objectId:photoId];
+//    
+//    // Fetch photo object
+//    [targetPhoto fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+//        // Show photo view controller
+//        if (error) {
+//            handler(UIBackgroundFetchResultFailed);
+//        } else if ([PFUser currentUser]) {
+//            PhotoVC *viewController = [[PhotoVC alloc] initWithPhoto:object];
+//            [self.navController pushViewController:viewController animated:YES];
+//            handler(UIBackgroundFetchResultNewData);
+//        } else {
+//            handler(UIBackgroundModeNoData);
+//        }
+//    }];
+//}
     
-//    //go to view controller to accept or decline bet
-//    NSString *better = [userInfo objectForKey:@"objectId"];
-//    NSString *hours = [userInfo objectForKey:@"hourstoSleep"];
-//    NSString *betStatus = [userInfo objectForKey:@"betStatus"];
     PFObject *targetData = [ PFObject objectWithoutDataWithClassName:@"betClass" objectId:@"objectId"];
     [targetData fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         if (error) {
