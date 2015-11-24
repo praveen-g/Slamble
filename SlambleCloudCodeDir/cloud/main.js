@@ -1,5 +1,10 @@
+
+
+
+
 Parse.Cloud.define("computeBetOutcomesForSleeper", function (request, response) {
 	var sleeperId = request.params.sleeperId,
+		hoursSlept = request.params.hoursSlept
 		betQuery = new Parse.Query("betClass");
 
 	Parse.Cloud.useMasterKey();
@@ -12,7 +17,7 @@ Parse.Cloud.define("computeBetOutcomesForSleeper", function (request, response) 
 				rlen = results.length,
 				bet,
 				betTime,
-				hoursSlept,
+				// hoursSlept,
 				betterId,
 				userQuery,
 				betterPoints,
@@ -24,7 +29,7 @@ Parse.Cloud.define("computeBetOutcomesForSleeper", function (request, response) 
 				// TODO: check timestamp and ignore if > 24 hours earlier
 				bet = results[i];
 				betTime = parseInt(bet.get("betTime"));
-				hoursSlept = parseInt(bet.get("hoursSlept"));
+				// hoursSlept = parseInt(bet.get("hoursSlept"));
 				betterId = bet.get("betterid");
 
 				// calculate how much to increment points per user
@@ -51,6 +56,7 @@ Parse.Cloud.define("computeBetOutcomesForSleeper", function (request, response) 
 				bet.set("betterPoints", betterPoints.toString());
 				bet.set("sleeperPoints", sleeperPoints.toString());
 				bet.set("betStatus", "3");
+				bet.set("hoursSlept", hoursSlept);
 				bet.save();
 
 				// update each user's total points
@@ -64,10 +70,12 @@ Parse.Cloud.define("computeBetOutcomesForSleeper", function (request, response) 
 								user.set("points", 0);
 							}
 							user.increment("points", betterPoints);
+							console.log("incrementing user points" + betterPoints.toString());
 							user.save();
 							doneBets++;
 							if (doneBets === rlen && doneSleeps === rlen) {
 								response.success("better was last");
+								console.log("better was last")
 							}
 						},
 						error: function (user, error) {
@@ -79,25 +87,27 @@ Parse.Cloud.define("computeBetOutcomesForSleeper", function (request, response) 
 				else {
 					doneBets++;
 					if (doneBets === rlen && doneSleeps === rlen) {
-						response.success("better was last");
+						// response.success("better was last");
 					}
 					console.log("i hate my life");
 				}
 
-				if (sleeperPoints !== 0) {
+				if (sleeperPoints !== 0){
 					userQuery = new Parse.Query(Parse.User);
 					userQuery.get(sleeperId, {
 						success: function (user) {
 							console.log("got sleeper user");
-							if (user.get("points") === undefined) {
+							if (user.get("points") === undefined){
 								console.log("resetting sleeper points");
 								user.set("points", 0);
 							}
 							user.increment("points", sleeperPoints);
+							console.log("incrementing user points" + sleeperPoints.toString());
 							user.save();
 							doneSleeps++;
 							if (doneBets === rlen && doneSleeps === rlen) {
 								response.success("better was last");
+								console.log("better was last");
 							}
 						},
 						error: function (user, error) {
@@ -109,17 +119,20 @@ Parse.Cloud.define("computeBetOutcomesForSleeper", function (request, response) 
 				else {
 					doneSleeps++;
 					if (doneBets === rlen && doneSleeps === rlen) {
+						console.log("better was last")
 						response.success("better was last");
 					}
 					console.log("i hate my life 2");
 				}
 			}
+			// response.success("success");
 		},
 		error: function(error) {
 			console.log("Error: " + error.code + " " + error.message);
 			response.error("oh no");
 		}
 	});
+
 });
 
 Parse.Cloud.define("sendPushNotificationsToSleeper", function (request, response){
@@ -161,6 +174,7 @@ Parse.Cloud.define("sendPushNotificationsToSleeper", function (request, response
 			response.error("push failed")
 		}
 	});
+	
 });
 
 
@@ -197,11 +211,12 @@ Parse.Cloud.define("sendPushNotificationsToBetter", function (request, response)
 		success: function() {
 			// Push was successful
 			console.log("push was successful");
-			// response.success("push was a success");
+			response.success("push was a success");
 		},
 		error: function(error) {
 			throw "Got an error" + error.code + " : " + error.message;
 			console.log("push caused an error");
+			response.error("oh no");
 			// response.error("push failed")
 		}
 	});
@@ -245,25 +260,129 @@ Parse.Cloud.define("sendPushNotificationsToBetter", function (request, response)
 	});
 });
 
-Parse.Cloud.define("getContacts", function(request,response){
-	var query = new Parse.Query(Parse.User);
-		  query.containedIn("phone", request.params.phoneNumbers);
-		  query.find().then(function(result) {
-		  	var i
-		  	var contacts=[]
-		  	for (i=0;i <result.length ; i++) {
-		  		contacts.push(result[i].get('firstName'))
-		  		contacts.push(result[i].get('lastName'))
-		  		contacts.push(result[i].get('username'))
-		  		console.log(contacts)
-		  		
-		  	}
-		 
-		  	console.log(contacts)
-		  	response.success(result);
-		  }, function (error) {
-		  	
-			response.error(error);
-		});
+
+Parse.Cloud.job("sendPushReminderMorning", function(request, status) {
+
+	// pushQuery.matchesKeyInQuery(username, betterName, filterQuery);
+
+	Parse.Cloud.useMasterKey();
+
+	// var filterQuery = new Parse.Query(Parse.betRequest);
+	// filterQuery.equalTo('betStatus', "0" );
+	var pushQuery = new Parse.Query(Parse.Installation);
+	pushQuery.equalTo("deviceType", "ios");
+
+	Parse.Push.send({
+		where: pushQuery, // Set our Installation query
+		data: {
+		alert: "Morning Sunshine! How much did you sleep last night?",
+		// badge: "Increment",
+		title: "Morning Sunshine!",
+		}
+	}, {
+		success: function() {
+			// Push was successful
+			console.log("push was successful");
+			status.success("push was a success");
+		},
+		error: function(error) {
+			throw "Got an error" + error.code + " : " + error.message;
+			console.log("push caused an error");
+			status.error("failed to send push");
+			// response.error("push failed")
+		}
+	});
+	// response.success("push was successful");
+
+  // Set up to modify user data
+
 });
+
+Parse.Cloud.job("sendPushReminderEvening", function(request, status) {
+  // Set up to modify user data
+  Parse.Cloud.useMasterKey();
+  var pushQuery = new Parse.Query(Parse.Installation);
+  pushQuery.equalTo("deviceType", "ios");
+
+	Parse.Push.send({
+		where: pushQuery, // Set our Installation query
+		data: {
+		alert: "It's Getting Late! Make sure you sleep enough to win your bets!",
+		// badge: "Increment",
+		title: "It's Getting Late!",
+		}
+	}, {
+		success: function() {
+			// Push was successful
+			console.log("push was successful");
+			status.success("push was a success");
+		},
+		error: function(error) {
+			throw "Got an error" + error.code + " : " + error.message;
+			console.log("push caused an error");
+			status.error("push failed");
+			// response.error("push failed")
+		}
+	});
+	// response.success("push was successful");
+
+});
+
+
+Parse.Cloud.define("getContacts", function(request,response){
+ 
+    var query = new Parse.Query(Parse.User);
+          query.containedIn("phone", request.params.phoneNumbers);
+          query.find().then(function(result) {
+            var i
+            var contacts=[]
+            for (i=0;i <result.length ; i++) {
+                contacts.push(result[i].get("firstName"))
+                contacts.push(result[i].get("lastName"))
+                contacts.push(result[i].get("username"))
+                console.log(contacts)
+                 
+            }
+            console.log("yo")
+            console.log(contacts)
+            response.success(result);
+          }, function (error) {
+             
+            response.error(error);
+        });
+ 
+});
+ 
+Parse.Cloud.define("get", function(request,response){
+ 
+    var query = new Parse.Query(Parse.User);
+          query.containedIn("phone", request.params.phoneNumbers);
+          query.find().then(function(result) {
+            var i
+            var contacts=[]
+             
+             for (i=0;i <result.length ; i++) {
+                contacts.push(result[i].get("firstName"))
+                contacts.push(result[i].get("lastName"))
+                contacts.push(result[i].get("username"))
+                 
+                 
+            }
+            console.log("yo")
+            console.log(contacts)
+            result.set("Contacts",contacts)
+            result.save()
+            response.success(result);
+           
+          }, function (error) {
+             
+            response.error(error);
+        });
+ 
+});
+
+
+
+
+>>>>>>> fd68ac2771d1b01849e616a08ef091dc0ec34a80
 

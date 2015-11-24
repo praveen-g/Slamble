@@ -18,9 +18,11 @@
 @property (strong, nonatomic) NSArray *objectIdArray;
 @property (strong, nonatomic) NSString *objectId;
 @property (strong, nonatomic) NSString *createdAt;
-@property int UserPoints;
+//@property int UserPoints;
+@property  NSInteger  *UserPoints;
 @property (strong, nonatomic) NSString *stringUserPoints;
 @property (strong, nonatomic) IBOutlet UILabel *welcomeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *pendingBets;
+-(void)updateLabelPoints;
 //-(void) queryUserPoints;
 @end

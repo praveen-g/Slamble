@@ -65,6 +65,8 @@
 		ECC7811C1BD6A8DD00AA18AA /* BetsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC7811B1BD6A8DD00AA18AA /* BetsTableViewController.m */; };
 		ECD2AC7F1BDF2AEA00686F9D /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD2AC7E1BDF2AEA00686F9D /* Icon@2x.png */; };
 		ECD2AC811BDF2B7900686F9D /* Slamble.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD2AC801BDF2B7900686F9D /* Slamble.png */; };
+		ECF142611BF2DDDB0058397C /* cloudsBest.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECF142601BF2DDDB0058397C /* cloudsBest.jpg */; };
+		ECF142631BF2E1A10058397C /* cloudsNew.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF142621BF2E1A10058397C /* cloudsNew.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,6 +161,9 @@
 		ECC7811B1BD6A8DD00AA18AA /* BetsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BetsTableViewController.m; sourceTree = "<group>"; };
 		ECD2AC7E1BDF2AEA00686F9D /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		ECD2AC801BDF2B7900686F9D /* Slamble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Slamble.png; sourceTree = "<group>"; };
+		ECF142601BF2DDDB0058397C /* cloudsBest.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cloudsBest.jpg; sourceTree = "<group>"; };
+		ECF142621BF2E1A10058397C /* cloudsNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloudsNew.png; sourceTree = "<group>"; };
+		ECF142641BF2E3560058397C /* cloudsNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloudsNew.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,13 +243,13 @@
 			children = (
 				EC70C7261BF03DAE0039A262 /* Main.storyboard */,
 				EC70C7271BF03DAE0039A262 /* LaunchScreen.storyboard */,
-				08D515C51BEF281E0054AA9F /* ContactsTableViewController.h */,
-				08D515C61BEF281E0054AA9F /* ContactsTableViewController.m */,
 				ECBAC6C81BE3298A00D59FC3 /* SignUp/Login */,
 				25F1A6301BC178D700143C18 /* AppDelegate.h */,
 				25F1A6311BC178D700143C18 /* AppDelegate.m */,
 				EC65B2F31BC1F79700C47D08 /* HomePageViewController.h */,
 				EC65B2F41BC1F79700C47D08 /* HomePageViewController.m */,
+				08D515C51BEF281E0054AA9F /* ContactsTableViewController.h */,
+				08D515C61BEF281E0054AA9F /* ContactsTableViewController.m */,
 				EC4228241BC37D0A0043C3BD /* MakeBetsViewController.h */,
 				EC4228251BC37D0A0043C3BD /* MakeBetsViewController.m */,
 				ECC7811A1BD6A8DD00AA18AA /* BetsTableViewController.h */,
@@ -338,7 +343,10 @@
 		EC70C72A1BF03E030039A262 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				ECF142641BF2E3560058397C /* cloudsNew.png */,
 				EC70C72D1BF03E030039A262 /* cloudButton.png */,
+				ECF142621BF2E1A10058397C /* cloudsNew.png */,
+				ECF142601BF2DDDB0058397C /* cloudsBest.jpg */,
 				EC70C72F1BF03E030039A262 /* Icon@2x.png */,
 				EC70C7301BF03E030039A262 /* lauchScreen2.png */,
 				EC70C7311BF03E030039A262 /* launchScreen.png */,
@@ -427,7 +435,7 @@
 		25F1A6221BC178D700143C18 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Praveen Gupta";
 				TargetAttributes = {
 					25F1A6291BC178D700143C18 = {
@@ -444,10 +452,12 @@
 					};
 					25F1A6421BC178D700143C18 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = E35Z9R298G;
 						TestTargetID = 25F1A6291BC178D700143C18;
 					};
 					25F1A64D1BC178D700143C18 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = E35Z9R298G;
 						TestTargetID = 25F1A6291BC178D700143C18;
 					};
 				};
@@ -478,10 +488,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC70C7421BF03E030039A262 /* Icon@2x.png in Resources */,
+				ECF142611BF2DDDB0058397C /* cloudsBest.jpg in Resources */,
 				EC70C7281BF03DAE0039A262 /* Main.storyboard in Resources */,
 				ECD2AC811BDF2B7900686F9D /* Slamble.png in Resources */,
 				ECD2AC7F1BDF2AEA00686F9D /* Icon@2x.png in Resources */,
 				EC70C7461BF03E030039A262 /* make bets icon.png in Resources */,
+				ECF142631BF2E1A10058397C /* cloudsNew.png in Resources */,
 				EC70C7501BF03E030039A262 /* SPLASH.png in Resources */,
 				25F1A63A1BC178D700143C18 /* Assets.xcassets in Resources */,
 				EC70C74A1BF03E030039A262 /* Rectangle 2.png in Resources */,
@@ -586,6 +598,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -631,6 +644,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -712,10 +726,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SlambleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cs2048.SlambleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Slamble.app/Slamble";
 			};
 			name = Debug;
@@ -724,10 +741,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SlambleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cs2048.SlambleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Slamble.app/Slamble";
 			};
 			name = Release;
@@ -735,10 +755,13 @@
 		25F1A65E1BC178D700143C18 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SlambleUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cs2048.SlambleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_TARGET_NAME = Slamble;
 				USES_XCTRUNNER = YES;
 			};
@@ -747,10 +770,13 @@
 		25F1A65F1BC178D700143C18 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SlambleUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cs2048.SlambleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_TARGET_NAME = Slamble;
 				USES_XCTRUNNER = YES;
 			};

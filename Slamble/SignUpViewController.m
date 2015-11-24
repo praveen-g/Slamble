@@ -26,6 +26,17 @@
     return [emailTest evaluateWithObject:emailAddress];
     
 }
++ (BOOL)isValidPhoneNumber:(NSString *)phoneNumber {
+    
+    NSString *phoneRegex = @"^[0-9]{3}[0-9]{3}[0-9]{4}$";
+    NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
+    BOOL phoneValidates = [phoneTest evaluateWithObject:phoneNumber];
+    return phoneValidates;
+    
+}
+
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,7 +48,7 @@
     
     // this code adds the background image across the entire screen
     UIGraphicsBeginImageContext(self.view.frame.size);
-    [[UIImage imageNamed:@"backdrop3.png"] drawInRect:self.view.bounds];
+    [[UIImage imageNamed:@"cloudsNew.png"] drawInRect:self.view.bounds];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
@@ -51,7 +62,7 @@
     [self.userNameTextField setDelegate:self];
     [self.passwordTextField setDelegate:self];
     [self.emailTextField setDelegate:self];
-    
+    [self.phoneTextField setDelegate:self];
     
     
     //UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"night.jpg"]];
@@ -84,7 +95,9 @@
     //Testing if email is valid
     
     [SignUpViewController isValidEmailAddress:self.emailTextField.text];
+    [SignUpViewController isValidPhoneNumber:self.phoneTextField.text];
     NSLog(@"%d",[SignUpViewController isValidEmailAddress:self.emailTextField.text]);
+   
     
     //create new user with userinputs
     PFUser *user = [PFUser user];
@@ -94,6 +107,7 @@
     user.password = self.passwordTextField.text;
     user.email = self.emailTextField.text;
     user[@"points"] = @0;
+    user[@"phone"]= self.phoneTextField.text;
     
     // other fields can be set if you want to save more information
     
@@ -164,7 +178,7 @@
 -(void) checkFieldsComplete{
     //method to check if fields are complete, and not blank
     //if fields are not complete, it presents an alert
-    if ([self.userNameTextField.text isEqualToString:@""] || [self.passwordTextField.text isEqualToString:@""] || [self.emailTextField.text isEqualToString:@""] ||[self.firstNameTextField.text isEqualToString:@""] || [self.lastNameTextField.text isEqualToString:@""])
+    if ([self.userNameTextField.text isEqualToString:@""] || [self.passwordTextField.text isEqualToString:@""] || [self.emailTextField.text isEqualToString:@""] ||[self.firstNameTextField.text isEqualToString:@""] || [self.lastNameTextField.text isEqualToString:@""] || [self.phoneTextField.text isEqualToString:@""])
         {
             
             

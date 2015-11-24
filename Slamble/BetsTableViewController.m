@@ -26,7 +26,7 @@
     [super viewDidLoad];
     
     UIGraphicsBeginImageContext(self.view.frame.size);
-    [[UIImage imageNamed:@"backdrop3.png"] drawInRect:self.view.bounds];
+    [[UIImage imageNamed:@"cloudsNew.png"] drawInRect:self.view.bounds];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
@@ -256,7 +256,7 @@
       UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 20)];
     
     // 2. Set a custom background color and a border
-    headerView.backgroundColor = [UIColor whiteColor];
+    headerView.backgroundColor = [UIColor colorWithRed:155 green:155 blue:155 alpha:1];
     headerView.layer.borderColor = [UIColor colorWithWhite:0.5 alpha:1.0].CGColor;
     headerView.layer.borderWidth = 1.0;
     

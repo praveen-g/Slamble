@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIGraphicsBeginImageContext(self.view.frame.size);
-    [[UIImage imageNamed:@"backdrop3.png"] drawInRect:self.view.bounds];
+    [[UIImage imageNamed:@"cloudsNew.png"] drawInRect:self.view.bounds];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
@@ -184,6 +184,8 @@
                                         NSString* messageAccept = [NSString stringWithFormat:@"%s%@%s%@%@%@%@", "Your bet to ", self.currentFirstName, "", self.currentLastName, @" to sleep ", self.noOfHours[indexPath.row], @" hours has been accepted"];
                                         
                                         [PFCloud callFunctionInBackground:@"sendPushNotificationsToBetter" withParameters:@{@"betterID":self.betterID[indexPath.row] ,@"objectID":self.objectID[indexPath.row], @"message": messageAccept, @"betStatus": @"1"}];
+//                                        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                                    
 //                                        dispatch_async(dispatch_get_main_queue(), ^ {
 //                                            [self.tableView reloadData];
 //                                        });
@@ -196,6 +198,8 @@
                                          NSString* messageDecline = [NSString stringWithFormat:@"%s%@%s%@%@%@%@", "Your bet to ", self.currentFirstName, "", self.currentLastName, @" to sleep ", self.noOfHours[indexPath.row], @" hours has been declined"];
                                          
                                          [PFCloud callFunctionInBackground:@"sendPushNotificationsToBetter" withParameters:@{@"betterID":self.betterID[indexPath.row], @"objectID":self.objectID[indexPath.row], @"message": messageDecline, @"betStatus": @"2"}];
+//                                         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                                     
 //                                         dispatch_async(dispatch_get_main_queue(), ^ {
 //                                             [self.tableView reloadData];
 //                                         });
@@ -213,7 +217,7 @@
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 20)];
     
     // 2. Set a custom background color and a border
-    headerView.backgroundColor = [UIColor whiteColor];
+    headerView.backgroundColor = [UIColor colorWithRed:155 green:155 blue:155 alpha:1];
     headerView.layer.borderColor = [UIColor colorWithWhite:0.5 alpha:1.0].CGColor;
     headerView.layer.borderWidth = 1.0;
     
