@@ -23,7 +23,8 @@ Parse.Cloud.define("computeBetOutcomesForSleeper", function (request, response) 
 				betterPoints,
 				sleeperPoints,
 				doneBets = 0,
-				doneSleeps = 0;
+				doneSleeps = 0,
+				userPoints = 0;
 
 			for (i = 0; i < rlen; i++) {
 				// TODO: check timestamp and ignore if > 24 hours earlier
@@ -60,7 +61,8 @@ Parse.Cloud.define("computeBetOutcomesForSleeper", function (request, response) 
 				bet.save();
 
 				// update each user's total points
-				if (betterPoints !== 0) {
+				if (betterPoints !== 0) 
+				{
 					userQuery = new Parse.Query(Parse.User);
 					userQuery.get(betterId, {
 						success: function (user) {
@@ -75,15 +77,19 @@ Parse.Cloud.define("computeBetOutcomesForSleeper", function (request, response) 
 							doneBets++;
 
 							if (doneBets === rlen && doneSleeps === rlen) {
-								Parse.Cloud.run("sendPushNotificationToUpdatePage", { sleeperId: sleeperId, betterId:betterId }, {
-								  success: function(results) {
-								    // ratings should be 4.5
-								  },
-								  error: function(error) {
-								  }
+								userQuery2 = new Parse.Query(Parse.User);
+								userQuery2.get(sleeperId, {
+									success: function (user) {
+										console.log("got sleeper user");
+										userPoints = user.get("points");
+										console.log("better was last, user points are: " + points);
+										response.success(userPoints);
+									},
+									error: function (user, error) {
+										console.log(user);
+										console.log(error);
+									}	
 								});
-								response.success("better was last");
-								console.log("better was last")
 							}
 						},
 						error: function (user, error) {
@@ -95,14 +101,19 @@ Parse.Cloud.define("computeBetOutcomesForSleeper", function (request, response) 
 				else {
 					doneBets++;
 					if (doneBets === rlen && doneSleeps === rlen) {
-						Parse.Cloud.run("sendPushNotificationToUpdatePage", { sleeperId: sleeperId, betterId:betterId }, {
-								  success: function(results) {
-								    // ratings should be 4.5
-								  },
-								  error: function(error) {
-								  }
-								});
-						// response.success("better was last");
+						userQuery = new Parse.Query(Parse.User);
+						userQuery.get(sleeperId, {
+							success: function (user) {
+								console.log("got sleeper user");
+								userPoints = user.get("points");
+								console.log("better was last, user points are: " + points);
+								response.success(userPoints);
+							},
+							error: function (user, error) {
+								console.log(user);
+								console.log(error);
+							}	
+						});
 					}
 					console.log("i hate my life");
 				}
@@ -121,15 +132,9 @@ Parse.Cloud.define("computeBetOutcomesForSleeper", function (request, response) 
 							user.save();
 							doneSleeps++;
 							if (doneBets === rlen && doneSleeps === rlen) {
-								Parse.Cloud.run("sendPushNotificationToUpdatePage", { sleeperId: sleeperId, betterId:betterId}, {
-								  success: function(results) {
-								    // ratings should be 4.5
-								  },
-								  error: function(error) {
-								  }
-								});
-								response.success("better was last");
-								console.log("better was last");
+								userPoints = user.get("points");
+								console.log("slepper was last, user points are: " + userPoints);
+								response.success(userPoints);
 							}
 						},
 						error: function (user, error) {
@@ -140,16 +145,20 @@ Parse.Cloud.define("computeBetOutcomesForSleeper", function (request, response) 
 				}
 				else {
 					doneSleeps++;
-					if (doneBets === rlen && doneSleeps === rlen) {
-						Parse.Cloud.run("sendPushNotificationToUpdatePage", { sleeperId: sleeperId, betterId:betterId}, {
-								  success: function(results) {
-								    // ratings should be 4.5
-								  },
-								  error: function(error) {
-								  }
-								});
-						console.log("better was last")
-						response.success("better was last");
+					if (doneBets === rlen && doneSleeps === rlen){
+						userQuery = new Parse.Query(Parse.User);
+						userQuery.get(sleeperId, {
+							success: function (user) {
+								console.log("got sleeper user");
+								userPoints = user.get("points");
+								console.log("sleeper was last, points are: " + points);
+								response.success(userPoints);
+							},
+							error: function (user, error) {
+								console.log(user);
+								console.log(error);
+							}	
+						});
 					}
 					console.log("i hate my life 2");
 				}
@@ -162,66 +171,6 @@ Parse.Cloud.define("computeBetOutcomesForSleeper", function (request, response) 
 		}
 	});
 
-});
-
-Parse.Cloud.define("sendPushNotificationToUpdatePage", function (request, response){
-// Parse.Cloud.afterSave("message", function(request, response) {
-//   // Our "Comment" class has a "text" key with the body of the comment itself
-  
-// var data = request.params.data;
-	var userId = request.params.sleeperId,
-		pushQuery = new Parse.Query(Parse.Installation),
-		betterId = request.params.betterId,
-
-	console.log("sleeperId is" + sleeperId);
-	console.log("betterId is" + betterId);
-
-
-	Parse.Cloud.useMasterKey();
-
-	// var pushQuery = new Parse.Query(Parse.Installation);
-	// pushQuery.equalTo('deviceType', 'ios');
-
-	pushQuery.equalTo("installationUserId", sleeperId);
-
-	Parse.Push.send({
-		where: pushQuery, // Set our Installation query
-		data: {
-			//somehow add dictionary to indicate to refresh page
-		}
-	}, {
-		success: function() {
-			// Push was successful
-			console.log("push was successful");
-			response.success("push was a success");
-		},
-		error: function(error) {
-			throw "Got an error" + error.code + " : " + error.message;
-			console.log("push caused an error");
-			response.error("push failed")
-		}
-	});
-
-	pushQuery.equalTo("installationUserId", betterId);
-
-	Parse.Push.send({
-		where: pushQuery, // Set our Installation query
-		data: {
-			//somehow add dictionary to indicate to refresh page
-		}
-	}, {
-		success: function() {
-			// Push was successful
-			console.log("push was successful");
-			response.success("push was a success");
-		},
-		error: function(error) {
-			throw "Got an error" + error.code + " : " + error.message;
-			console.log("push caused an error");
-			response.error("push failed")
-		}
-	});
-	
 });
 
 Parse.Cloud.define("sendPushNotificationsToSleeper", function (request, response){
@@ -471,7 +420,4 @@ Parse.Cloud.define("get", function(request,response){
 });
 
 
-
-
->>>>>>> fd68ac2771d1b01849e616a08ef091dc0ec34a80
 

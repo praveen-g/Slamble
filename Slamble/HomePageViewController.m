@@ -136,7 +136,25 @@
         [self presentViewController:alertError animated:YES completion:nil];
         
     }
-        [PFCloud callFunctionInBackground:@"computeBetOutcomesForSleeper" withParameters:@{@"sleeperId":[PFUser currentUser].objectId, @"hoursSlept": self.amountSleptInput.text}];
+
+        [PFCloud callFunctionInBackground:@"computeBetOutcomesForSleeper" withParameters:@{@"sleeperId":[PFUser currentUser].objectId, @"hoursSlept": self.amountSleptInput.text} block:^(NSNumber *newPoints, NSError * error) {
+            
+            if (error) {
+                // handle it here
+                 NSLog(@"error: %@", error);
+                return;
+            }
+            NSLog(@"newpoints: %@", newPoints);
+            
+            NSString * userPointsAfterCalc = [NSString stringWithFormat:@"%@", newPoints];
+            NSLog(@"userPointsAfterCalc: %@", userPointsAfterCalc);
+//            NSString * userPointsAfterCalc =[object objectForKey:@"userPoints"];
+            self.myPoints.text = userPointsAfterCalc;
+
+            
+        }];
+//    [PFCloud callFunction:@"computeBetOutcomesForSleeper" withParameters:@{@"sleeperId":[PFUser currentUser].objectId, @"hoursSlept": self.amountSleptInput.text} ]
+
     
     PFObject *sleepObject = [PFObject objectWithClassName:@"Sleep"];
     //create bet object with the below field
