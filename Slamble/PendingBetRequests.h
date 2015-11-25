@@ -13,7 +13,7 @@
 @property(nonatomic,strong) NSString *currentFirstName;
 @property(nonatomic,strong) NSString *currentLastName;
 @property NSInteger *countOfObjects;
-@property(strong, nonatomic) NSArray *listOfBets;
+@property(strong, nonatomic) NSMutableArray *listOfBets;
 @property(strong, nonatomic) NSArray *better;
 @property (strong, nonatomic) NSArray *noOfHours;
 @property (strong, nonatomic) NSArray *betsCreatedAt;
