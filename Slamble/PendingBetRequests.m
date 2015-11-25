@@ -35,7 +35,7 @@
     self.automaticallyAdjustsScrollViewInsets=YES;
     
     //initialize array for list of bets that have not been validated yet
-    self.listOfBets =[[NSArray alloc]init];
+    self.listOfBets =[[NSMutableArray alloc]init];
     self.currentFirstName = [[NSString alloc] init];
     self.currentLastName = [[NSString alloc] init];
     
@@ -184,11 +184,10 @@
                                         NSString* messageAccept = [NSString stringWithFormat:@"%s%@%s%@%@%@%@", "Your bet to ", self.currentFirstName, "", self.currentLastName, @" to sleep ", self.noOfHours[indexPath.row], @" hours has been accepted"];
                                         
                                         [PFCloud callFunctionInBackground:@"sendPushNotificationsToBetter" withParameters:@{@"betterID":self.betterID[indexPath.row] ,@"objectID":self.objectID[indexPath.row], @"message": messageAccept, @"betStatus": @"1"}];
-//                                        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-                                    
-//                                        dispatch_async(dispatch_get_main_queue(), ^ {
-//                                            [self.tableView reloadData];
-//                                        });
+                                        [self.listOfBets removeObjectAtIndex:indexPath.row];
+                                        dispatch_async(dispatch_get_main_queue(), ^ {
+                                            [tableView reloadData];
+                                        });
                                         
                                     }];
     accept.backgroundColor = [UIColor redColor];
@@ -198,11 +197,10 @@
                                          NSString* messageDecline = [NSString stringWithFormat:@"%s%@%s%@%@%@%@", "Your bet to ", self.currentFirstName, "", self.currentLastName, @" to sleep ", self.noOfHours[indexPath.row], @" hours has been declined"];
                                          
                                          [PFCloud callFunctionInBackground:@"sendPushNotificationsToBetter" withParameters:@{@"betterID":self.betterID[indexPath.row], @"objectID":self.objectID[indexPath.row], @"message": messageDecline, @"betStatus": @"2"}];
-//                                         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-                                     
-//                                         dispatch_async(dispatch_get_main_queue(), ^ {
-//                                             [self.tableView reloadData];
-//                                         });
+                                         [self.listOfBets removeObjectAtIndex:indexPath.row];
+                                         dispatch_async(dispatch_get_main_queue(), ^ {
+                                             [self.tableView reloadData];
+                                         });
                                      }];
     
     
