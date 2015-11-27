@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "SignUpViewController.h"
+#import "ViewController.h"
 
 @interface SlambleTests : XCTestCase
 
@@ -36,6 +37,20 @@
     XCTAssert([SignUpViewController isValidPhoneNumber:@"6467247289"]);
     XCTAssertFalse([SignUpViewController isValidPhoneNumber:@"646-724-7289"]);
 }
+
+-(void) testSignUp{
+    // FOR XCTAssertFalse it is CRITICAL that the signup info is brand new, it must not exist signUpTest
+    XCTAssert([SignUpViewController function:@"A" that:@"B" checks:@"C" that:@"D" SignUp:@"E" isValid:@"012" inClass:@"signUpTest"]);
+    XCTAssertFalse([SignUpViewController function:@"X2" that:@"Y2" checks:@"Z2" that:@"O2" SignUp:@"L1" isValid:@"789" inClass:@"signUpTestFalse"]);
+    
+
+}
+
+-(void) testLogin{
+    XCTAssert([ViewController test:@"dc" login:@"dc"]);
+    XCTAssertFalse([ViewController test:@"abc" login:@"def"]);
+}
+
 
 - (void)testExample {
     // This is an example of a functional test case.

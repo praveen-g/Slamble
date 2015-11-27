@@ -34,12 +34,61 @@
     return phoneValidates;
     
 }
++(void)  send:(NSString *)firstName user:(NSString *)lastName information:(NSString *)username to:(NSString *)password Parse:(NSString *)email database:(NSString *)phoneNumber withClass:(NSString *)parseClass{
+    PFObject * testUser =[PFObject objectWithClassName:parseClass];
+    [testUser setObject:firstName forKey:@"firstName"];
+    [testUser setObject:lastName forKey:@"lastName"];
+    [testUser setObject:username forKey:@"username"];
+    [testUser setObject:password forKey:@"password"];
+    [testUser setObject:email forKey:@"email"];
+    [testUser setObject:phoneNumber forKey:@"phone"];
+    [testUser saveInBackground];
+    
+
+}
++ (BOOL)function:(NSString *)firstName that:(NSString *)lastName checks:(NSString *)username that:(NSString *)password SignUp:(NSString *)email isValid:(NSString *)phoneNumber inClass:(NSString *)parseClass{
+    
+    [self send:firstName user:lastName information:username to:password Parse:email database:phoneNumber withClass:parseClass];
+    
+        
+    PFQuery * testUserQuery = [PFQuery queryWithClassName:@"signUpTest"];
+    NSLog(@"fasdjfqdgqlrhcbhqebhqebvqrhcbqerhbqehvbrvhbqe");
+    [testUserQuery whereKey:@"username" equalTo:username];
+    NSArray *object = [testUserQuery findObjects];
+    NSLog(@"nanana");
+    NSLog(@" object has %lu items",(unsigned long)[object count]);
+    
+    
+    if ([object count]) {
+        NSLog(@"true");
+        return true;
+        
+    
+    }
+    else{
+        NSLog(@"false");
+        return false;
+    
+    }
+    
+    
+}
 
 
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    NSLog(@"before");
+//    PFObject * testUser =[PFObject objectWithClassName:@"signUpTest"];
+//    [testUser setObject:@"Robert" forKey:@"firstName"];
+//    [testUser setObject:@"Davis" forKey:@"lastName"];
+//    [testUser setObject:@"rdavis" forKey:@"username"];
+//    [testUser setObject:@"rdavis" forKey:@"password"];
+//    [testUser setObject:@"email@email.com" forKey:@"email"];
+//    [testUser setObject:@"123" forKey:@"phone"];
+//    [testUser saveInBackground];
+//    NSLog(@"after");
     
 //    if ([PFUser currentUser]) {
 //        [self performSegueWithIdentifier:@"goToHomePage" sender: self];

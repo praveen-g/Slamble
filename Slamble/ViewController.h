@@ -13,7 +13,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *passwordSignIn;
 @property (weak, nonatomic) NSString*username;
 @property (weak, nonatomic) NSString*password;
-
++(BOOL)test:(NSString *)username login:(NSString *)password;
 
 
 @end

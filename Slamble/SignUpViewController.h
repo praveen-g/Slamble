@@ -22,6 +22,9 @@
 +(BOOL)isValidEmailAddress:(NSString *)emailAddress;
 +(BOOL)isValidPhoneNumber:(NSString *) phoneNumber;
 
++(void) send:(NSString *) firstName user:(NSString *) lastName information:(NSString *) username to:(NSString *) password Parse:(NSString *) email database:(NSString *) phoneNumber withClass:(NSString *) parseClass;
++(BOOL)function:(NSString *) firstName that:(NSString *) lastName checks:(NSString *) username that:(NSString *) password SignUp:(NSString *) email isValid:(NSString *) phoneNumber inClass:(NSString *) parseClass;
+
 @property (strong, nonatomic) IBOutlet UITextField *phoneTextField;
 
 @end

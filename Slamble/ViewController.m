@@ -23,6 +23,16 @@
 
 @implementation ViewController
 
++(BOOL)test:(NSString *)username login:(NSString *)password{
+    if([PFUser logInWithUsername:username password:password]){
+    return true;
+    }
+    else{
+        return false;
+    
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
