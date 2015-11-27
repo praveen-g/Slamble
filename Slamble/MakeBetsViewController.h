@@ -17,5 +17,6 @@
 @property (strong, nonatomic) NSString *currentUserFirstName;
 @property (strong, nonatomic) NSString *currentUserLastName;
 
-
++(void) make:(NSString *)betterUsername bet:(NSString *) sleeperUsername withBetTime:(NSString *) hoursBet;
++(BOOL) test:(NSString *)betterUsername bet:(NSString *) sleeperUsername logic:(NSString *) hoursBet inClass:(NSString *)betClass;
 @end

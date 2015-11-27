@@ -21,6 +21,60 @@
 
 @implementation MakeBetsViewController
 
++(void) make:(NSString *)betterUsername bet:(NSString *)sleeperUsername withBetTime:(NSString *)hoursBet{
+    PFQuery * query =[PFQuery queryWithClassName:@"signUpTest"];
+    [query whereKey:@"username" equalTo:betterUsername];
+    NSArray * better =  [query findObjects];
+    NSLog(@" better:%@",better);
+    NSString * betterId =better[0];
+    NSLog(@"betterId is %@",betterId);
+    [query whereKey:@"username" equalTo:sleeperUsername];
+    NSArray * sleeper =  [query findObjects];
+    NSLog(@" sleeper:%@",sleeper);
+    NSString * sleeperId =sleeper[0];
+    NSLog(@"betterId is %@",sleeperId);
+    
+    PFObject * testBet=[PFObject objectWithClassName:@"TestBet"];
+    [testBet setObject:betterUsername forKey:@"better"];
+    [testBet setObject:sleeperUsername forKey:@"sleeper"];
+    [testBet setObject:betterId forKey:@"betterID"];
+    [testBet setObject:sleeperId forKey:@"sleeperID"];
+    [testBet setObject:hoursBet forKey:@"betTime"];
+    [testBet setObject:@"0" forKey:@"betStatus"];
+    [testBet saveInBackground];
+
+}
++(BOOL) test:(NSString *)betterUsername bet:(NSString *)sleeperUsername logic:(NSString *)hoursBet inClass:(NSString *)betClass {
+    [self make:betterUsername bet:sleeperUsername withBetTime:hoursBet];
+    
+    PFQuery * testBetQuery = [PFQuery queryWithClassName:betClass];
+    NSLog(@"query started");
+    [testBetQuery whereKey:@"better" equalTo:betterUsername];
+    NSArray *betObject = [testBetQuery findObjects];
+    NSLog(@"found object");
+    NSLog(@" object has %lu items",(unsigned long)[betObject count]);
+    
+    
+    if ([betObject count]) {
+        NSLog(@"true");
+        return true;
+        
+        
+    }
+    else{
+        NSLog(@"false");
+        return false;
+        
+    }
+    
+    
+}
+
+    
+    
+    
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // this code adds the background image across the entire screen
