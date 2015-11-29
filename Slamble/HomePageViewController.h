@@ -25,4 +25,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *pendingBets;
 -(void)updateLabelPoints;
 //-(void) queryUserPoints;
++(void) enter:(NSString *) sleeper hoursSlept:(NSString *)hoursSlept inClass:(NSString *) betClass;
++(BOOL) check:(NSString *) sleeper sleepValue:(NSString *)hoursSlept isCorrect:(NSString *)betClass;
++(BOOL) test:(NSString *) sleeper hoursSleptSubmission:(NSString *) hoursSlept fromClass:(NSString *)betClass;
 @end

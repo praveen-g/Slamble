@@ -10,6 +10,7 @@
 #import "SignUpViewController.h"
 #import "ViewController.h"
 #import "MakeBetsViewController.h"
+#import "HomePageViewController.h"
 
 @interface SlambleTests : XCTestCase
 
@@ -54,8 +55,15 @@
 
 -(void) testMakeBet{
     XCTAssert([MakeBetsViewController test:@"cnelson" bet:@"dhart" logic:@"8" inClass:@"TestBet"]);
-    XCTAssertFalse([MakeBetsViewController test:@"cnelson" bet:@"dhart" logic:@"8" inClass:@"TestBetFalse"]);
+    XCTAssertFalse([MakeBetsViewController test:@"cnelson" bet:@"rdavis" logic:@"8" inClass:@"TestBetFalse"]);
 
+}
+
+
+-(void) testHoursSleptSubmission{
+    XCTAssert([HomePageViewController test:@"dhart" hoursSleptSubmission:@"6" fromClass:@"TestBet"]);
+    XCTAssertFalse([HomePageViewController test:@"dhart" hoursSleptSubmission:@"6" fromClass:@"TestBetFalse"]);
+    
 }
 
 - (void)testExample {

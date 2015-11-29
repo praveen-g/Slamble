@@ -52,21 +52,21 @@
     
         
     PFQuery * testUserQuery = [PFQuery queryWithClassName:@"signUpTest"];
-    NSLog(@"fasdjfqdgqlrhcbhqebhqebvqrhcbqerhbqehvbrvhbqe");
+    //NSLog(@"fasdjfqdgqlrhcbhqebhqebvqrhcbqerhbqehvbrvhbqe");
     [testUserQuery whereKey:@"username" equalTo:username];
     NSArray *object = [testUserQuery findObjects];
-    NSLog(@"nanana");
-    NSLog(@" object has %lu items",(unsigned long)[object count]);
+    //NSLog(@"nanana");
+    //NSLog(@" object has %lu items",(unsigned long)[object count]);
     
     
     if ([object count]) {
-        NSLog(@"true");
+        //NSLog(@"true");
         return true;
         
     
     }
     else{
-        NSLog(@"false");
+        //NSLog(@"false");
         return false;
     
     }
