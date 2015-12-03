@@ -21,6 +21,93 @@
 
 @implementation HomePageViewController
 
++(BOOL) check:(NSString *)sleeper sleepValue:(NSString *)hoursSlept isCorrect:(NSString *)betClass{
+    PFQuery * betQuery = [PFQuery queryWithClassName:betClass];
+    [betQuery whereKey:@"sleeper" equalTo:sleeper];
+    [betQuery orderByDescending:@"createdAt"];
+    NSArray * object = [betQuery findObjects];
+    if([object count] == 0){
+        return false;
+        
+    }
+    else{
+        NSLog(@"object is %@",object);
+        NSDictionary * bet = object[0];
+        NSLog(@"bet is %@",bet);
+        NSString * hoursSubmitted = bet[@"hoursSlept"];
+        NSLog(@"hoursSubmitted is %@",hoursSubmitted);
+        NSLog(@"hoursSlept is %@",hoursSlept);
+        
+        
+        if([hoursSubmitted isEqualToString:hoursSlept]){
+            NSLog(@"true");
+            return true;
+        }
+        else{
+            NSLog(@"false");
+            return false;
+        }
+    }
+    
+}
+
++(void) enter:(NSString *)sleeper hoursSlept:(NSString *)hoursSlept inClass:(NSString *)betClass{
+    PFQuery * betQuery = [PFQuery queryWithClassName:@"TestBet"];
+    [betQuery whereKey:@"sleeper" equalTo:sleeper];
+    [betQuery orderByDescending:@"createdAt"];
+    [betQuery getFirstObjectInBackgroundWithBlock:^(PFObject * betObject,NSError *error){
+        
+        if (error) {
+            return;
+        }
+        
+        //        if(!error){
+        NSLog(@"betObject at first is %@",betObject);
+        [betObject setObject:hoursSlept forKey:@"hoursSlept"];
+        [betObject saveInBackground];
+        NSLog(@"the betoject is %@",betObject);
+        //        }
+        //        [self check:sleeper sleepValue:hoursSlept isCorrect:betClass];
+        
+    }];
+    
+    
+}
+
++(BOOL) test:(NSString *)sleeper hoursSleptSubmission:(NSString *)hoursSlept fromClass:(NSString *)betClass{
+    [self enter:sleeper hoursSlept:hoursSlept inClass:betClass];
+    PFQuery * betQuery = [PFQuery queryWithClassName:betClass];
+    [betQuery whereKey:@"sleeper" equalTo:sleeper];
+    [betQuery orderByDescending:@"createdAt"];
+    NSArray * object = [betQuery findObjects];
+    if([object count] == 0){
+        return false;
+        
+    }
+    else{
+        //NSLog(@"object is %@",object);
+        NSDictionary * bet = object[1];
+        NSLog(@"bet is %@",bet);
+        NSString * hoursSubmitted = bet[@"hoursSlept"];
+        NSLog(@"hoursSubmitted is %@",hoursSubmitted);
+        NSLog(@"hoursSlept is %@",hoursSlept);
+        
+        
+        if([hoursSubmitted isEqualToString:hoursSlept]){
+            //NSLog(@"true");
+            return true;
+        }
+        else{
+            //NSLog(@"false");
+            return false;
+        }
+    }
+    //return 0;
+    
+    
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
