@@ -1,0 +1,35 @@
+<div class="right_panel">
+  <input value="<%= image.get('sizeOriginal').url() %>" />
+  <p>Full size image url</p>
+
+  <input value="<%= image.get('sizeNormal').url() %>" />
+  <p>Normal size image url</p>
+
+  <input value="<%= image.get('sizeSmall').url() %>" />
+  <p>Small size image url</p>
+  
+</div>
+
+<div class="image_container">
+  <div class="outer">
+    <div class="image">
+      <h1><%= image.title() %></h1>
+      <a href="<%= image.get('sizeOriginal').url() %>">
+        <img src="<%= image.get(size).url() %>" />
+      </a>
+    </div>
+  </div>
+  <div class="metadata">
+    <% if (Parse.User.current()) { %>
+      <div class="user">by <%= Parse.User.current().get('username') %></div>
+    <% } %>
+    Views: <%= image.get("imageMetadata").get("views") %>
+  </div>
+</div>
+
+<script>
+  $("input").click(function(e) {
+    var el = $(e.target);
+    el.select();
+  });
+</script>

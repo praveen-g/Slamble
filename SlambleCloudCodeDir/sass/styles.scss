@@ -1,0 +1,232 @@
+@import "compass/reset";
+@import "compass/css3";
+@import "compass/utilities";
+
+$back: #21272E;
+$textColor: white;
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: center;
+    background: #111;
+    color: $textColor;
+}
+
+a {
+    color: $textColor;
+
+    &:hover {
+        color: $textColor;
+    }
+}
+
+
+h1 {
+    font-family: 'Open Sans', sans-serif;
+}
+
+#content {
+    width: 950px;
+    margin: auto;
+}
+
+#bar {
+    text-align: left;
+    margin-bottom: 20px;
+    @include clearfix;
+
+    .logo {
+        display: block;
+        text-decoration: none;
+        color: $textColor;
+        float: left;
+        font-size: 25px;
+        border: solid black;
+        border-width: 0 4px 4px 4px;
+        padding: 15px;
+        background: $back;
+
+        &:hover {
+            background: lighten($back, 5%);
+        }
+    }
+
+    ul {
+        font-size: 13px;
+        border: solid black;
+        border-width: 0 4px 4px 4px;
+        padding: 15px;
+        background: $back;
+
+        li {
+            padding-top: 2px;
+        }
+
+        a {
+            text-decoration: none;
+            color: $textColor;
+        }
+    }
+    
+    ul.right {
+        float: right;
+        li {
+            float: right;
+            margin-right: 5px;
+        }
+
+        form {
+            display: inline;
+        }
+    }
+}
+
+#main {
+    background: $back;
+    padding: 25px;
+    text-align: left;
+    border: 4px solid black;
+    padding: 25px;
+    @include clearfix;
+
+    .flash {
+        background: #444;
+        padding: 10px 15px;
+        border: 1px solid #222;
+        margin-bottom: 20px;
+    }
+
+    form {
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 3px;
+        }
+
+        .submit {
+            margin-top: 15px;
+        }
+    }
+    
+    .image_container {
+        float: left;
+        width: 612px;
+
+        &.full {
+            width: auto;
+        }
+
+        h1 {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .outer {
+            text-align: center;
+            width: 612px;
+        }
+
+        a {
+            cursor: -webkit-zoom-in;
+            cursor: -moz-zoom-in;
+            display: block;
+        }
+        
+        .image {
+            margin-bottom: 15px;
+        }
+        
+        .metadata {
+            font-size: 14px;
+            color: #aaa;
+            .user {
+                float: right;
+            }
+        }
+    }
+
+    .right_panel {
+        float: right;
+        width: 250px;
+
+        input {
+            font-size: 13px;
+            background: lighten($back, 70%);
+            padding: 4px;
+            border: 2px solid $back;
+            display: block;
+            width: 200px;
+            margin-bottom: 7px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 12px;
+        }
+    }
+       
+}
+
+#upload {
+    text-align: center;
+
+    .outer {
+        text-align: left;
+        width: 400px;
+        margin: auto;
+    }
+
+    h1 {
+        font-size: 35px;
+        margin-bottom: 25px;
+        margin-top: 50px;
+    }
+
+    input[type=text] {
+        width: 400px;
+        font-size: 18px;
+        border: 2px solid black;
+        padding: 3px;
+        margin-bottom: 15px;
+    }
+    
+    input[type=file] {
+        display: none;
+    }
+                       
+    .upload {
+        font-size: 35px;
+        background: #577487;
+        padding: 25px 40px;
+        color: white;
+        text-decoration: none;
+        margin: 0 auto 55px auto;
+        display: block;
+        width: 320px;
+        text-align: center;
+        border: 2px solid black;
+
+        &:hover {
+            background: lighten(#577487, 10%);
+        }
+
+        img {
+            position: relative;
+            top: 10px;
+        }
+    }
+}
+
+#image_list {
+    margin-top: 25px;
+    div {
+        float: left;
+        margin: 0 15px 15px 0;
+    }
+}
+
+#flash {
+    padding: 15px;
+    font-size: 15px;
+    background: darken(#f6f6ef, 5%);
+}

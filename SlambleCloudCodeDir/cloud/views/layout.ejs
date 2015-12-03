@@ -1,0 +1,57 @@
+<html>
+  <head>
+     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+     <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+     <% if (locals.title) { %>
+       <title><%= title %></title>
+     <% } else { %>
+       <title>Slamble</title>
+     <% } %>
+     <link href='//fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+     <script src="/javascripts/backbone.js"></script>
+     <script src="https://www.parsecdn.com/js/parse-1.2.8.min.js"></script>
+     <script>
+       Parse.initialize("s3CBKwuw8w4lunRPqne8iasu5EAx23snFgu6lJGz", "t3RIFjqUVeJwa9LzwmJpEclSa1peoPaYSqSqysNq");
+     </script>
+     <script type="text/javascript" src="/javascripts/main.js"></script>
+     <link href="/stylesheets/styles.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <div id="content">
+      <div id="bar">
+        <a class="logo" href="/">
+          <h1>Home Page</h1>
+        </a>
+      
+        <ul class="right">
+        <% if (!Parse.User.current()) { %>
+          <li>
+            <a href="/leaderboard">Leader Board</a>
+            | <a href="/i/latest">Your Sleep This Week</a>
+            | <a href="/login">Login</a>
+            | <a href="/signup">Signup</a>
+          </li>
+        <% } else { %>
+          <li>
+            <a href="/i/mine"><%= Parse.User.current().get('username') %></a>
+            | <a href="/">View Sleep</a>
+            | <form action="/logout" method="post">
+              <a href="#" data-action="post">Logout</a>
+            </form>
+          </li>
+        <% } %>
+        </ul>
+      </div>
+      
+      <div id="main">
+        <% if (locals.flash) { %>
+          <div class="flash"><%= flash %></div>
+        <% } %>
+        
+        <%- body %>
+      </div>
+    </div>
+  </body>
+</html>
+  

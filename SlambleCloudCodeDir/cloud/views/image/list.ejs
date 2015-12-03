@@ -1,0 +1,14 @@
+<h2><%= title %></h2>
+
+<div id="image_list">
+
+<% if (images.length == 0) { %>
+  No images.
+<% } else { %>
+   <% _(images).each(function(image) { %>
+     <div>
+       <a href="/i/<%= image.id %>"><img src="<%= image.get('sizeSmall').url() %>" /></a>
+     </div>
+   <% }); %>
+<% } %>
+</div>

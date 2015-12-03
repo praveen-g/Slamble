@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIGraphicsBeginImageContext(self.view.frame.size);
-    [[UIImage imageNamed:@"cloudsNew.png"] drawInRect:self.view.bounds];
+    [[UIImage imageNamed:@"slambleBackdrop.png"] drawInRect:self.view.bounds];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
@@ -93,7 +93,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    cell.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.5];
+    cell.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.3];
+    cell.textColor = [UIColor whiteColor];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -216,14 +217,14 @@
     
     // 2. Set a custom background color and a border
     headerView.backgroundColor = [UIColor colorWithRed:155 green:155 blue:155 alpha:1];
-    headerView.layer.borderColor = [UIColor colorWithWhite:0.5 alpha:1.0].CGColor;
+    headerView.layer.borderColor = [UIColor colorWithWhite:0.5 alpha:.6].CGColor;
     headerView.layer.borderWidth = 1.0;
     
     // 3. Add a label
     UILabel* headerLabel = [[UILabel alloc] init];
     headerLabel.frame = CGRectMake(5, 2, tableView.frame.size.width - 5, 18);
     headerLabel.backgroundColor = [UIColor clearColor];
-    headerLabel.textColor = [UIColor blackColor];
+    headerLabel.textColor = [UIColor whiteColor];
     headerLabel.font = [UIFont boldSystemFontOfSize:16.0];
     headerLabel.textAlignment = NSTextAlignmentLeft;
     headerLabel.text = @"Bets Not Yet Actioned";
