@@ -292,7 +292,7 @@
 				25F1A6491BC178D700143C18 /* Info.plist */,
 			);
 			path = SlambleTests;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		25F1A6511BC178D700143C18 /* SlambleUITests */ = {
 			isa = PBXGroup;

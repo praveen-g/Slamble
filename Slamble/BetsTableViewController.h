@@ -35,5 +35,5 @@
 @property (strong, nonatomic) NSArray *betterPointsBetsAgainstComplete;
 
 
-
++(BOOL) test:(NSString *)better bet:(NSString *)sleeper logic:(int)betHours is:(int)HoursSlept correct:(NSString *) predictedWinner;
 @end
