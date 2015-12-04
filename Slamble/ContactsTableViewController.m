@@ -154,11 +154,13 @@
         
         
     }
+    
     NSString * firstName=[self.contactsFirstName objectAtIndex:indexPath.row];
     NSString * lastName=[self.contactsLastName objectAtIndex:indexPath.row];
     NSString * userName=[self.contactsUsername objectAtIndex:indexPath.row];
     //cell.textLabel.text=[self.contactsFirstName objectAtIndex:indexPath.row];
     cell.textLabel.text=[NSString stringWithFormat:@"%@ %@",firstName,lastName];
+    cell.textLabel.textColor = [UIColor whiteColor];
     cell.detailTextLabel.text=userName;
     cell.detailTextLabel.textColor=[UIColor blueColor];
     
@@ -172,7 +174,7 @@
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 20)];
     
     // 2. Set a custom background color and a border
-    headerView.backgroundColor = [UIColor colorWithRed:105 green:106 blue:104 alpha:100];
+    headerView.backgroundColor = [UIColor colorWithRed:105 green:106 blue:104 alpha:.4];
     headerView.layer.borderColor = [UIColor colorWithWhite:0.5 alpha:.7].CGColor;
     headerView.layer.borderWidth = 1.0;
     

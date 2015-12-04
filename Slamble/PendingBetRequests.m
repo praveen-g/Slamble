@@ -93,8 +93,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    cell.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.3];
-    cell.textColor = [UIColor whiteColor];
+    cell.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.2];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -129,8 +128,8 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
     }
-    //    cell.textLabel.textColor = [UIColor whiteColor];
-    //    cell.detailTextLabel.textColor = [UIColor whiteColor];
+        cell.textLabel.textColor = [UIColor whiteColor];
+        cell.detailTextLabel.textColor = [UIColor whiteColor];
     
     
     //if no bets exist
@@ -216,7 +215,7 @@
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 20)];
     
     // 2. Set a custom background color and a border
-    headerView.backgroundColor = [UIColor colorWithRed:155 green:155 blue:155 alpha:1];
+    headerView.backgroundColor = [UIColor colorWithRed:155 green:155 blue:155 alpha:.4];
     headerView.layer.borderColor = [UIColor colorWithWhite:0.5 alpha:.6].CGColor;
     headerView.layer.borderWidth = 1.0;
     

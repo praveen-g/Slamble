@@ -57,11 +57,11 @@
 
     
 //present facebook sign in button
-    
-    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
-    loginButton.center = self.view.center;
-    [self.view addSubview:loginButton];
-    loginButton.readPermissions =@[@"public_profile", @"email", @"user_friends"];
+//    
+//    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
+//    loginButton.center = self.view.center;
+//    [self.view addSubview:loginButton];
+//    loginButton.readPermissions =@[@"public_profile", @"email", @"user_friends"];
 
     
 //    [PFFacebookUtils logInInBackgroundWithReadPermissions:@"public_profile", @"email", @"user_friends" block:^(PFUser *user, NSError *error) {
