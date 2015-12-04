@@ -45,7 +45,7 @@
     [super viewDidLoad];
     
     UIGraphicsBeginImageContext(self.view.frame.size);
-    [[UIImage imageNamed:@"cloudsNew.png"] drawInRect:self.view.bounds];
+    [[UIImage imageNamed:@"slambleBackdrop.png"] drawInRect:self.view.bounds];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
@@ -220,7 +220,8 @@
 //    }
 }
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    cell.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.5];
+    cell.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.2];
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -275,15 +276,15 @@
       UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 20)];
     
     // 2. Set a custom background color and a border
-    headerView.backgroundColor = [UIColor colorWithRed:155 green:155 blue:155 alpha:1];
-    headerView.layer.borderColor = [UIColor colorWithWhite:0.5 alpha:1.0].CGColor;
+    headerView.backgroundColor = [UIColor colorWithRed:155 green:155 blue:155 alpha:.4];
+    headerView.layer.borderColor = [UIColor colorWithWhite:0.5 alpha:.7].CGColor;
     headerView.layer.borderWidth = 1.0;
     
     // 3. Add a label
     UILabel* headerLabel = [[UILabel alloc] init];
     headerLabel.frame = CGRectMake(5, 2, tableView.frame.size.width - 5, 18);
     headerLabel.backgroundColor = [UIColor clearColor];
-    headerLabel.textColor = [UIColor blackColor];
+    headerLabel.textColor = [UIColor whiteColor];
     headerLabel.font = [UIFont boldSystemFontOfSize:16.0];
     headerLabel.textAlignment = NSTextAlignmentLeft;
     
@@ -315,14 +316,15 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
         //Note that the firs time through we used UITableViewCellStyleDefault
     }
-//    cell.textLabel.textColor = [UIColor whiteColor];
-//    cell.detailTextLabel.textColor = [UIColor whiteColor];
-
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.detailTextLabel.textColor = [UIColor whiteColor];
     
+
     //if it is section 0, i.e. the bets where the current user has been bet as the sleeper
     if (indexPath.section ==0){
         if (self.sleeperObjects.count == 0){
             cell.textLabel.text = @"No Outstanding Bets Against You";
+            
             cell.detailTextLabel.text = @"";
         }
         else{

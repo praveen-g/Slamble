@@ -1,0 +1,23 @@
+<form id="upload">
+  <div class="outer">
+    <div>
+      <h1>Share an image</h1>
+      <input type="text" name="title" placeholder="Untitled" />
+      <input type="file" />
+    </div>
+    <a href="#" class="upload">LeaderBoard</a>
+  </div>
+</form>
+
+<script type="text/javascript">
+  new Uploader({ el: "#upload" });
+</script>
+
+<h2>Latest</h2>
+<div id="image_list">
+  <% _(images).each(function(image) { %>
+    <div>
+      <a href="/i/<%= image.id %>"><img src="<%= image.get('sizeSmall').url() %>" /></a>
+    </div>
+  <% }); %>
+</div>

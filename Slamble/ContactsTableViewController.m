@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIGraphicsBeginImageContext(self.view.frame.size);
-    [[UIImage imageNamed:@"cloudsNew.png"] drawInRect:self.view.bounds];
+    [[UIImage imageNamed:@"slambleBackdrop.png"] drawInRect:self.view.bounds];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
@@ -115,7 +115,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    cell.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.5];
+    cell.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.3];
+    cell.textColor = [UIColor whiteColor];
 }
 
 
@@ -153,11 +154,13 @@
         
         
     }
+    
     NSString * firstName=[self.contactsFirstName objectAtIndex:indexPath.row];
     NSString * lastName=[self.contactsLastName objectAtIndex:indexPath.row];
     NSString * userName=[self.contactsUsername objectAtIndex:indexPath.row];
     //cell.textLabel.text=[self.contactsFirstName objectAtIndex:indexPath.row];
     cell.textLabel.text=[NSString stringWithFormat:@"%@ %@",firstName,lastName];
+    cell.textLabel.textColor = [UIColor whiteColor];
     cell.detailTextLabel.text=userName;
     cell.detailTextLabel.textColor=[UIColor blueColor];
     
@@ -171,15 +174,15 @@
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 20)];
     
     // 2. Set a custom background color and a border
-    headerView.backgroundColor = [UIColor colorWithRed:105 green:106 blue:104 alpha:100];
-    headerView.layer.borderColor = [UIColor colorWithWhite:0.5 alpha:1.0].CGColor;
+    headerView.backgroundColor = [UIColor colorWithRed:105 green:106 blue:104 alpha:.4];
+    headerView.layer.borderColor = [UIColor colorWithWhite:0.5 alpha:.7].CGColor;
     headerView.layer.borderWidth = 1.0;
     
     // 3. Add a label
     UILabel* headerLabel = [[UILabel alloc] init];
     headerLabel.frame = CGRectMake(5, 2, tableView.frame.size.width - 5, 18);
     headerLabel.backgroundColor = [UIColor clearColor];
-    headerLabel.textColor = [UIColor blackColor];
+    headerLabel.textColor = [UIColor whiteColor];
     headerLabel.font = [UIFont boldSystemFontOfSize:16.0];
     headerLabel.textAlignment = NSTextAlignmentLeft;
     headerLabel.text = @"Contacts";

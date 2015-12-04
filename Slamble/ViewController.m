@@ -38,7 +38,7 @@
     
     // this code adds the background image across the entire screen
     UIGraphicsBeginImageContext(self.view.frame.size);
-    [[UIImage imageNamed:@"cloudsNew.png"] drawInRect:self.view.bounds];
+    [[UIImage imageNamed:@"slambleBackdrop.png"] drawInRect:self.view.bounds];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
@@ -57,11 +57,11 @@
 
     
 //present facebook sign in button
-    
-    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
-    loginButton.center = self.view.center;
-    [self.view addSubview:loginButton];
-    loginButton.readPermissions =@[@"public_profile", @"email", @"user_friends"];
+//    
+//    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
+//    loginButton.center = self.view.center;
+//    [self.view addSubview:loginButton];
+//    loginButton.readPermissions =@[@"public_profile", @"email", @"user_friends"];
 
     
 //    [PFFacebookUtils logInInBackgroundWithReadPermissions:@"public_profile", @"email", @"user_friends" block:^(PFUser *user, NSError *error) {

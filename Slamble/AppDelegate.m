@@ -13,7 +13,6 @@
 #import "ViewController.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
-#import "AcceptOrDecline.h"
 @interface AppDelegate ()
 
 @end
