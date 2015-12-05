@@ -43,13 +43,13 @@
 		25F1A6951BC1894D00143C18 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F1A6941BC1894D00143C18 /* FBSDKShareKit.framework */; };
 		25F1E33D1BE1A6B100E35884 /* PendingBetRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F1E33C1BE1A6B100E35884 /* PendingBetRequests.m */; };
 		EC4228261BC37D0A0043C3BD /* MakeBetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4228251BC37D0A0043C3BD /* MakeBetsViewController.m */; };
-		EC547C011C10CD4B00938F36 /* slambleLaunch.png in Resources */ = {isa = PBXBuildFile; fileRef = EC547C001C10CD4B00938F36 /* slambleLaunch.png */; };
 		EC547C031C10CD6100938F36 /* slambleBackdrop.png in Resources */ = {isa = PBXBuildFile; fileRef = EC547C021C10CD6100938F36 /* slambleBackdrop.png */; };
 		EC547C051C11160F00938F36 /* bet.png in Resources */ = {isa = PBXBuildFile; fileRef = EC547C041C11160F00938F36 /* bet.png */; };
 		EC547C071C11163300938F36 /* table.png in Resources */ = {isa = PBXBuildFile; fileRef = EC547C061C11163300938F36 /* table.png */; };
 		EC547C091C11163B00938F36 /* zzzs.png in Resources */ = {isa = PBXBuildFile; fileRef = EC547C081C11163B00938F36 /* zzzs.png */; };
 		EC547C0F1C1118D800938F36 /* signup2.png in Resources */ = {isa = PBXBuildFile; fileRef = EC547C0E1C1118D800938F36 /* signup2.png */; };
 		EC547C151C111AC600938F36 /* login3.png in Resources */ = {isa = PBXBuildFile; fileRef = EC547C141C111AC600938F36 /* login3.png */; };
+		EC547C171C11215600938F36 /* slambleLaunch.png in Resources */ = {isa = PBXBuildFile; fileRef = EC547C161C11215600938F36 /* slambleLaunch.png */; };
 		EC65B2F51BC1F79700C47D08 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC65B2F41BC1F79700C47D08 /* HomePageViewController.m */; };
 		EC70C7281BF03DAE0039A262 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC70C7261BF03DAE0039A262 /* Main.storyboard */; };
 		EC70C7291BF03DAE0039A262 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC70C7271BF03DAE0039A262 /* LaunchScreen.storyboard */; };
@@ -131,13 +131,13 @@
 		25F1E33C1BE1A6B100E35884 /* PendingBetRequests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PendingBetRequests.m; sourceTree = "<group>"; };
 		EC4228241BC37D0A0043C3BD /* MakeBetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeBetsViewController.h; sourceTree = "<group>"; };
 		EC4228251BC37D0A0043C3BD /* MakeBetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeBetsViewController.m; sourceTree = "<group>"; };
-		EC547C001C10CD4B00938F36 /* slambleLaunch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slambleLaunch.png; sourceTree = "<group>"; };
 		EC547C021C10CD6100938F36 /* slambleBackdrop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slambleBackdrop.png; sourceTree = "<group>"; };
 		EC547C041C11160F00938F36 /* bet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bet.png; sourceTree = "<group>"; };
 		EC547C061C11163300938F36 /* table.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table.png; sourceTree = "<group>"; };
 		EC547C081C11163B00938F36 /* zzzs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zzzs.png; sourceTree = "<group>"; };
 		EC547C0E1C1118D800938F36 /* signup2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signup2.png; sourceTree = "<group>"; };
 		EC547C141C111AC600938F36 /* login3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login3.png; sourceTree = "<group>"; };
+		EC547C161C11215600938F36 /* slambleLaunch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slambleLaunch.png; sourceTree = "<group>"; };
 		EC65B2F31BC1F79700C47D08 /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
 		EC65B2F41BC1F79700C47D08 /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
 		EC70C7261BF03DAE0039A262 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -324,9 +324,9 @@
 				EC547C081C11163B00938F36 /* zzzs.png */,
 				ECF142621BF2E1A10058397C /* cloudsNew.png */,
 				EC547C141C111AC600938F36 /* login3.png */,
+				EC547C161C11215600938F36 /* slambleLaunch.png */,
 				EC547C041C11160F00938F36 /* bet.png */,
 				EC547C0E1C1118D800938F36 /* signup2.png */,
-				EC547C001C10CD4B00938F36 /* slambleLaunch.png */,
 				ECF142601BF2DDDB0058397C /* cloudsBest.jpg */,
 				EC547C021C10CD6100938F36 /* slambleBackdrop.png */,
 				EC9113831C09073C00DAEB81 /* slambleIcon@2x.png */,
@@ -478,11 +478,11 @@
 				EC91138C1C090C6B00DAEB81 /* slambleIcon58X58@2x.png in Resources */,
 				EC547C151C111AC600938F36 /* login3.png in Resources */,
 				EC547C051C11160F00938F36 /* bet.png in Resources */,
-				EC547C011C10CD4B00938F36 /* slambleLaunch.png in Resources */,
 				EC9113891C09074700DAEB81 /* slambleIcon120X120@2x.png in Resources */,
 				EC9113861C09073C00DAEB81 /* slambleIcon@3x.png in Resources */,
 				ECF142631BF2E1A10058397C /* cloudsNew.png in Resources */,
 				25F1A63A1BC178D700143C18 /* Assets.xcassets in Resources */,
+				EC547C171C11215600938F36 /* slambleLaunch.png in Resources */,
 				EC9113851C09073C00DAEB81 /* slambleIcon@2x.png in Resources */,
 				EC91138A1C09074700DAEB81 /* slambleIcon180X180@3x.png in Resources */,
 				EC547C031C10CD6100938F36 /* slambleBackdrop.png in Resources */,
