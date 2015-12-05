@@ -22,6 +22,25 @@
 
 @implementation BetsTableViewController
 
++(BOOL) test:(NSString *)better bet:(NSString *)sleeper logic:(int)betHours is:(int)HoursSlept correct:(NSString *)predictedWinner{
+    if (betHours > HoursSlept && [predictedWinner isEqualToString:better]){
+        NSLog(@"a");
+        return true;
+    
+    
+    }
+    else if(HoursSlept > betHours &&[predictedWinner isEqualToString:sleeper]){
+        NSLog(@"b");
+        return true;
+    }
+    else{
+        NSLog(@"c");
+        return false;
+    }
+        
+
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
