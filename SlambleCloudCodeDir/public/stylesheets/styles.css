@@ -67,8 +67,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-align: center;
-  background: #111;
+  /*background: #111;*/
   color: white;
+  background: url("../images/WebBackground.png") no-repeat;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
 }
 
 /* line 15, ../../sass/styles.scss */
@@ -108,7 +114,7 @@ h1 {
   border: solid black;
   border-width: 0 4px 4px 4px;
   padding: 15px;
-  background: #21272e;
+  background: #3A3745;
 }
 /* line 49, ../../sass/styles.scss */
 #bar .logo:hover {
@@ -120,7 +126,7 @@ h1 {
   border: solid black;
   border-width: 0 4px 4px 4px;
   padding: 15px;
-  background: #21272e;
+  background: #3A3745;
 }
 /* line 61, ../../sass/styles.scss */
 #bar ul li {
@@ -147,19 +153,26 @@ h1 {
 
 /* line 84, ../../sass/styles.scss */
 #main {
-  background: #21272e;
+/*  background: #21272e;*/
+ /* background: url("../images/WebBackground.png") no-repeat;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;*/
   padding: 25px;
-  text-align: left;
-  border: 4px solid black;
+  text-align:left;
+/*  border: 4px solid black;*/
   padding: 25px;
   overflow: hidden;
   *zoom: 1;
+
 }
 /* line 92, ../../sass/styles.scss */
 #main .flash {
-  background: #444;
+/*  background: #444;*/
   padding: 10px 15px;
-  border: 1px solid #222222;
+/*  border: 1px solid #222222;*/
   margin-bottom: 20px;
 }
 /* line 100, ../../sass/styles.scss */
@@ -218,7 +231,7 @@ h1 {
 /* line 152, ../../sass/styles.scss */
 #main .right_panel input {
   font-size: 13px;
-  background: #d4dae0;
+  background: #3A3745;
   padding: 4px;
   border: 2px solid #21272e;
   display: block;
