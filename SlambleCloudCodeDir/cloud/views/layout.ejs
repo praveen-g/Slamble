@@ -21,21 +21,23 @@
     <div id="content">
       <div id="bar">
         <a class="logo" href="/">
-          <h1>Home Page</h1>
+          <h1>Slamble</h1>
         </a>
       
         <ul class="right">
         <% if (!Parse.User.current()) { %>
           <li>
-            <a href="/leaderboard">Leader Board</a>
-            | <a href="/i/latest">Your Sleep This Week</a>
-            | <a href="/login">Login</a>
+           <!--  <a href="/">Leader Board</a>
+            | <a href="/i/latest">Your Sleep This Week</a> -->
+              <a href="/login">Login</a>
             | <a href="/signup">Signup</a>
           </li>
         <% } else { %>
           <li>
             <a href="/i/mine"><%= Parse.User.current().get('username') %></a>
-            | <a href="/">View Sleep</a>
+            | <a href="/leaderboard">Leader Board</a>
+<!--             | <a href="/">View Sleep</a> -->
+<!--             | <a href="/leaderboard">Leader Board</a> -->
             | <form action="/logout" method="post">
               <a href="#" data-action="post">Logout</a>
             </form>

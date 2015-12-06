@@ -25,9 +25,9 @@ app.use(parseExpressCookieSession({
 
 app.locals._ = require('underscore');
 
-var Image = Parse.Object.extend("Image");
+// var Image = Parse.Object.extend("Image");
 
-Homepage endpoint
+// // Homepage endpoint
 app.get('/', function(req, res) {
   // Get the latest images to show
   var query = new Parse.Query('BetClass');
@@ -39,11 +39,11 @@ app.get('/', function(req, res) {
   });
 });
 
-User endpoints
+// User endpoints
 app.use('/', require('cloud/user'));
 
-// Image endpoints
+// // Image endpoints
 app.use('/i', require('cloud/image'));
 
-Attach the Express app to Cloud Code.
+// Attach the Express app to Cloud Code.
 app.listen();

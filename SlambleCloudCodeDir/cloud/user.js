@@ -56,9 +56,11 @@ module.exports = function(){
     res.redirect('/');
   });
 
-  // app.get('/leaderboard', function(req, res) {
-  //   res.render('leaderboard');
-  // });
+  
+
+  app.get('/leaderboard', function(req, res) {
+    res.render('leaderboard');
+  });
 
   return app;
 }();
