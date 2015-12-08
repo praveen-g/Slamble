@@ -81,8 +81,7 @@
             NSLog(@"error %@", error);
         }
     }];
-
-    
+        
     
 }
 
@@ -190,7 +189,7 @@
                                         });
                                         
                                     }];
-    accept.backgroundColor = [UIColor redColor];
+    accept.backgroundColor = [UIColor blueColor];
     
     UITableViewRowAction *decline = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@" Decline" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath)
                                      {
@@ -204,7 +203,7 @@
                                      }];
     
     
-    decline.backgroundColor = [UIColor greenColor];
+    decline.backgroundColor = [UIColor blackColor];
     
     return @[accept, decline];
 }
