@@ -1,4 +1,4 @@
-<form id="leaderboard">
+<form action="/sleep" method="get" id="leaderboard">
   <div class="outer">
     <div>
       <h1>Top Sleepers</h1>
@@ -10,6 +10,24 @@
           <li> Thomas: 12 </li>
           <li> Zaid: 10 </li>
         </ol>
+
+      <%
+          Parse.Cloud.run('getLeaders', {
+            success: function(leaderBoardArr) {
+              var leaderBoardArr = leaderBoardArr;
+              console.log(leaderBoardArr[0]);
+              <% for(var i=0; i<leaderBoardArr.length; i++) { %>
+              <li>
+                  <%= leaderBoardArr[i] %>
+              </li>
+              <% } %>
+            },
+            error: function(error) {
+            }
+          });
+      %>
+ 
+
     </div>
   </div>
 </form>

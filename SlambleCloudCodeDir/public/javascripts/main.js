@@ -59,3 +59,43 @@ $(function() {
     return false;
   });
 });
+
+
+(function($) {
+  $("#enterSleep").click(function(){
+    var userId = Parse.User.current().get('objectId');
+    var firstName = Parse.User.current().get('firstName');
+    var lastName = Parse.User.current().get('lastName');
+    var hoursSlept= parseInt($("#hoursSlept").val());
+    console.log("username " + username);
+    console.log("userId " + userId);
+    console.log("firstName " + firstName);
+    console.log("lastName " + lastName);
+    console.log("hoursSlept " + hoursSlept);
+
+    // var sleep = Parse.Object.extend("Sleep");
+    var sleep = Parse.Object.extend("Sleep");
+    var sleep = new Sleep();
+    sleep.set('username', username);
+    sleep.set('sleep', hoursSlept);
+    sleep.set('userId', userId);
+    sleep.set('firstName', firstName);
+    sleep.set('lastName', lastName);
+
+      console.log("sleep is" + sleep);
+
+      mySleep.save(null, {
+        success: function(mySleep) {
+          // Execute any logic that should take place after the object is saved.
+            alert('New object created with objectId: ' + sleep.id);
+            res.success("saved sleep Object");
+          },
+          error: function(mySleep, error) {
+            // Execute any logic that should take place if the save fails.
+            // error is a Parse.Error with an error code and message.
+            alert('Failed to create new object, with error code: ' + error.message);
+            res.error(error);
+          }
+      }); 
+  });
+});          

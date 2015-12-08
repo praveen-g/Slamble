@@ -13,6 +13,8 @@
      <script>
        Parse.initialize("s3CBKwuw8w4lunRPqne8iasu5EAx23snFgu6lJGz", "t3RIFjqUVeJwa9LzwmJpEclSa1peoPaYSqSqysNq");
      </script>
+     
+     <script type="text/javascript" src="/lib/jquery-1.11.2.js"></script>
      <script type="text/javascript" src="/javascripts/main.js"></script>
      <link href="/stylesheets/styles.css" rel="stylesheet" type="text/css" />
   </head>
@@ -34,8 +36,9 @@
           </li>
         <% } else { %>
           <li>
-            <a href="/i/mine"><%= Parse.User.current().get('username') %></a>
-            | <a href="/leaderboard">Leader Board</a>
+            <a href="/leaderboard">Leader Board</a>
+            | <a href="/makeBet">Make A Bet</a>
+            | <a href="/sleep">Sleep</a>
 <!--             | <a href="/">View Sleep</a> -->
 <!--             | <a href="/leaderboard">Leader Board</a> -->
             | <form action="/logout" method="post">

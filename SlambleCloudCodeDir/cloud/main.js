@@ -1,5 +1,59 @@
 
 
+Parse.Cloud.define("getUserId", function (request, response){
+	var userName = request.params.username;
+	var userId;
+	userQuery2 = new Parse.Query(Parse.User);
+    userQuery2.equalTo("username", userName);
+    userQuery2.find({
+      success: function(results) {
+        console.log("got user");
+        console.log(results[0]);
+        userId = results[0].id;
+        userIdStr = String(userId[0])
+        console.log("userId " + userId);
+        response.success(userIdStr);
+        // Do stuff
+      },error: function (user, error) {
+            console.log(error);
+            response.error(error);
+          } 
+    });
+});
+
+Parse.Cloud.define("getLeaders", function (request, response){
+	var user,
+		results,
+		firstName,
+		lastName,
+		leaderBoardArr = [],
+		stringLeader,
+		userArr = [];
+	userQuery = new Parse.Query(Parse.User);
+    userQuery.greaterThan("points", 0);
+    userQuery.descending("points");
+    userQuery.limit(10);
+    userQuery.find({
+      success: function(results) {
+      	for (i = 0; i < results.length; i++) {
+				user = results[i];
+		        console.log("got user");
+		        console.log(user);
+		        points = user.get("points");
+		        firstName = user.get("firstName");
+		        lastName = user.get("lastName");
+		        stringLeader = String(firstName + " " + lastName + ": " + points);
+		        leaderBoardArr.push(stringLeader);
+		        console.log("stringLeader " + stringLeader);
+		        response.success(leaderBoardArr);
+		}
+        // Do stuff
+      },error: function (user, error) {
+            console.log(error);
+            response.error(error);
+          } 
+    });
+});
 
 
 Parse.Cloud.define("computeBetOutcomesForSleeper", function (request, response) {
@@ -26,6 +80,7 @@ Parse.Cloud.define("computeBetOutcomesForSleeper", function (request, response) 
 				sleeperPoints,
 				doneBets = 0,
 				doneSleeps = 0,
+				betArr,
 				userPoints = 0;
 
 			for (i = 0; i < rlen; i++) {
@@ -33,6 +88,8 @@ Parse.Cloud.define("computeBetOutcomesForSleeper", function (request, response) 
 				betTime = parseInt(bet.get("betTime"));
 				// hoursSlept = parseInt(bet.get("hoursSlept"));
 				betterId = bet.get("betterid");
+				betArr.append()
+
 
 				// calculate how much to increment points per user
 				if (betTime < hoursSlept) {
@@ -596,6 +653,7 @@ Parse.Cloud.define("get", function(request,response){
 
 require('cloud/app.js');
 
+
 var resizeImageKey = require('cloud/resize-image-key');
 var ImageMetadata = Parse.Object.extend("ImageMetadata");
 
@@ -672,5 +730,43 @@ Parse.Cloud.define("viewImage", function(request, response) {
 });
 
 
+// $(function() {
+//   $("#enterSleep").click(function(){
+//     var userId = Parse.User.current().get('objectId');
+//     var firstName = Parse.User.current().get('firstName');
+//     var lastName = Parse.User.current().get('lastName');
+//     var hoursSlept= parseInt($("#hoursSlept").val());
+//     console.log("username " + username);
+//     console.log("userId " + userId);
+//     console.log("firstName " + firstName);
+//     console.log("lastName " + lastName);
+//     console.log("hoursSlept " + hoursSlept);
+
+//     // var sleep = Parse.Object.extend("Sleep");
+//     var sleep = Parse.Object.extend("Sleep");
+//     var sleep = new Sleep();
+//     sleep.set('username', username);
+//     sleep.set('sleep', hoursSlept);
+//     sleep.set('userId', userId);
+//     sleep.set('firstName', firstName);
+//     sleep.set('lastName', lastName);
+
+//       console.log("sleep is" + sleep);
+
+//       mySleep.save(null, {
+//         success: function(sleep) {
+//           // Execute any logic that should take place after the object is saved.
+//             alert('New object created with objectId: ' + sleep.id);
+//             res.success("saved sleep Object");
+//           },
+//           error: function(sleep, error) {
+//             // Execute any logic that should take place if the save fails.
+//             // error is a Parse.Error with an error code and message.
+//             alert('Failed to create new object, with error code: ' + error.message);
+//             res.error(error);
+//           }
+//       }); 
+//   });
+// });  
 
 

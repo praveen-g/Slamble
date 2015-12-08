@@ -1,12 +1,16 @@
 <form id="upload">
   <div class="outer">
     <div>
+    <h2> Gamble With Your Friends' Sleep!</h2>
     <% if (!Parse.User.current()) { %>
           <h1> Welcome!</h1>
         <% } else { %>
           <h1> Welcome  <%= Parse.User.current().get('firstName') %> !</h1>
-          <% } %>
-      <h2> Gamble With Your Friends' Sleep!</h2>
+
+          <div><h1><%= Parse.User.current().get('points') %><h1></div>
+          <label for="points">Points</label>
+          
+        <% } %>
     </div>
   </div>
 </form>
