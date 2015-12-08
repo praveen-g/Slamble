@@ -329,7 +329,7 @@
             </objects>
             <point key="canvasLocation" x="1749" y="-52"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Pending Bet Requests-->
         <scene sceneID="VUT-Xf-sPd">
             <objects>
                 <tableViewController id="ljS-df-dS5" customClass="PendingBetRequests" sceneMemberID="viewController">
@@ -355,7 +355,7 @@
                             <outlet property="delegate" destination="ljS-df-dS5" id="oTb-iy-zGO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="SGU-5C-BZq"/>
+                    <navigationItem key="navigationItem" title="Pending Bet Requests" id="SGU-5C-BZq"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ryz-qw-8C8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -373,7 +373,7 @@
                         <color key="sectionIndexBackgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="omS-Du-nCx">
-                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="omS-Du-nCx" id="gfK-Fg-ilT">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -389,6 +389,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Outstanding Bets" image="table.png" id="cqw-sL-IkF"/>
+                    <nil key="simulatedTopBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="myK-Hw-Ea7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

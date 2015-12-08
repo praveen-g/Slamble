@@ -185,8 +185,22 @@
             NSLog(@"error! %@", error);
         }
     }];
+    //Parallax
+    //Min and Max Values
+    CGFloat topBottomMin=-55.0f;
+    CGFloat topBottomMAx=55.0f;
     
+    //Motion Effect
+    UIInterpolatingMotionEffect *topBottom= [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y"  type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+    topBottom.minimumRelativeValue=@(topBottomMin);
+    topBottom.maximumRelativeValue=@(topBottomMAx);
     
+    //Create motion effect group
+    UIMotionEffectGroup *neGroup = [[UIMotionEffectGroup alloc]init];
+    neGroup.motionEffects = @[topBottom];
+    
+    //Add motion effect group to our imageView
+    [self.tableView addMotionEffect:neGroup];
 
 
     // Uncomment the following line to preserve selection between presentations.
