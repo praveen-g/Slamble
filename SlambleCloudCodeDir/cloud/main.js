@@ -1,5 +1,6 @@
 
 
+//get a user ID given a username
 Parse.Cloud.define("getUserId", function (request, response){
 	var userName = request.params.username;
 	var userId;
@@ -21,6 +22,7 @@ Parse.Cloud.define("getUserId", function (request, response){
     });
 });
 
+//returns formatted array of the top 10 users by top users points
 Parse.Cloud.define("getLeaders", function (request, response){
 	var user,
 		results,
@@ -29,6 +31,7 @@ Parse.Cloud.define("getLeaders", function (request, response){
 		leaderBoardArr = [],
 		stringLeader,
 		userArr = [];
+	//queries all users who have > 0 plints, sorts them descending, and returns the top 10
 	userQuery = new Parse.Query(Parse.User);
     userQuery.greaterThan("points", 0);
     userQuery.descending("points");
@@ -36,6 +39,7 @@ Parse.Cloud.define("getLeaders", function (request, response){
     userQuery.find({
       success: function(results) {
       	for (i = 0; i < results.length; i++) {
+      	// for each user object returned, gets the points, first name, and last name. 
 				user = results[i];
 		        console.log("got user");
 		        console.log(user);
@@ -43,7 +47,9 @@ Parse.Cloud.define("getLeaders", function (request, response){
 		        firstName = user.get("firstName");
 		        lastName = user.get("lastName");
 		        var n = i+1;
+		        //creates a stirng for each user to display in the table
 		        stringLeader = String(n+". " + firstName + " " + lastName + ": " + points);
+		        //appends the string to the array returned in the function. 
 		        leaderBoardArr.push(stringLeader);
 		        console.log("stringLeader " + stringLeader);
 		        
@@ -51,12 +57,15 @@ Parse.Cloud.define("getLeaders", function (request, response){
 		response.success(leaderBoardArr);
         // Do stuff
       },error: function (results, nerror) {
+      	// if error throws error 
          throw "Got an error" + error.code + " : " + error.message;
 			console.log("push caused an error");
 			response.error("oh no");
           } 
     });
 });
+
+
 
 
 Parse.Cloud.define("computeBetOutcomesForSleeper", function (request, response) {
@@ -653,6 +662,8 @@ Parse.Cloud.define("get", function(request,response){
  
 });
 
+
+// for the web app
 require('cloud/app.js');
 
 
@@ -732,43 +743,6 @@ Parse.Cloud.define("viewImage", function(request, response) {
 });
 
 
-// $(function() {
-//   $("#enterSleep").click(function(){
-//     var userId = Parse.User.current().get('objectId');
-//     var firstName = Parse.User.current().get('firstName');
-//     var lastName = Parse.User.current().get('lastName');
-//     var hoursSlept= parseInt($("#hoursSlept").val());
-//     console.log("username " + username);
-//     console.log("userId " + userId);
-//     console.log("firstName " + firstName);
-//     console.log("lastName " + lastName);
-//     console.log("hoursSlept " + hoursSlept);
-
-//     // var sleep = Parse.Object.extend("Sleep");
-//     var sleep = Parse.Object.extend("Sleep");
-//     var sleep = new Sleep();
-//     sleep.set('username', username);
-//     sleep.set('sleep', hoursSlept);
-//     sleep.set('userId', userId);
-//     sleep.set('firstName', firstName);
-//     sleep.set('lastName', lastName);
-
-//       console.log("sleep is" + sleep);
-
-//       mySleep.save(null, {
-//         success: function(sleep) {
-//           // Execute any logic that should take place after the object is saved.
-//             alert('New object created with objectId: ' + sleep.id);
-//             res.success("saved sleep Object");
-//           },
-//           error: function(sleep, error) {
-//             // Execute any logic that should take place if the save fails.
-//             // error is a Parse.Error with an error code and message.
-//             alert('Failed to create new object, with error code: ' + error.message);
-//             res.error(error);
-//           }
-//       }); 
-//   });
-// });  
+/
 
 

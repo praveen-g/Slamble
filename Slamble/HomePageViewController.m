@@ -228,11 +228,7 @@
 
             
         }];
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 0e16710d0d6a6da807f3641b69f6bb16ac4eda6b
     
     PFObject *sleepObject = [PFObject objectWithClassName:@"Sleep"];
     //create bet object with the below field
