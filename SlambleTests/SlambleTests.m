@@ -57,6 +57,7 @@
 -(void) testMakeBet{
     XCTAssert([MakeBetsViewController test:@"cnelson" bet:@"dhart" logic:@"8" inClass:@"TestBet"]);
     XCTAssertFalse([MakeBetsViewController test:@"cnelson" bet:@"rdavis" logic:@"8" inClass:@"TestBetFalse"]);
+    
 
 }
 
@@ -72,6 +73,17 @@
     XCTAssertFalse([BetsTableViewController test:@"cnelson" bet:@"dhart" logic:8 is:6 correct:@"dhart"]);
     
 
+}
+
+
+-(void)testBetOutcome{
+    int sleeperPoints = [BetsTableViewController querySleeperPoints];
+    NSLog(@"pointer pointer DDDDDDDDD");
+    NSLog(@"%d",sleeperPoints);
+    XCTAssertEqual(sleeperPoints, 2);
+    XCTAssertNotEqual(sleeperPoints, -1);
+    
+    
 }
 
 - (void)testExample {
