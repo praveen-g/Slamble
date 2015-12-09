@@ -72,7 +72,6 @@
             NSLog(@"cretedAt Bets Against called: %@", self.betsCreatedAt);
             NSLog(@"no of hours: %@", self.objectID);
 //            NSLog(@"cretedAt Bets Against called: %@", self.betterID);
-//            [self.tableView reloadData];
             dispatch_async(dispatch_get_main_queue(), ^ {
                 [self.tableView reloadData];
             });
@@ -132,7 +131,6 @@
     
     
     //if no bets exist
-//    NSLog(@"sefl.listofBets.count used in cell foramtting is: %@", self.listOfBets.count);
     if (self.listOfBets.count == 0){
         cell.textLabel.text = @"No Outstanding Bets Against You";
         cell.detailTextLabel.text = @"";
@@ -163,22 +161,9 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
-//    dispatch_async(dispatch_get_main_queue(), ^ {
-//        [self.tableView reloadData];
-//    });
-    
-    
 }
 -(NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
-    // creating the installation object for push
-    //    PFInstallation *installation1 = [PFInstallation currentInstallation];
-    //    [installation1 setObject:self.betterID[ind] forKey:@"username"];
-    //    [installation1 setObject:[PFUser currentUser].objectId forKey:@"installationUserId"];
-    //    [installation1 saveInBackground];
-    //    NSLog(@"installation is: %@", installation1);
-    
-    
-    UITableViewRowAction *accept = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Accept" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath)
+        UITableViewRowAction *accept = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Accept" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath)
                                     {
                                         NSString* messageAccept = [NSString stringWithFormat:@"%s%@%s%@%@%@%@", "Your bet to ", self.currentFirstName, "", self.currentLastName, @" to sleep ", self.noOfHours[indexPath.row], @" hours has been accepted"];
                                         
@@ -231,34 +216,6 @@
     [headerView addSubview:headerLabel];
     return headerView;
 }
-
-//-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-//{
-//    return 2.0;
-//}
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end
 

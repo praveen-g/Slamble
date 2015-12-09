@@ -139,7 +139,6 @@
                 PFObject *betObject = [PFObject objectWithClassName:@"betClass"];
                 [betObject setObject: self.usernameForBet.text forKey:@"sleeper"];
                 [betObject setObject: self.sleeperId forKey:@"sleeperId"];
-                //    [betObject setObject: [[PFUser sleeperInfo] objectForKey:@"objectId"] forKey:@"sleeperId"];
                 [betObject setObject:self.sleepHoursForBet.text forKey:@"betTime"];
                 [betObject setObject:[[PFUser currentUser] objectForKey:@"username"] forKey:@"better"];
                 [betObject setObject: [PFUser currentUser].objectId forKey:@"betterid"];
@@ -229,15 +228,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
