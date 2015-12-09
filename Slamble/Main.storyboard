@@ -185,17 +185,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Noa-PV-DDf">
-                                <rect key="frame" x="20" y="431" width="280" height="35"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
-                                <state key="normal" title="Submit Sleep">
-                                    <color key="titleColor" red="0.20392156862745098" green="0.6705882352941176" blue="0.81568627450980391" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="enterSleepButtonPressed:" destination="fwX-Zg-8Gc" eventType="touchUpInside" id="yzQ-Gi-Sq7"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXh-fq-I5r">
                                 <rect key="frame" x="86" y="177" width="39" height="33"/>
                                 <animations/>
@@ -323,6 +312,17 @@
                                 <connections>
                                     <action selector="betRequestButtonPressed:" destination="fwX-Zg-8Gc" eventType="touchUpInside" id="wHR-2A-B8P"/>
                                     <segue destination="2In-n9-hQC" kind="push" id="ojn-VT-dFg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Noa-PV-DDf">
+                                <rect key="frame" x="20" y="431" width="280" height="35"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
+                                <state key="normal" title="Submit Sleep">
+                                    <color key="titleColor" red="0.20392156862745098" green="0.6705882352941176" blue="0.81568627450980391" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="enterSleepButtonPressed:" destination="fwX-Zg-8Gc" eventType="touchUpInside" id="yzQ-Gi-Sq7"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -479,10 +479,22 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0C-uD-eBd">
-                                <rect key="frame" x="20" y="233" width="280" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QcW-EU-rk4">
+                                <rect key="frame" x="20" y="359" width="280" height="44"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="19"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
+                                <state key="normal" title="Make Bet">
+                                    <color key="titleColor" red="0.17647058823529413" green="0.60392156862745094" blue="0.77254901960784317" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.20392156862745098" green="0.19215686274509805" blue="0.23921568627450981" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="makeBetButtonPressed:" destination="682-L2-BvF" eventType="touchUpInside" id="Flp-BG-4Bi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0C-uD-eBd">
+                                <rect key="frame" x="20" y="232" width="280" height="44"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                 <state key="normal" title="View Contacts">
                                     <color key="titleColor" red="0.20392156862745098" green="0.6705882352941176" blue="0.81568627450980391" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" red="0.20784313725490197" green="0.19607843137254902" blue="0.24313725490196078" alpha="1" colorSpace="calibratedRGB"/>
@@ -490,18 +502,6 @@
                                 <connections>
                                     <action selector="viewContactsButtonPressed:" destination="682-L2-BvF" eventType="touchUpInside" id="smI-6W-m2P"/>
                                     <segue destination="JJS-vf-1Fc" kind="push" id="NM7-9s-y9I"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QcW-EU-rk4">
-                                <rect key="frame" x="20" y="359" width="280" height="44"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="20"/>
-                                <state key="normal" title="Make Bet">
-                                    <color key="titleColor" red="0.17647058823529413" green="0.60392156862745094" blue="0.77254901960784317" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="0.20392156862745098" green="0.19215686274509805" blue="0.23921568627450981" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="makeBetButtonPressed:" destination="682-L2-BvF" eventType="touchUpInside" id="Flp-BG-4Bi"/>
                                 </connections>
                             </button>
                         </subviews>
