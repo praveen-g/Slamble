@@ -31,7 +31,7 @@
 
 
 - (void)testEmailFeature {
-    XCTAssert([SignUpViewController isValidEmailAddress:@"francesco/perera@yahoo.com"]); // this should be true
+    XCTAssert([SignUpViewController isValidEmailAddress:@"francescoperera@yahoo.com"]); // this should be true
     XCTAssertFalse([SignUpViewController isValidEmailAddress:@"asdcsdCEWG"]); // this should be false
     
 }
