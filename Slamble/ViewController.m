@@ -48,32 +48,6 @@
     [self.usernameSignIn setDelegate:self];
     [self.passwordSignIn setDelegate:self];
     
-//    if ([PFUser currentUser]) {
-//        [self performSegueWithIdentifier:@"homePage" sender: self];
-//    };
-
-    
-    
-
-    
-//present facebook sign in button
-//    
-//    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
-//    loginButton.center = self.view.center;
-//    [self.view addSubview:loginButton];
-//    loginButton.readPermissions =@[@"public_profile", @"email", @"user_friends"];
-
-    
-//    [PFFacebookUtils logInInBackgroundWithReadPermissions:@"public_profile", @"email", @"user_friends" block:^(PFUser *user, NSError *error) {
-//        if (!user) {
-//            NSLog(@"Uh oh. The user cancelled the Facebook login.");
-//        } else if (user.isNew) {
-//            NSLog(@"User signed up and logged in through Facebook!");
-//        } else {
-//            NSLog(@"User logged in through Facebook!");
-//        }
-//    }];
-//    
     
 }
 

@@ -79,21 +79,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    NSLog(@"before");
-//    PFObject * testUser =[PFObject objectWithClassName:@"signUpTest"];
-//    [testUser setObject:@"Robert" forKey:@"firstName"];
-//    [testUser setObject:@"Davis" forKey:@"lastName"];
-//    [testUser setObject:@"rdavis" forKey:@"username"];
-//    [testUser setObject:@"rdavis" forKey:@"password"];
-//    [testUser setObject:@"email@email.com" forKey:@"email"];
-//    [testUser setObject:@"123" forKey:@"phone"];
-//    [testUser saveInBackground];
-//    NSLog(@"after");
-    
-//    if ([PFUser currentUser]) {
-//        [self performSegueWithIdentifier:@"goToHomePage" sender: self];
-//        
-//    };
     
     // this code adds the background image across the entire screen
     UIGraphicsBeginImageContext(self.view.frame.size);
@@ -113,14 +98,6 @@
     [self.emailTextField setDelegate:self];
     [self.phoneTextField setDelegate:self];
     
-    
-    //UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"night.jpg"]];
-    //[self.view addSubview:backgroundView];
-    
-//    PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
-//    signUpViewController.delegate = self;
-//    signUpViewController.fields = PFSignUpFieldsDefault | PFSignUpFieldsAdditional |PFSignUpFieldsEmail |PFSignUpFieldsUsernameAndPassword | PFSignUpFieldsSignUpButton | PFSignUpFieldsDismissButton;
-//    [self presentViewController:signUpViewController animated:YES completion:nil];
 
     
     // Do any additional setup after loading the view, typically from a nib.
@@ -244,49 +221,6 @@
         }
 }
     
-    
-    //- (BOOL)signUpViewController:(PFSignUpViewController *)signUpController shouldBeginSignUp:(NSDictionary *)info {
-    //    BOOL informationComplete = YES;
-    //    for (id key in info) {
-    //        NSString *field = [info objectForKey:key];
-    //        if (!field || field.length == 0) {
-    //            informationComplete = NO;
-    //            break;
-    //        }
-    //    }
-    //
-    //    if (!informationComplete) {
-    //
-    //
-    //        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Missing Information"
-    //                                                                       message:@"Make sure you fill out all of the information!"
-    //                                                                preferredStyle:UIAlertControllerStyleAlert];
-    //
-    //        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-    //                                                              handler:^(UIAlertAction * action) {}];
-    //
-    //        [alert addAction:defaultAction];
-    //        [self presentViewController:alert animated:YES completion:nil];
-    //
-    //    }
-    //
-    //    return informationComplete;
-    //}
-    //
-    //// Sent to the delegate when a PFUser is signed up.
-    //- (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
-    //    [self dismissViewControllerAnimated:YES completion:NULL];
-    //}
-    //
-    //// Sent to the delegate when the sign up attempt fails.
-    //- (void)signUpViewController:(PFSignUpViewController *)signUpController didFailToSignUpWithError:(NSError *)error {
-    //    NSLog(@"Failed to sign up...");
-    //}
-    //
-    //// Sent to the delegate when the sign up screen is dismissed.
-    //- (void)signUpViewControllerDidCancelSignUp:(PFSignUpViewController *)signUpController {
-    //    NSLog(@"User dismissed the signUpViewController");
-    //}
     
     
 

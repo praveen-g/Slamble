@@ -51,6 +51,7 @@
     //Add motion effect group to our imageView
     [self.tableView addMotionEffect:neGroup];
     
+    //returns an array of top leaders for leaderboad. 
     [PFCloud callFunctionInBackground:@"getLeaders" withParameters:nil block:^(NSArray *leaderBoardArr, NSError * error) {
         if (error) {
             // handle it here

@@ -25,18 +25,7 @@
     [Parse setApplicationId:@"s3CBKwuw8w4lunRPqne8iasu5EAx23snFgu6lJGz"                  clientKey:@"5gelpzGJ8Pq3SWuU7AUiR1ud0rSpi5UZyRchCVGn"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
      [Fabric with:@[[Crashlytics class]]];
-    //    UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
-//                                                   UIUserNotificationTypeBadge |
-//                                                   UIUserNotificationTypeSound);
-//    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
-//                                                                             categories:nil];
-//    [application registerUserNotificationSettings:settings];
-//    [application registerForRemoteNotifications];
-//   
    
-//    // Override point for customization after application launch.
-//    return [[FBSDKApplicationDelegate sharedInstance] application:application
-//                                    didFinishLaunchingWithOptions:launchOptions];
     return YES;
 }
 
@@ -92,23 +81,7 @@
     // Create empty photo object {
     [PFPush handlePush:userInfo];
 
-//    NSString *photoId = [userInfo objectForKey:@"p"];
-//    PFObject *targetPhoto = [PFObject objectWithoutDataWithClassName:@"Photo"   objectId:photoId];
-//    
-//    // Fetch photo object
-//    [targetPhoto fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-//        // Show photo view controller
-//        if (error) {
-//            handler(UIBackgroundFetchResultFailed);
-//        } else if ([PFUser currentUser]) {
-//            PhotoVC *viewController = [[PhotoVC alloc] initWithPhoto:object];
-//            [self.navController pushViewController:viewController animated:YES];
-//            handler(UIBackgroundFetchResultNewData);
-//        } else {
-//            handler(UIBackgroundModeNoData);
-//        }
-//    }];
-//}
+
     
     PFObject *targetData = [ PFObject objectWithoutDataWithClassName:@"betClass" objectId:@"objectId"];
     [targetData fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {

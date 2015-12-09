@@ -234,8 +234,6 @@
 
             
         }];
-//    [PFCloud callFunction:@"computeBetOutcomesForSleeper" withParameters:@{@"sleeperId":[PFUser currentUser].objectId, @"hoursSlept": self.amountSleptInput.text} ]
-
     
     PFObject *sleepObject = [PFObject objectWithClassName:@"Sleep"];
     //create bet object with the below field

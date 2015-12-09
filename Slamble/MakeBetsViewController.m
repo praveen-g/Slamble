@@ -102,14 +102,6 @@
     NSLog(@"%@",self.currentUserFirstName);
     NSLog(@"%@",self.currentUserLastName);
     NSLog(@"the user's name is: %@%@%@", self.currentUserFirstName, @" ", self.currentUserLastName);
-    
-//    //create an installation instance of the app in order to be able to target the user by user id for push notifications
-//    
-//    PFInstallation *installation = [PFInstallation currentInstallation];
-//    [installation setObject:[PFUser currentUser].username forKey:@"username"];
-//    [installation setObject:[PFUser currentUser].objectId forKey:@"installationUserId"];
-//    [installation saveInBackground];
-//    NSLog(@"installation is: %@", installation);
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField{
@@ -140,26 +132,6 @@
                 NSLog(@"sleeper id %@", self.sleeperId);
                 
                 //
-
-                
-                
-//                // create push notification to send to the sleeper by object id to notify of the bet
-//                PFQuery *pushQuery = [PFInstallation query];
-//                [pushQuery whereKey:@"installationUserId" equalTo:self.sleeperId];
-//                //set the parameters of the push notification
-//                PFPush *push = [[PFPush alloc] init];
-//                [push setQuery:pushQuery];
-//                [push setMessage:@"you have a bet"];
-//                [push setData:data];
-//                [push sendPushInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//                    if (succeeded) {
-//                    NSLog(@"The push campaign has been created.");
-//                } else if (error.code == kPFErrorPushMisconfigured) {
-//                    NSLog(@"Could not send push. Push is misconfigured: %@", error.description);
-//                } else {
-//                    NSLog(@"Error sending push: %@", error.description);
-//                }
-//                }];
 
 
                 PFObject *betRequest = [PFObject objectWithClassName:@"betRequest"];
@@ -198,8 +170,7 @@
                          NSString* message = [NSString stringWithFormat:@"%s%@%s%@%@%@%@", "You have been bet by ", self.currentUserFirstName, "", self.currentUserLastName, @" to sleep ", hoursToSleepString, @" hours"];
                          [self.view endEditing:YES];
                          NSLog(@"message to send via push is %@", message);
-                         [PFCloud callFunctionInBackground:@"sendPushNotificationsToSleeper" withParameters:@{@"sleeperId": self.sleeperId, @"message": message}];
-//                         [PFCloud callFunctionInBackground:@"sendPushNotificationsToSleeper" withParameters:@{@"sleeperId": self.sleeperId, @"message": message}];
+                         [PFCloud callFunctionInBackground:@"sendPushNotificationsToSleeper" withParameters:@{@"sleeperId": self.sleeperId, @"message": message}];                      
     
                      } else{
                          //show bet creation failed  with feedback to user
