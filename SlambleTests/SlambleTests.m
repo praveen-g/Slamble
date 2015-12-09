@@ -74,6 +74,17 @@
 
 }
 
+
+-(void)testBetOutcome{
+    int sleeperPoints = [BetsTableViewController querySleeperPoints];
+    NSLog(@"pointer pointer DDDDDDDDD");
+    NSLog(@"%d",sleeperPoints);
+    XCTAssertEqual(sleeperPoints, 2);
+    XCTAssertNotEqual(sleeperPoints, -1);
+    
+    
+}
+
 - (void)testExample {
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.

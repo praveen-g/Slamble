@@ -22,6 +22,83 @@
 
 @implementation BetsTableViewController
 
++(void) test:(NSString *)betterUsername bet:(NSString *)sleeperUsername outcome:(NSString *)hoursBet withHoursSlept:(NSString *)hoursSlept{
+    int hB = [hoursBet intValue];
+    int hS = [hoursSlept intValue];
+    
+    if (hB > hS) {
+        NSNumber * betterPoints = [NSNumber numberWithInt:2];
+        NSNumber * sleeperPoints = [NSNumber numberWithInt:-1];
+        NSString * bPoints = [NSString stringWithFormat:@"%@",betterPoints];
+        NSString * sPoints =[NSString stringWithFormat:@"%@",sleeperPoints];
+        PFObject * testBet=[PFObject objectWithClassName:@"TestBet"];
+        [testBet setObject:betterUsername forKey:@"better"];
+        [testBet setObject:sleeperUsername forKey:@"sleeper"];
+        [testBet setObject:hoursBet forKey:@"betTime"];
+        [testBet setObject:hoursSlept forKey:@"hoursSlept"];
+        [testBet setObject:@"0" forKey:@"betStatus"];
+        [testBet setObject:bPoints forKey:@"betterPoints"];
+        [testBet setObject:sPoints forKey:@"sleeperPoints"];
+        [testBet saveInBackground];
+        
+        
+    }
+    else if (hB == hS){
+        NSNumber * betterPoints = [NSNumber numberWithInt:1];
+        NSNumber * sleeperPoints = [NSNumber numberWithInt:1];
+        NSString * bPoints = [NSString stringWithFormat:@"%@",betterPoints];
+        NSString * sPoints =[NSString stringWithFormat:@"%@",sleeperPoints];
+        PFObject * testBet=[PFObject objectWithClassName:@"TestBet"];
+        [testBet setObject:betterUsername forKey:@"better"];
+        [testBet setObject:sleeperUsername forKey:@"sleeper"];
+        [testBet setObject:hoursBet forKey:@"betTime"];
+        [testBet setObject:hoursSlept forKey:@"hoursSlept"];
+        [testBet setObject:@"0" forKey:@"betStatus"];
+        [testBet setObject:bPoints forKey:@"betterPoints"];
+        [testBet setObject:sPoints forKey:@"sleeperPoints"];
+        [testBet saveInBackground];
+        
+        
+    }
+    else{
+        NSNumber * betterPoints = [NSNumber numberWithInt:0];
+        NSNumber * sleeperPoints = [NSNumber numberWithInt:2];
+        NSString * bPoints = [NSString stringWithFormat:@"%@",betterPoints];
+        NSString * sPoints =[NSString stringWithFormat:@"%@",sleeperPoints];
+        PFObject * testBet=[PFObject objectWithClassName:@"TestBet"];
+        [testBet setObject:betterUsername forKey:@"better"];
+        [testBet setObject:sleeperUsername forKey:@"sleeper"];
+        [testBet setObject:hoursBet forKey:@"betTime"];
+        [testBet setObject:hoursSlept forKey:@"hoursSlept"];
+        [testBet setObject:@"0" forKey:@"betStatus"];
+        [testBet setObject:bPoints forKey:@"betterPoints"];
+        [testBet setObject:sPoints forKey:@"sleeperPoints"];
+        [testBet saveInBackground];
+        
+    }
+    
+}
+
++(int)querySleeperPoints{
+    [self test:@"Better" bet:@"Sleeper" outcome:@"8" withHoursSlept:@"9"];
+    
+    PFQuery * testBetQuery = [PFQuery queryWithClassName:@"TestBet"];
+    NSLog(@"query started");
+    // need to include
+    [testBetQuery whereKey:@"better" equalTo:@"Better"];
+    [testBetQuery orderByDescending:@"createdAt"];
+    NSArray *betObject = [testBetQuery findObjects];
+    
+    NSLog(@"found object");
+    NSLog(@" object has %lu items",(unsigned long)[betObject count]);
+    NSDictionary * bet = [ betObject firstObject];
+    int sleeperPoints = [bet[@"sleeperPoints"]intValue];
+    return sleeperPoints;
+    
+    
+}
+
+
 +(BOOL) test:(NSString *)better bet:(NSString *)sleeper logic:(int)betHours is:(int)HoursSlept correct:(NSString *)predictedWinner{
     if (betHours > HoursSlept && [predictedWinner isEqualToString:better]){
         NSLog(@"a");

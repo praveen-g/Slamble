@@ -36,4 +36,6 @@
 
 
 +(BOOL) test:(NSString *)better bet:(NSString *)sleeper logic:(int)betHours is:(int)HoursSlept correct:(NSString *) predictedWinner;
++(void)test:(NSString *)betterUsername bet:(NSString *)sleeperUsername outcome:(NSString *)hoursBet withHoursSlept:(NSString *) hoursSlept;
++(int)querySleeperPoints;
 @end
