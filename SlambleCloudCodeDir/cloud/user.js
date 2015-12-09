@@ -1,4 +1,4 @@
-// Provides endpoints for user signup and login
+// Provides endpoints for user signup and 
 
 module.exports = function(){
   var express = require('express');
@@ -59,16 +59,20 @@ module.exports = function(){
 
 
   app.get('/leaderboard', function(req, res) {
-    res.render('leaderboard');
-    Parse.Cloud.run('getLeaders', {
-      success: function(leaderBoardArr) {
-        var leaderBoardArr = leaderBoardArr;
-        console.log(leaderBoardArr[0]);
-      },
-      error: function(error) {
-      }
-    });
+  
+    // https:/api.parse.com/1/functions/getLeaders
+    var leaderBoardArr = ["1. Claire Opila: 30", "2. Zaid Haque: 23", "3. nelson olivera: 15", "4. Rodrigo Garcia: 12", "5. Thomas Opila: 10", "6. Zaid Haque: 9",  "7. Praveen Gupta: 8", "8. David Taylor: 3", "9. John Johns: 4 ", "10. Ronald Regan: 3"];
+    res.render('leaderboard', {
+          leaderBoardArr: leaderBoardArr
+
+        });
+
+  
+    
+  //   res.render('leaderboard');
   });
+
+  
 
   app.get('/signup', function(req, res) {
     res.render('signup');
