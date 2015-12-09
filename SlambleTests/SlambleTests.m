@@ -57,6 +57,7 @@
 -(void) testMakeBet{
     XCTAssert([MakeBetsViewController test:@"cnelson" bet:@"dhart" logic:@"8" inClass:@"TestBet"]);
     XCTAssertFalse([MakeBetsViewController test:@"cnelson" bet:@"rdavis" logic:@"8" inClass:@"TestBetFalse"]);
+    
 
 }
 

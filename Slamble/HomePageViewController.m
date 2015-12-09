@@ -61,13 +61,12 @@
             return;
         }
         
-        //        if(!error){
+        
         NSLog(@"betObject at first is %@",betObject);
         [betObject setObject:hoursSlept forKey:@"hoursSlept"];
         [betObject saveInBackground];
         NSLog(@"the betoject is %@",betObject);
-        //        }
-        //        [self check:sleeper sleepValue:hoursSlept isCorrect:betClass];
+        
         
     }];
     
