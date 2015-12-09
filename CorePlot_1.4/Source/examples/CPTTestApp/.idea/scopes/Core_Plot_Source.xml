@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Core Plot Source" pattern="file:iPhoneOnly//*||file:MacOnly//*||file:Source//*||file:CorePlot-CocoaTouch.h||file:CorePlot.h||file:CorePlot_CocoaTouch_Prefix.pch||file:CorePlot_Prefix.pch||file:main-cocoatouch.m||file:main.m" />
+</component>

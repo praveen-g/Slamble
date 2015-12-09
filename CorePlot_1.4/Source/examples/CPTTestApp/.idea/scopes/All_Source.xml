@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="All Source" pattern="file:Source//*||file:CPTTestApp_Prefix.pch||file:MacOnly//*||file:CorePlot.h||file:CorePlot_Prefix.pch||file:main.m||file:TestResources//*||file:Info.plist||file:UnitTests-Info.plist" />
+</component>

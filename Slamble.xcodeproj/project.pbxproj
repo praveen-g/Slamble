@@ -54,6 +54,7 @@
 		EC70C7281BF03DAE0039A262 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC70C7261BF03DAE0039A262 /* Main.storyboard */; };
 		EC70C7291BF03DAE0039A262 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC70C7271BF03DAE0039A262 /* LaunchScreen.storyboard */; };
 		EC70C7451BF03E030039A262 /* launchScreen2.png in Resources */ = {isa = PBXBuildFile; fileRef = EC70C7321BF03E030039A262 /* launchScreen2.png */; };
+		EC78CDF91C17DC82006839C1 /* LeaderBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC78CDF81C17DC82006839C1 /* LeaderBoardViewController.m */; };
 		EC9113851C09073C00DAEB81 /* slambleIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC9113831C09073C00DAEB81 /* slambleIcon@2x.png */; };
 		EC9113861C09073C00DAEB81 /* slambleIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC9113841C09073C00DAEB81 /* slambleIcon@3x.png */; };
 		EC9113891C09074700DAEB81 /* slambleIcon120X120@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC9113871C09074700DAEB81 /* slambleIcon120X120@2x.png */; };
@@ -142,6 +143,8 @@
 		EC70C7261BF03DAE0039A262 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		EC70C7271BF03DAE0039A262 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC70C7321BF03E030039A262 /* launchScreen2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = launchScreen2.png; path = assets/launchScreen2.png; sourceTree = "<group>"; };
+		EC78CDF71C17DC82006839C1 /* LeaderBoardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderBoardViewController.h; sourceTree = "<group>"; };
+		EC78CDF81C17DC82006839C1 /* LeaderBoardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaderBoardViewController.m; sourceTree = "<group>"; };
 		EC9113831C09073C00DAEB81 /* slambleIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slambleIcon@2x.png"; sourceTree = "<group>"; };
 		EC9113841C09073C00DAEB81 /* slambleIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slambleIcon@3x.png"; sourceTree = "<group>"; };
 		EC9113871C09074700DAEB81 /* slambleIcon120X120@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slambleIcon120X120@2x.png"; sourceTree = "<group>"; };
@@ -236,6 +239,8 @@
 				25F1A6311BC178D700143C18 /* AppDelegate.m */,
 				EC65B2F31BC1F79700C47D08 /* HomePageViewController.h */,
 				EC65B2F41BC1F79700C47D08 /* HomePageViewController.m */,
+				EC78CDF71C17DC82006839C1 /* LeaderBoardViewController.h */,
+				EC78CDF81C17DC82006839C1 /* LeaderBoardViewController.m */,
 				08D515C51BEF281E0054AA9F /* ContactsTableViewController.h */,
 				08D515C61BEF281E0054AA9F /* ContactsTableViewController.m */,
 				EC4228241BC37D0A0043C3BD /* MakeBetsViewController.h */,
@@ -529,6 +534,7 @@
 				08D515C71BEF281E0054AA9F /* ContactsTableViewController.m in Sources */,
 				25F1A6321BC178D700143C18 /* AppDelegate.m in Sources */,
 				ECC7811C1BD6A8DD00AA18AA /* BetsTableViewController.m in Sources */,
+				EC78CDF91C17DC82006839C1 /* LeaderBoardViewController.m in Sources */,
 				EC65B2F51BC1F79700C47D08 /* HomePageViewController.m in Sources */,
 				25F1A68F1BC1819E00143C18 /* SignUpViewController.m in Sources */,
 				EC4228261BC37D0A0043C3BD /* MakeBetsViewController.m in Sources */,
@@ -670,8 +676,15 @@
 					"$(PROJECT_DIR)/FacebookSDKs-iOS-20150910",
 					"$(PROJECT_DIR)",
 				);
+				HEADER_SEARCH_PATHS = ./;
 				INFOPLIST_FILE = Slamble/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CorePlot_1.4/Binaries/iOS",
+					"$(PROJECT_DIR)",
+				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cs2048.Slamble;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -692,8 +705,15 @@
 					"$(PROJECT_DIR)/FacebookSDKs-iOS-20150910",
 					"$(PROJECT_DIR)",
 				);
+				HEADER_SEARCH_PATHS = ./;
 				INFOPLIST_FILE = Slamble/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CorePlot_1.4/Binaries/iOS",
+					"$(PROJECT_DIR)",
+				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cs2048.Slamble;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

@@ -11,22 +11,17 @@
           <li> Zaid: 10 </li>
         </ol>
 
-      <%
+        <script>
           Parse.Cloud.run('getLeaders', {
             success: function(leaderBoardArr) {
               var leaderBoardArr = leaderBoardArr;
-              console.log(leaderBoardArr[0]);
-              <% for(var i=0; i<leaderBoardArr.length; i++) { %>
-              <li>
-                  <%= leaderBoardArr[i] %>
-              </li>
-              <% } %>
             },
             error: function(error) {
             }
           });
-      %>
- 
+        </script>
+
+  
 
     </div>
   </div>

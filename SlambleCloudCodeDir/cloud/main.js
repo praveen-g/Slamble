@@ -42,15 +42,18 @@ Parse.Cloud.define("getLeaders", function (request, response){
 		        points = user.get("points");
 		        firstName = user.get("firstName");
 		        lastName = user.get("lastName");
-		        stringLeader = String(firstName + " " + lastName + ": " + points);
+		        var n = i+1;
+		        stringLeader = String(n+". " + firstName + " " + lastName + ": " + points);
 		        leaderBoardArr.push(stringLeader);
 		        console.log("stringLeader " + stringLeader);
-		        response.success(leaderBoardArr);
+		        
 		}
+		response.success(leaderBoardArr);
         // Do stuff
-      },error: function (user, error) {
-            console.log(error);
-            response.error(error);
+      },error: function (results, nerror) {
+         throw "Got an error" + error.code + " : " + error.message;
+			console.log("push caused an error");
+			response.error("oh no");
           } 
     });
 });
@@ -88,7 +91,6 @@ Parse.Cloud.define("computeBetOutcomesForSleeper", function (request, response) 
 				betTime = parseInt(bet.get("betTime"));
 				// hoursSlept = parseInt(bet.get("hoursSlept"));
 				betterId = bet.get("betterid");
-				betArr.append()
 
 
 				// calculate how much to increment points per user

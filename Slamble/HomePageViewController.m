@@ -143,12 +143,7 @@
 }
 
 -(void) viewDidAppear:(BOOL)animated{
-//    self.UserPoints = [[[PFUser currentUser] objectForKey:@"points"] integerValue];
-//    NSLog(@"user points are %@", [[PFUser currentUser] objectForKey:@"points"] );
-//    self.stringUserPoints = [NSString stringWithFormat:@"%i", self.UserPoints];
-//    self.myPoints.text = self.stringUserPoints;
-//    //    self.pointsVal =  self.UserPoints;
-//    NSLog(@"user points value %@", self.stringUserPoints);
+
 
 //     counts the number of bets with a status of 0
     PFQuery *query = [PFQuery queryWithClassName:@"betClass"];
@@ -315,14 +310,7 @@
         //declare variable for points value which we will keep in an object
     }];
     
-//
-//    
-//    self.UserPoints = [[[PFUser currentUser] objectForKey:@"points"] integerValue];
-//    NSLog(@"user points are %@", [[PFUser currentUser] objectForKey:@"points"] );
-//    self.stringUserPoints = [NSString stringWithFormat:@"%ld", self.UserPoints];
-//    self.myPoints.text = self.stringUserPoints;
-//    //    self.pointsVal =  self.UserPoints;
-//    NSLog(@"user points value %@", self.stringUserPoints);
+
     
 }
 
