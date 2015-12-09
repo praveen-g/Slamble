@@ -101,7 +101,7 @@
             return false;
         }
     }
-    //return 0;
+   
     
     
 }
@@ -127,10 +127,8 @@
     
     // Do any additional setup after loading the view.
     // get the username of the current user and log it in the consol
-//    NSString *currentUserName = [[NSString alloc] init];
     self.currentUserName= [[PFUser currentUser] objectForKey:@"username"];
     NSString *firstName = [[PFUser currentUser] objectForKey:@"firstName"];
-//    self.UserPoints = [[PFUser currentUser] objectForKey:@"points" integerValue];
     NSLog(@"firstName String is %@", firstName);
     self.welcomeLabel.text = [NSString stringWithFormat:@"%s%@%s", "Welcome ", firstName, "!"];
     NSLog(@"current userName is: %@",self.currentUserName);
@@ -148,7 +146,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"betClass"];
     [query whereKey:@"sleeperId" equalTo:[PFUser currentUser].objectId];
     [query whereKey:@"betStatus" equalTo: @"0"];
-    //    self.listOfBets = [query findObjects];
+    
     [query findObjectsInBackgroundWithBlock:^(NSArray * pendingBets, NSError *error){
         if(!error){
             self.pendingBets.text =[NSString stringWithFormat:@"%lu", (unsigned long)pendingBets.count];
@@ -165,11 +163,7 @@
     
     [super viewDidAppear:YES];
     
-//    NSLog(@"user points view did appear are %@", [[PFUser currentUser] objectForKey:@"points"] );;
-//    NSLog(@"user points view did appear with fetch are %@", [[[PFUser currentUser] fetch] objectForKey:@"points"]);
-    
 
-//    NSLog(@"userpoints points2 %ld", [[PFUser currentUser] objectForKey:@"points2"]);
 }
 
 -(void)registerToReceivePushNotification {
@@ -204,7 +198,7 @@
     NSInteger timeSleptInt = [timeSlept integerValue];
     NSLog(@"Timeslept: %ld", timeSleptInt);
     
-            //[PFCloud callFunctionInBackground:@"betWinner" withParameters:@{@"objectId":self.objectId}];
+    
     if ([self.amountSleptInput.text isEqualToString:@""] || timeSleptInt < -1 || timeSleptInt > 14){
         UIAlertController* alertError = [UIAlertController alertControllerWithTitle:@"Ruh Roh!"
                                                                        message:@"Please enter a valid amount of time slept"
@@ -229,12 +223,12 @@
             
             NSString * userPointsAfterCalc = [NSString stringWithFormat:@"%@", newPoints];
             NSLog(@"userPointsAfterCalc: %@", userPointsAfterCalc);
-//            NSString * userPointsAfterCalc =[object objectForKey:@"userPoints"];
+
             self.myPoints.text = userPointsAfterCalc;
 
             
         }];
-//    [PFCloud callFunction:@"computeBetOutcomesForSleeper" withParameters:@{@"sleeperId":[PFUser currentUser].objectId, @"hoursSlept": self.amountSleptInput.text} ]
+
 
     
     PFObject *sleepObject = [PFObject objectWithClassName:@"Sleep"];
@@ -245,7 +239,7 @@
      [sleepObject setObject: [PFUser currentUser].objectId forKey:@"userId"];
     [sleepObject setObject: timeSlept forKey:@"sleep"];
     
-    //    [betObject setObject: [[PFUser sleeperInfo] objectForKey:@"objectId"] forKey:@"sleeperId"];
+    
     [sleepObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
      {
          if (!error)
@@ -293,8 +287,7 @@
     
     PFQuery *userQuery = [PFUser query];
     [userQuery whereKey:@"objectId" equalTo:[PFUser currentUser].objectId];
-    //    self.listOfBets = [query findObjects];
-    [userQuery findObjectsInBackgroundWithBlock:^(NSArray * userInfo, NSError *error){
+        [userQuery findObjectsInBackgroundWithBlock:^(NSArray * userInfo, NSError *error){
         if(!error){
             NSLog(@"userInfo is %@", userInfo);
             NSNumber  *pointsQuery =  [userInfo valueForKey:@"points"][0];
