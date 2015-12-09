@@ -80,24 +80,7 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))handler {
     // Create empty photo object {
     [PFPush handlePush:userInfo];
-
-
     
-    PFObject *targetData = [ PFObject objectWithoutDataWithClassName:@"betClass" objectId:@"objectId"];
-    [targetData fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-        if (error) {
-            handler(UIBackgroundFetchResultFailed);
-        }
-        else{
-//        else if([[targetData objectForKey:betStatus] isEqualToString:@"0"]){
-//            AcceptOrDecline *viewController = [[AcceptOrDecline alloc]init];
-//            [self.window.rootViewController presentViewController:viewController animated:YES completion:nil];
-//            
-//            AcceptOrDecline *obj = [AcceptOrDecline new];
-//            NSString *msg = [[[ better stringByAppendingString:@" has bet you"] stringByAppendingString: hours]stringByAppendingString:@" to sleep"];
-//            obj.displayInfo.text = msg;
-        }
-    }];
     }
 
 

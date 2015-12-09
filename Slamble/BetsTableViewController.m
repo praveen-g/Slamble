@@ -212,21 +212,12 @@
     [query3 findObjectsInBackgroundWithBlock:^(NSArray * objects3, NSError *error){
         if(!error){
             self.sleeperObjectsComplete =objects3;
-            //counts the number of bet objects where the current user is the better
-            //            self.betterObjectCount =self.betterObjects.count;
-            //    NSLog(@"Successfully retrieved bets. %lu", (unsigned long)self.betterObjects.count);
-            //    NSLog(@"bet objects are: %@", self.betterObjects);
-            
             //parses the betterObjects into three arrays to present to the Table View Controller
             self.betterArrBetsAgainstComplete = [self.sleeperObjectsComplete valueForKey:@"sleeper"];
             self.betTimeArrBetsAgainstComplete= [self.sleeperObjectsComplete valueForKey:@"betTime"];
             self.createdAtBetsArrAgainstComplete = [self.sleeperObjectsComplete valueForKey:@"createdAt"];
             self.betterPointsBetsAgainstComplete = [self.sleeperObjectsComplete valueForKey:@"betterPoints"];
             self.sleeperPointsBetsAgainstComplete = [self.sleeperObjectsComplete valueForKey:@"sleeperPoints"];
-            //    NSLog(@"sleeperArray called: %@", self.sleeperArrBetsFor);
-            //    NSLog(@"bettimeArray called: %@", self.betTimeBetsFor);
-            //    NSLog(@"bettimeArray called: %@", self.createdAtBetsArrsFor);
-            //reload table after query finishes
             dispatch_async(dispatch_get_main_queue(), ^ {
                 [self.tableView reloadData];
             });
@@ -250,9 +241,6 @@
             self.createdAtBetsArrsForComplete = [self.betterObjectsComplete valueForKey:@"createdAt"];
             self.betterPointsBetsForComplete = [self.sleeperObjectsComplete valueForKey:@"betterPoints"];
             self.sleeperPointsBetsForComplete = [self.sleeperObjectsComplete valueForKey:@"sleeperPoints"];
-            //    NSLog(@"sleeperArray called: %@", self.sleeperArrBetsFor);
-            //    NSLog(@"bettimeArray called: %@", self.betTimeBetsFor);
-            //    NSLog(@"bettimeArray called: %@", self.createdAtBetsArrsFor);
             //reloading the table after query finishes
             dispatch_async(dispatch_get_main_queue(), ^ {
                 [self.tableView reloadData];
@@ -297,18 +285,6 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
    //returns the number of sections based on the number of bet objects for the sleeper array and better array
     return 4;
-//    if ((self.sleeperObjects.count > 0) && (self.betterObjects.count>0)) {
-//        return 2;
-//    }
-//    else if ((self.sleeperObjects.count > 0) && (self.betterObjects.count == 0)){
-//        return 1;
-//    }
-//    else if ((self.sleeperObjects.count == 0) && (self.betterObjects.count > 0)) {
-//        return 1;
-//    }
-//    else{
-//        return 0;
-//    }
 }
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     cell.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.2];
