@@ -1,6 +1,6 @@
- ## Slamble with Travis-ci
-https://travis-ci.org/praveen-g/Slamble.svg?branch=master
+## Slamble with Travis-ci
+* [Travis-ci link](https://travis-ci.org/praveen-g/Slamble.svg?branch=master)
 
 ## Web Site
-* [Slamble](https://slamble.parseapp.com/)
-https://slamble.parseapp.com/
+* [Slamble link](https://slamble.parseapp.com/)
+
