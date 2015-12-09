@@ -1,11 +1,15 @@
 <form  id="leaderboard">
-  <h1>Top Sleepers</h1>
   <div class="outer">
+    <div>
+      <h1 id= "topSleeperLabel"> <%= "Top Sleepers"%></h1>
+    </div>
       
-      <div>
+      <div id= "leaderboard">
         <ol>
             <% for(var i=0; i<leaderBoardArr.length; i++) { %>
-              <li> <%= leaderBoardArr[i] %> </li>
+              <div id= "listItem">
+                <li> <%= leaderBoardArr[i] %> </li>
+              </div>
             <% } %>
         </ol>
       </div>

@@ -61,7 +61,7 @@ module.exports = function(){
   app.get('/leaderboard', function(req, res) {
   
     // https:/api.parse.com/1/functions/getLeaders
-    var leaderBoardArr = ["1. Claire Opila: 30", "2. Zaid Haque: 23", "3. nelson olivera: 15", "4. Rodrigo Garcia: 12", "5. Thomas Opila: 10", "6. Zaid Haque: 9",  "7. Praveen Gupta: 8", "8. David Taylor: 3", "9. John Johns: 4 ", "10. Ronald Regan: 3"];
+    var leaderBoardArr = ["Claire Opila: 30", "nelson olivera: 15", "Rodrigo Garcia: 12", "Thomas Opila: 10", "Zaid Haque: 9",  "Praveen Gupta: 8", "David Taylor: 6", "John Johns: 4 ", "Ronald Regan: 3", "Tove Lo: 3"];
     res.render('leaderboard', {
           leaderBoardArr: leaderBoardArr
 

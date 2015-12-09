@@ -77,6 +77,14 @@ body {
   -o-background-size: cover;
 }
 
+label{
+  margin-bottom: 30px;
+}
+
+#makeBetLabel2{
+  margin-bottom: 30px;
+}
+
 /* line 15, ../../sass/styles.scss */
 a {
   color: white;
@@ -90,6 +98,59 @@ a:hover {
 h1 {
   font-family: "Open Sans", sans-serif;
 }
+
+#topSleeperLabel{
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+
+#signupHeader{
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+
+#loginHeader{
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+
+
+#sleepingLabel{
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+
+#leaderBoard{
+  left-margin: auto;
+  right margin: auto;
+
+}
+
+
+#inputSleep{
+  margin: 100px, 20px, 20px, 20px;
+
+}
+
+#makeBetLabel{
+  font-size: 40px;
+  margin-bottom: 40px;
+
+}
+
+#makeBet{
+  margin: 100px, 20px, 20px, 20px;
+
+}
+
+
+#listItem{
+  text-indent: left;
+  text-align: left
+  margin-bottom: 10px;
+
+}
+
 
 /* line 28, ../../sass/styles.scss */
 #content {
@@ -313,3 +374,11 @@ h1 {
   font-size: 15px;
   background: #ededdf;
 }
+
+#pointsNum{
+    margin-bottom: -3px;
+    padding-bottom: -4px;
+    border-bottom: -3px;
+}
+
+

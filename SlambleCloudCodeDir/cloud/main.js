@@ -743,6 +743,4 @@ Parse.Cloud.define("viewImage", function(request, response) {
 });
 
 
-/
-
 
